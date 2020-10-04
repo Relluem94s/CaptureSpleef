@@ -1,0 +1,12 @@
+name: RelluMG
+version: 0.0.1
+author: Relluem94
+website: http://www.relluem94.de
+
+main: de.relluem94.capturespleef.rellu
+commands:
+     casp:
+          description: CaptureSpleef
+          usage:
+          aliases: [capturespleef]
+          permission: rellu.capturespleef
