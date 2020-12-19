@@ -20,67 +20,67 @@ public class EntityDamageByEntity implements Listener {
     @EventHandler
     public void SchneeballSchaden(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Snowball) {
-            Player pla = (Player) e.getEntity();
+            Player p = (Player) e.getEntity();
             Snowball snowball = (Snowball) e.getDamager();
             ProjectileSource shooter = snowball.getShooter();
             if (shooter instanceof Player) {
-                Player plo = (Player) shooter;
-                if (plo.hasPermission("rellu.lobby.snowball")) {
-                    if (plo.getInventory().getItemInHand().getType() == Material.SNOWBALL && pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) {
+                Player ps = (Player) shooter;
+                if (ps.hasPermission("rellu.lobby.snowball")) {
+                    if (ps.getInventory().getItemInHand().getType() == Material.SNOWBALL && p.getInventory().getItemInHand().getType() == Material.SNOWBALL) {
 
-                        if (plo.getCustomName().equals("TeamRot")) {
+                        if (ps.getCustomName().equals("TeamRot")) {
 
-                            if (pla.getCustomName().equals("TeamBlau")) {
-                                pla.setFireTicks(4);
+                            if (p.getCustomName().equals("TeamBlau")) {
+                                p.setFireTicks(4);
                             } else {
                                 e.setCancelled(true);
                             }
                         } // Hier Team Blau
-                        else if (plo.getCustomName().equals("TeamBlau")) {
-                            if (pla.getCustomName().equals("TeamRot")) {
-                                pla.setFallDistance(4);
+                        else if (ps.getCustomName().equals("TeamBlau")) {
+                            if (p.getCustomName().equals("TeamRot")) {
+                                p.setFallDistance(4);
                             } else {
                                 e.setCancelled(true);
                             }
                         }
                     } else {
-                        Location lolo = pla.getLocation();
-                        Location polo = plo.getLocation();
-                        pla.teleport(polo);
-                        plo.teleport(lolo);
+                        Location ploc = p.getLocation();
+                        Location psloc = ps.getLocation();
+                        p.teleport(psloc);
+                        ps.teleport(ploc);
                     }
 
-                } else if (plo.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL)
-                        || pla.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
+                } else if (ps.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL)
+                        || p.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
                     // Hier Team Rot
-                    if (plo.getCustomName().equals("TeamRot")) {
+                    if (ps.getCustomName().equals("TeamRot")) {
 
-                        if (pla.getCustomName().equals("TeamBlau")) {
-                            pla.setFireTicks(4);
+                        if (p.getCustomName().equals("TeamBlau")) {
+                            p.setFireTicks(4);
                         } else {
                             e.setCancelled(true);
                         }
                     } // Hier Team Blau
-                    else if (plo.getCustomName().equals("TeamBlau")) {
-                        if (pla.getCustomName().equals("TeamRot")) {
-                            pla.setFallDistance(4);
+                    else if (ps.getCustomName().equals("TeamBlau")) {
+                        if (p.getCustomName().equals("TeamRot")) {
+                            p.setFallDistance(4);
                         } else {
                             e.setCancelled(true);
                         }
-                    } else if (!(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL)
-                            || !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
+                    } else if (!(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL)
+                            || !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
                         // Hier Team Rot
-                        if (plo.getCustomName().equals("TeamRot")) {
+                        if (ps.getCustomName().equals("TeamRot")) {
 
-                            if (pla.getCustomName().equals("TeamBlau")) {
-                                pla.setFireTicks(4);
+                            if (p.getCustomName().equals("TeamBlau")) {
+                                p.setFireTicks(4);
                             } else {
                                 e.setCancelled(true);
                             }
                         } // Hier Team Blau
-                        else if (plo.getCustomName().equals("TeamBlau")) {
-                            if (pla.getCustomName().equals("TeamRot")) {
-                                pla.setFallDistance(4);
+                        else if (ps.getCustomName().equals("TeamBlau")) {
+                            if (p.getCustomName().equals("TeamRot")) {
+                                p.setFallDistance(4);
                             } else {
                                 e.setCancelled(true);
                             }
