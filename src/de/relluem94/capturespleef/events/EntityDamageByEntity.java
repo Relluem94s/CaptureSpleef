@@ -1,4 +1,4 @@
-package de.relluem94.capturespleef.listener;
+package de.relluem94.capturespleef.events;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -25,9 +25,6 @@ public class EntityDamageByEntity implements Listener {
             ProjectileSource shooter = snowball.getShooter();
             if (shooter instanceof Player) {
                 Player plo = (Player) shooter;
-
-//						pla.sendMessage(e.getCause() + "");
-//						plo.sendMessage(e.getCause() + "");
                 if (plo.hasPermission("rellu.lobby.snowball")) {
                     if (plo.getInventory().getItemInHand().getType() == Material.SNOWBALL && pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) {
 
@@ -35,23 +32,15 @@ public class EntityDamageByEntity implements Listener {
 
                             if (pla.getCustomName().equals("TeamBlau")) {
                                 pla.setFireTicks(4);
-//										pla.sendMessage(e.getCause() + "1");
-//										plo.sendMessage(e.getCause() + "2");
                             } else {
                                 e.setCancelled(true);
-//										pla.sendMessage(e.getCause() + "3");
-//										plo.sendMessage(e.getCause() + "4");
                             }
                         } // Hier Team Blau
                         else if (plo.getCustomName().equals("TeamBlau")) {
                             if (pla.getCustomName().equals("TeamRot")) {
                                 pla.setFallDistance(4);
-//										pla.sendMessage(e.getCause() + "5");
-//										plo.sendMessage(e.getCause() + "6");
                             } else {
                                 e.setCancelled(true);
-//										pla.sendMessage(e.getCause() + "7");
-//										plo.sendMessage(e.getCause() + "8");
                             }
                         }
                     } else {
@@ -59,9 +48,6 @@ public class EntityDamageByEntity implements Listener {
                         Location polo = plo.getLocation();
                         pla.teleport(polo);
                         plo.teleport(lolo);
-//									pla.sendMessage(e.getCause() + "9");
-//									plo.sendMessage(e.getCause() + "0");
-                        // e.getEntity().sendMessage(e.getCause() + "");
                     }
 
                 } else if (plo.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL)
@@ -71,23 +57,15 @@ public class EntityDamageByEntity implements Listener {
 
                         if (pla.getCustomName().equals("TeamBlau")) {
                             pla.setFireTicks(4);
-//										pla.sendMessage(e.getCause() + "1");
-//										plo.sendMessage(e.getCause() + "2");
                         } else {
                             e.setCancelled(true);
-//										pla.sendMessage(e.getCause() + "3");
-//										plo.sendMessage(e.getCause() + "4");
                         }
                     } // Hier Team Blau
                     else if (plo.getCustomName().equals("TeamBlau")) {
                         if (pla.getCustomName().equals("TeamRot")) {
                             pla.setFallDistance(4);
-//										pla.sendMessage(e.getCause() + "5");
-//										plo.sendMessage(e.getCause() + "6");
                         } else {
                             e.setCancelled(true);
-//										pla.sendMessage(e.getCause() + "7");
-//										plo.sendMessage(e.getCause() + "8");
                         }
                     } else if (!(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL)
                             || !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
@@ -96,23 +74,15 @@ public class EntityDamageByEntity implements Listener {
 
                             if (pla.getCustomName().equals("TeamBlau")) {
                                 pla.setFireTicks(4);
-//										pla.sendMessage(e.getCause() + "1");
-//										plo.sendMessage(e.getCause() + "2");
                             } else {
                                 e.setCancelled(true);
-//										pla.sendMessage(e.getCause() + "3");
-//										plo.sendMessage(e.getCause() + "4");
                             }
                         } // Hier Team Blau
                         else if (plo.getCustomName().equals("TeamBlau")) {
                             if (pla.getCustomName().equals("TeamRot")) {
                                 pla.setFallDistance(4);
-//										pla.sendMessage(e.getCause() + "5");
-//										plo.sendMessage(e.getCause() + "6");
                             } else {
                                 e.setCancelled(true);
-//										pla.sendMessage(e.getCause() + "7");
-//										plo.sendMessage(e.getCause() + "8");
                             }
                         }
 

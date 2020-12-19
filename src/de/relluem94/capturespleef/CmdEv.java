@@ -22,7 +22,7 @@ public class CmdEv {
         main.cSM(main.prefix, "§aRegistriere Event!");
         //TODO Remove mains from constructor
         pm.registerEvents(new de.relluem94.capturespleef.listener.BlockDamage(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.listener.EntityDamageByEntity(main), main);
+        pm.registerEvents(new de.relluem94.capturespleef.events.EntityDamageByEntity(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerCommandPreprocess(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.events.PlayerQuit(main), main);
