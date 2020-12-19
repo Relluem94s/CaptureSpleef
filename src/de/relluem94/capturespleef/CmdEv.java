@@ -24,7 +24,6 @@ public class CmdEv {
         pm.registerEvents(new de.relluem94.capturespleef.listener.BlockDamage(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.EntityDamageByEntity(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerCommandPreprocess(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerInteract(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.events.PlayerQuit(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.events.SignChange(main), main);
