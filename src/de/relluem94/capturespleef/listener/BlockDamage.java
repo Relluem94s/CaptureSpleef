@@ -63,7 +63,7 @@ public class BlockDamage implements Listener{
 					 							main.teams.get(ops).getBlock().setType(Material.AIR);
 					 							main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
 												main.sboard.resetScores(ops);
-												ops.sendMessage("�d[CaptureSpleef] �1Team Blau hat gewonnen");
+												ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
 					 						}
 						 				}
 						 				
@@ -119,7 +119,7 @@ public class BlockDamage implements Listener{
 						 						main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
 						 						main.teams.clear();
 												main.sboard.resetScores(ops);
-												ops.sendMessage("�d[CaptureSpleef] �1Team Blau hat gewonnen");
+												ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
 						 					}
 						 				}	
 						 			}
@@ -133,7 +133,7 @@ public class BlockDamage implements Listener{
 										
 									}
 									else {
-										// Keine Anderen Bl�cke k�nnen zerst�rt werden
+										// Keine Anderen Blöcke können zerstört werden
 										ev.setCancelled(true);
 									}
 								}
@@ -167,7 +167,7 @@ public class BlockDamage implements Listener{
 					 							main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
 												main.sboard.resetScores(ops);
 												main.reset();
-												ops.sendMessage("�d[CaptureSpleef] �4Team Rot hat gewonnen");
+												ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
 					 						}
 						 				}
 					 					
@@ -221,7 +221,7 @@ public class BlockDamage implements Listener{
 					 							main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
 												main.sboard.resetScores(ops);
 								 				main.reset();
-												ops.sendMessage("�d[CaptureSpleef] �4Team Rot hat gewonnen");				 							
+												ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");				 							
 					 						}
 					 					}	
 					 				}
@@ -234,7 +234,7 @@ public class BlockDamage implements Listener{
 					 					ev.getBlock().setType(Material.NETHER_BRICK);
 											}
 											else {
-												// Keine Anderen Bl�cke k�nnen zerst�rt werden
+												// Keine Anderen Blöcke können zerstört werden
 												ev.setCancelled(true);
 											}
 										}
