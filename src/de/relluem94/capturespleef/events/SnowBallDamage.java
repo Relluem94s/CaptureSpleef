@@ -9,11 +9,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
 
-public class EntityDamageByEntity implements Listener {
+public class SnowBallDamage implements Listener {
 
     de.relluem94.capturespleef.rellu main;
 
-    public EntityDamageByEntity(de.relluem94.capturespleef.rellu instance) {
+    public SnowBallDamage(de.relluem94.capturespleef.rellu instance) {
         main = instance;
     }
 

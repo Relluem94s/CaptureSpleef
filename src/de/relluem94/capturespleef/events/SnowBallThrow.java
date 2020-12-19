@@ -18,11 +18,11 @@ import org.bukkit.util.Vector;
  *
  * @author rellu
  */
-public class SnowBall implements Listener {
+public class SnowBallThrow implements Listener {
     
     de.relluem94.capturespleef.rellu main;
 
-    public SnowBall(de.relluem94.capturespleef.rellu instance) {
+    public SnowBallThrow(de.relluem94.capturespleef.rellu instance) {
         main = instance;
     }
     
