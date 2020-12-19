@@ -44,12 +44,12 @@ public class CMD implements CommandExecutor {
 			
 			ItemStack d3 = new ItemStack(Material.SUGAR, 1);
 			ItemMeta d4 = d3.getItemMeta();
-			d4.setDisplayName("§8Wähle dein Team");
-			d4.setLore(Arrays.asList("§8Rechtklicke auf den §cNetherBrick §8oder den §9Prismarin"));
+			d4.setDisplayName("ï¿½8Wï¿½hle dein Team");
+			d4.setLore(Arrays.asList("ï¿½8Rechtklicke auf den ï¿½cNetherBrick ï¿½8oder den ï¿½9Prismarin"));
 			d3.setItemMeta(d4);
 			
 			
-			ItemStack e1 = new ItemStack(Material.SNOW_BALL, 94);
+			ItemStack e1 = new ItemStack(Material.SNOWBALL, 94);
          	ItemMeta e2 = e1.getItemMeta();
          	e2.setDisplayName(main.hubitem5);
          	e2.setLore(Arrays.asList(main.hubitem5_info_1, main.hubitem5_info_2, main.hubitem5_info_3, main.hubitem5_info_4));
@@ -63,32 +63,32 @@ public class CMD implements CommandExecutor {
 			if (cmd.getName().equalsIgnoreCase("casp")) {
 				
 				 if (args.length == 0) {
-	                  p.sendMessage(main.prefix + " §aNutze §c/casp <info>, <version>, <join> oder <leave>");
+	                  p.sendMessage(main.prefix + " ï¿½aNutze ï¿½c/casp <info>, <version>, <join> oder <leave>");
 	              }
 	              else {
 	            	  // Join
 	            	  if (args[0].equalsIgnoreCase("join")) {
 	            		  if (p.hasPermission("rellu.capturespleef.join")) {
 	            			  if (main.cooldown.contains(p)) {
-	            				  p.sendMessage("§d[CaptureSpleef] §aDu bist bereits in der CaptureSpleef Lobby");
+	            				  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aDu bist bereits in der CaptureSpleef Lobby");
 	            			  }
 	            			  else if (main.sboard.getTeams().size() == main.ts) {
-	            				  p.sendMessage("§d[CaptureSpleef] §aDie Lobby ist voll bitte warte auf die nächste Runde");
+	            				  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aDie Lobby ist voll bitte warte auf die nï¿½chste Runde");
 	          				  }
 	            			  else {
 	            				  if (main.a == main.b && main.teamsize == main.ts) {
-			            			  p.sendMessage("§d[CaptureSpleef] §aDie Lobby ist Voll");
+			            			  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aDie Lobby ist Voll");
 	            				  }
 	            				  else {
 	            					  main.cooldown.add(p);
-			            			  p.sendMessage("§d[CaptureSpleef] §aDu hast die CaptureSpleef Lobby betreten");
-			            			  p.sendMessage("§6" + main.trenn);	
-			            			  p.sendMessage("§aRechstklicke mit dem Zucker auf den Prismarin oder den Netherbrick um in dein gewünchtes Team zukommen.");
-			            			  p.sendMessage("§a");
-			            			  p.sendMessage("§aLinksklicke mit dem erhaltenen Werkzeug auf den Lapis oder Redstone Block um das Team wieder zu verlassen.");
-			            			  p.sendMessage("§a");
-			            			  p.sendMessage("§aNutze §d/casp info §a um Informationen über das Spiel und dessen Funktionen zu erhalten.");
-			            			  p.sendMessage("§6" + main.trenn);	
+			            			  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aDu hast die CaptureSpleef Lobby betreten");
+			            			  p.sendMessage("ï¿½6" + main.trenn);	
+			            			  p.sendMessage("ï¿½aRechstklicke mit dem Zucker auf den Prismarin oder den Netherbrick um in dein gewï¿½nchtes Team zukommen.");
+			            			  p.sendMessage("ï¿½a");
+			            			  p.sendMessage("ï¿½aLinksklicke mit dem erhaltenen Werkzeug auf den Lapis oder Redstone Block um das Team wieder zu verlassen.");
+			            			  p.sendMessage("ï¿½a");
+			            			  p.sendMessage("ï¿½aNutze ï¿½d/casp info ï¿½a um Informationen ï¿½ber das Spiel und dessen Funktionen zu erhalten.");
+			            			  p.sendMessage("ï¿½6" + main.trenn);	
 			            			  
 				            		  p.teleport(lobby);	
 				            		  p.getInventory().clear();
@@ -109,7 +109,7 @@ public class CMD implements CommandExecutor {
 	            			  if (p.getCustomName().equals(main.csname)) {
 	            				  main.cooldown.remove(p);
 			            		  p.getInventory().clear();
-			            		  p.sendMessage("§d[CaptureSpleef] §aDu hast die CaptureSpleef Lobby verlassen");
+			            		  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aDu hast die CaptureSpleef Lobby verlassen");
 		            			  p.teleport(arena);	
 		            			  p.setCustomName(p.getDisplayName());
 		            			  p.setScoreboard(main.emptysboard);
@@ -119,58 +119,58 @@ public class CMD implements CommandExecutor {
 		            			  }
 	            			  }
 	            			  else if (p.getCustomName().equals("TeamRot") || p.getCustomName().equals("TeamBlau")) {
-	            				  p.sendMessage("§d[CaptureSpleef] §aDu musst das Team erst verlassen!");
+	            				  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aDu musst das Team erst verlassen!");
 	            			  }
 	            			  else {
-	            				  p.sendMessage("§d[CaptureSpleef] §aEs ist ein Fehler aufgetreten!");
+	            				  p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aEs ist ein Fehler aufgetreten!");
 	            			  }  
 	  		              } 
 	            	  }
 	            	// Info
 	            	  else if (args[0].equalsIgnoreCase("info")) {
-	            		    	p.sendMessage("§d[CaptureSpleef] §aSpiele Erklärung und Ziel");
-	            		    	p.sendMessage("§6" + main.trenn);	
-		            			p.sendMessage("§aDu kannst nur auf der selben Block-Farbe laufen wie deine Team-Farbe ist");
-		            			p.sendMessage("§1          Team Blau \u00BB Prismarin Block");
-		            			p.sendMessage("§4          Team Rot \u00BB Netherbrick Block");
-		            			p.sendMessage("§a");
-		            			p.sendMessage("§aWandle mit einem Linksklick gegnerriche Blöcke zu deiner eigenen Farbe um");
-		            			p.sendMessage("§a");
-		            			p.sendMessage("§dZiel \u00BB §aErobere mit einem Linksklick die Metall-Säule in der gegnerischen Basis");
-		            			p.sendMessage("§6" + main.trenn);	
+	            		    	p.sendMessage("ï¿½d[CaptureSpleef] ï¿½aSpiele Erklï¿½rung und Ziel");
+	            		    	p.sendMessage("ï¿½6" + main.trenn);	
+		            			p.sendMessage("ï¿½aDu kannst nur auf der selben Block-Farbe laufen wie deine Team-Farbe ist");
+		            			p.sendMessage("ï¿½1          Team Blau \u00BB Prismarin Block");
+		            			p.sendMessage("ï¿½4          Team Rot \u00BB Netherbrick Block");
+		            			p.sendMessage("ï¿½a");
+		            			p.sendMessage("ï¿½aWandle mit einem Linksklick gegnerriche Blï¿½cke zu deiner eigenen Farbe um");
+		            			p.sendMessage("ï¿½a");
+		            			p.sendMessage("ï¿½dZiel \u00BB ï¿½aErobere mit einem Linksklick die Metall-Sï¿½ule in der gegnerischen Basis");
+		            			p.sendMessage("ï¿½6" + main.trenn);	
 	            	  }
 	            	  
 	            	  // Test
 	            	  else if (args[0].equalsIgnoreCase("test")) {
 	            		  if (p.hasPermission("rellu.capturespleef.test")) {
-	            			  p.sendMessage("§6" + main.trenn);	
-	            			  p.sendMessage("§d" + main.teamsize); 
+	            			  p.sendMessage("ï¿½6" + main.trenn);	
+	            			  p.sendMessage("ï¿½d" + main.teamsize); 
 	            			  p.setAllowFlight(true);
-	            			  p.sendMessage("§6" + main.trenn);	
+	            			  p.sendMessage("ï¿½6" + main.trenn);	
 	  		            } 
 	            	  }     
 	            	  // Version
 	            	  else if (args[0].equals("version")) {
-	            		  p.sendMessage("§6" + main.trenn);	
-	  					p.sendMessage(main.prefix + " §aVersion " + Bukkit.getServer().getPluginManager().getPlugin("CaptureSpleef").getDescription().getVersion() + "!");
-	  					p.sendMessage("§6" + main.trenn);	
+	            		  p.sendMessage("ï¿½6" + main.trenn);	
+	  					p.sendMessage(main.prefix + " ï¿½aVersion " + Bukkit.getServer().getPluginManager().getPlugin("CaptureSpleef").getDescription().getVersion() + "!");
+	  					p.sendMessage("ï¿½6" + main.trenn);	
 	  				  }
 	            	  // Reload
 	            	  else if (args[0].equalsIgnoreCase("reload")) {
 	            		  if (!(p.hasPermission("rellu.capturespleef.reload"))) {
-	            			  p.sendMessage("§6" + main.trenn);	
-	            			  p.sendMessage(main.prefix +" §aDir Fehlen die entsprechenden Rechte!");
-	            			  p.sendMessage("§6" + main.trenn);	
+	            			  p.sendMessage("ï¿½6" + main.trenn);	
+	            			  p.sendMessage(main.prefix +" ï¿½aDir Fehlen die entsprechenden Rechte!");
+	            			  p.sendMessage("ï¿½6" + main.trenn);	
 	          			}
 	          			else
 	          			{
-	          				p.sendMessage("§6" + main.trenn);	
-	          				p.sendMessage(main.prefix + " §aPlugin wird neugeladen");
-	          				main.cSM(main.prefix, "§aPlugin wird neugeladen");
+	          				p.sendMessage("ï¿½6" + main.trenn);	
+	          				p.sendMessage(main.prefix + " ï¿½aPlugin wird neugeladen");
+	          				main.cSM(main.prefix, "ï¿½aPlugin wird neugeladen");
 	          				Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "plm reload RelluMG");
-	          				main.cSM(main.prefix, "§aPlugin wurde neugeladen");
-	          				p.sendMessage(main.prefix + " §aPlugin wurde neugeladen");
-	          				p.sendMessage("§6" + main.trenn);	
+	          				main.cSM(main.prefix, "ï¿½aPlugin wurde neugeladen");
+	          				p.sendMessage(main.prefix + " ï¿½aPlugin wurde neugeladen");
+	          				p.sendMessage("ï¿½6" + main.trenn);	
 	          				// rellu.admin.reload
 	          			}
 	            	  }

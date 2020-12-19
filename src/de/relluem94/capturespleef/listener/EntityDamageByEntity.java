@@ -33,7 +33,7 @@ public class EntityDamageByEntity implements Listener{
 //						pla.sendMessage(e.getCause() + "");
 //						plo.sendMessage(e.getCause() + "");
 						if(plo.hasPermission("rellu.lobby.snowball")) {
-							if(plo.getInventory().getItemInHand().getType() == Material.SNOW_BALL && pla.getInventory().getItemInHand().getType() == Material.SNOW_BALL) {
+							if(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL && pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) {
 								
 								if (plo.getCustomName().equals("TeamRot")) 
 								{
@@ -82,8 +82,8 @@ public class EntityDamageByEntity implements Listener{
 										
 								
 							}
-							else if(plo.getInventory().getItemInHand().getType() == Material.SNOW_BALL && !(pla.getInventory().getItemInHand().getType() == Material.SNOW_BALL) ||
-									pla.getInventory().getItemInHand().getType() == Material.SNOW_BALL && !(plo.getInventory().getItemInHand().getType() == Material.SNOW_BALL)){
+							else if(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) ||
+									pla.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL)){
 								// Hier Team Rot
 								if (plo.getCustomName().equals("TeamRot")) 
 								{
@@ -118,8 +118,8 @@ public class EntityDamageByEntity implements Listener{
 									}
 								}
 							
-							else if(!(plo.getInventory().getItemInHand().getType() == Material.SNOW_BALL) && !(pla.getInventory().getItemInHand().getType() == Material.SNOW_BALL) ||
-									!(pla.getInventory().getItemInHand().getType() == Material.SNOW_BALL) && !(plo.getInventory().getItemInHand().getType() == Material.SNOW_BALL)){
+							else if(!(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) ||
+									!(pla.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(plo.getInventory().getItemInHand().getType() == Material.SNOWBALL)){
 								// Hier Team Rot
 								if (plo.getCustomName().equals("TeamRot")) 
 								{

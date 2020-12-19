@@ -42,13 +42,13 @@ public class BlockDamage implements Listener{
 				
 				if (player.hasPermission("rellu.lobby.spleef")) {
 					// Team Blau
-					if	(player.getItemInHand().getType() == Material.DIAMOND_SPADE){
+					if	(player.getItemInHand().getType() == Material.DIAMOND_SHOVEL){
 						Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
 						//
 						//
 						if(block.getType() == Material.PRISMARINE) {
-							player.getWorld().playEffect(player.getLocation(), Effect.LARGE_SMOKE, 5);
-							player.getWorld().playSound(player.getLocation(), Sound.ZOMBIE_WALK, 1F, 0F);	
+							player.getWorld().playEffect(player.getLocation(), Effect.SMOKE, 5);
+							player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_STEP, 1F, 0F);	
 							//
 							//		Team Blau Gewonnen
 							//
@@ -63,7 +63,7 @@ public class BlockDamage implements Listener{
 					 							main.teams.get(ops).getBlock().setType(Material.AIR);
 					 							main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
 												main.sboard.resetScores(ops);
-												ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
+												ops.sendMessage("ï¿½d[CaptureSpleef] ï¿½1Team Blau hat gewonnen");
 					 						}
 						 				}
 						 				
@@ -119,7 +119,7 @@ public class BlockDamage implements Listener{
 						 						main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
 						 						main.teams.clear();
 												main.sboard.resetScores(ops);
-												ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
+												ops.sendMessage("ï¿½d[CaptureSpleef] ï¿½1Team Blau hat gewonnen");
 						 					}
 						 				}	
 						 			}
@@ -133,7 +133,7 @@ public class BlockDamage implements Listener{
 										
 									}
 									else {
-										// Keine Anderen Blöcke können zerstört werden
+										// Keine Anderen Blï¿½cke kï¿½nnen zerstï¿½rt werden
 										ev.setCancelled(true);
 									}
 								}
@@ -151,8 +151,8 @@ public class BlockDamage implements Listener{
 					 		//
 					 		//
 					 		if(block.getType() == Material.NETHER_BRICK) {
-					 			player.getWorld().playEffect(player.getLocation(), Effect.LARGE_SMOKE, 5);
-					 			player.getWorld().playSound(player.getLocation(), Sound.ZOMBIE_WALK, 1F, 0F);
+					 			player.getWorld().playEffect(player.getLocation(), Effect.SMOKE, 5);
+					 			player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_STEP, 1F, 0F);
 					 			//
 					 			//		Team Rot Gewonnen
 					 			//
@@ -167,7 +167,7 @@ public class BlockDamage implements Listener{
 					 							main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
 												main.sboard.resetScores(ops);
 												main.reset();
-												ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
+												ops.sendMessage("ï¿½d[CaptureSpleef] ï¿½4Team Rot hat gewonnen");
 					 						}
 						 				}
 					 					
@@ -221,7 +221,7 @@ public class BlockDamage implements Listener{
 					 							main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
 												main.sboard.resetScores(ops);
 								 				main.reset();
-												ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");				 							
+												ops.sendMessage("ï¿½d[CaptureSpleef] ï¿½4Team Rot hat gewonnen");				 							
 					 						}
 					 					}	
 					 				}
@@ -234,7 +234,7 @@ public class BlockDamage implements Listener{
 					 					ev.getBlock().setType(Material.NETHER_BRICK);
 											}
 											else {
-												// Keine Anderen Blöcke können zerstört werden
+												// Keine Anderen Blï¿½cke kï¿½nnen zerstï¿½rt werden
 												ev.setCancelled(true);
 											}
 										}
