@@ -15,9 +15,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class CMD implements CommandExecutor {
 
-    public de.relluem94.capturespleef.rellu main;
+    public de.relluem94.capturespleef.CaptureSpleef main;
 
-    public CMD(de.relluem94.capturespleef.rellu instance) {
+    public CMD(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

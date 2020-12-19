@@ -4,9 +4,9 @@ import org.bukkit.plugin.PluginManager;
 
 public class CmdEv {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public CmdEv(de.relluem94.capturespleef.rellu instance) {
+    public CmdEv(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
 
     }

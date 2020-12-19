@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-import de.relluem94.capturespleef.CmdEv;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -28,7 +26,7 @@ import org.bukkit.scoreboard.Team;
 
 import com.google.common.collect.Lists;
 
-public class rellu extends JavaPlugin implements Listener {
+public class CaptureSpleef extends JavaPlugin implements Listener {
 
     public String prefix = "§d[RelluMG]";
     public String lobby = "lobby";
@@ -48,18 +46,11 @@ public class rellu extends JavaPlugin implements Listener {
     public ScoreboardManager scoreboard;
     public Scoreboard sboard;
     public Scoreboard emptysboard;
-    public Team rot;
-    public Team blau;
-    public Team cslobby;
+    public Team rot, blau, cslobby;
     public Objective obj;
     public Score score;
 
-    public int a;
-    public int b;
-    public int teamsize;
-    // Die Team Größe default = 8 
-    public int ts = 2;
-    public int lives = 4;
+    public int a, b, teamsize,  ts = 2, lives = 4; // Die Team Größe default = 8 
 
     public ArrayList<Player> cooldown = new ArrayList<Player>();
     public HashMap<Player, Location> teams = new HashMap<Player, Location>();
