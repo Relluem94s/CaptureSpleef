@@ -26,7 +26,7 @@ public class CmdEv {
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerInteract(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerQuit(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.listener.SignChange(main), main);
+        pm.registerEvents(new de.relluem94.capturespleef.events.SignChange(main), main);
         main.cSM(main.prefix, "§aEvents erfolgreich regestriert!");
     }
 
