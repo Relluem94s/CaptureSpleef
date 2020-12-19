@@ -1,4 +1,4 @@
-package de.relluem94.capturespleef.listener;
+package de.relluem94.capturespleef.events;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
