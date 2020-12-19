@@ -12,14 +12,14 @@ public class CmdEv {
     }
 
     public void registerCommands() {
-        main.cSM(main.prefix, "$aBefehle werden regestriert!");
+        main.cSM(main.prefix, "§aBefehle werden regestriert!");
         main.getCommand("casp").setExecutor(new de.relluem94.capturespleef.CMD(main));
-        main.cSM(main.prefix, "$aBefehle erfolgreich regestriert!");
+        main.cSM(main.prefix, "§aBefehle erfolgreich regestriert!");
     }
 
     public void registerEvents() {
         PluginManager pm = main.getServer().getPluginManager();
-        main.cSM(main.prefix, "$aRegistriere Event!");
+        main.cSM(main.prefix, "§aRegistriere Event!");
         pm.registerEvents(new de.relluem94.capturespleef.listener.BlockDamage(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.EntityDamageByEntity(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerCommandPreprocess(main), main);
@@ -27,7 +27,7 @@ public class CmdEv {
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerQuit(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.SignChange(main), main);
-        main.cSM(main.prefix, "$aEvents erfolgreich regestriert!");
+        main.cSM(main.prefix, "§aEvents erfolgreich regestriert!");
     }
 
 }
