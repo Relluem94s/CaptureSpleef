@@ -11,9 +11,9 @@ import org.bukkit.projectiles.ProjectileSource;
 
 public class SnowBallDamage implements Listener {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public SnowBallDamage(de.relluem94.capturespleef.rellu instance) {
+    public SnowBallDamage(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

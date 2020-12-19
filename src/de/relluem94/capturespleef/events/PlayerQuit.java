@@ -8,9 +8,9 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class PlayerQuit implements Listener {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public PlayerQuit(de.relluem94.capturespleef.rellu instance) {
+    public PlayerQuit(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

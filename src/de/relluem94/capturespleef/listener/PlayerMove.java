@@ -21,9 +21,9 @@ import org.bukkit.scoreboard.Score;
 
 public class PlayerMove implements Listener {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public PlayerMove(de.relluem94.capturespleef.rellu instance) {
+    public PlayerMove(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

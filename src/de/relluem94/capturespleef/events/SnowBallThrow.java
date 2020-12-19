@@ -20,9 +20,9 @@ import org.bukkit.util.Vector;
  */
 public class SnowBallThrow implements Listener {
     
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public SnowBallThrow(de.relluem94.capturespleef.rellu instance) {
+    public SnowBallThrow(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
     

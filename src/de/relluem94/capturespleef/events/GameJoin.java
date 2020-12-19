@@ -19,9 +19,9 @@ import org.bukkit.scoreboard.Score;
 
 public class GameJoin implements Listener{
     
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public GameJoin(de.relluem94.capturespleef.rellu instance) {
+    public GameJoin(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
     

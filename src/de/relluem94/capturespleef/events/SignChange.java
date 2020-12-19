@@ -6,9 +6,9 @@ import org.bukkit.event.block.SignChangeEvent;
 
 public class SignChange implements Listener {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public SignChange(de.relluem94.capturespleef.rellu instance) {
+    public SignChange(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

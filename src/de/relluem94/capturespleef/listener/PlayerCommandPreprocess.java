@@ -7,9 +7,9 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class PlayerCommandPreprocess implements Listener {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public PlayerCommandPreprocess(de.relluem94.capturespleef.rellu instance) {
+    public PlayerCommandPreprocess(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

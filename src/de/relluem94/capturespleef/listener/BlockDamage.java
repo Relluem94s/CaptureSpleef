@@ -22,9 +22,9 @@ import org.bukkit.inventory.meta.FireworkMeta;
 
 public class BlockDamage implements Listener {
 
-    de.relluem94.capturespleef.rellu main;
+    de.relluem94.capturespleef.CaptureSpleef main;
 
-    public BlockDamage(de.relluem94.capturespleef.rellu instance) {
+    public BlockDamage(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 
