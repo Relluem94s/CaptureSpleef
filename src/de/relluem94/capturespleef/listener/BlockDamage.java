@@ -1,5 +1,7 @@
 package de.relluem94.capturespleef.listener;
 
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -19,6 +21,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 public class BlockDamage implements Listener {
 
@@ -33,7 +37,7 @@ public class BlockDamage implements Listener {
     public void GameItSelf(BlockDamageEvent ev) {
 
         Player player = ev.getPlayer();
-        Location lobby = new Location(main.server.getWorld(main.lobby), -132, 144, 272);
+        Location lobby = new Location(main.server.getWorld(ACTIVE_WORLD), -132, 144, 272);
 
         if (player.hasPermission("rellu.lobby.spleef")) {
             // Team Blau
@@ -47,13 +51,13 @@ public class BlockDamage implements Listener {
                     //
                     //		Team Blau Gewonnen
                     //
-                    if (player.getCustomName().equals("TeamBlau")) {
+                    if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
                         if (ev.getBlock().getType() == Material.GOLD_BLOCK) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamRot")) {
+                                if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     main.reset();
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
@@ -63,7 +67,7 @@ public class BlockDamage implements Listener {
                             }
 
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamBlau")) {
+                                if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
                                     //
                                     //		Feuerwerk
@@ -115,7 +119,7 @@ public class BlockDamage implements Listener {
                                     //		Feuerwerk
                                     //
                                     main.reset();
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
@@ -153,12 +157,12 @@ public class BlockDamage implements Listener {
                     //
                     //		Team Rot Gewonnen
                     //
-                    if (player.getCustomName().equals("TeamRot")) {
+                    if (player.getCustomName().equals(TEAM_RED_NAME)) {
                         if (ev.getBlock().getType() == Material.IRON_BLOCK) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamBlau")) {
+                                if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
@@ -169,7 +173,7 @@ public class BlockDamage implements Listener {
                             }
 
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamRot")) {
+                                if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
                                     //
@@ -221,7 +225,7 @@ public class BlockDamage implements Listener {
                                     //
                                     //		Feuerwerk
                                     //
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     main.sboard.resetScores(ops);

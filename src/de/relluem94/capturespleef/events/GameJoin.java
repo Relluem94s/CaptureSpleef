@@ -1,5 +1,7 @@
 package de.relluem94.capturespleef.events;
 
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
 import java.util.Arrays;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -14,6 +16,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Score;
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 
 
@@ -34,8 +38,8 @@ public class GameJoin implements Listener{
         main.b = main.blau.getSize();
         main.teamsize = main.a + main.b;
 
-        Location PosRot = new Location(main.server.getWorld(main.lobby), -141, 138, 272);
-        Location PosBlau = new Location(main.server.getWorld(main.lobby), -124, 138, 272);
+        Location PosRot = new Location(main.server.getWorld(ACTIVE_WORLD), -141, 138, 272);
+        Location PosBlau = new Location(main.server.getWorld(ACTIVE_WORLD), -124, 138, 272);
 
         ItemStack d3 = new ItemStack(Material.SUGAR, 1);
         ItemMeta d4 = d3.getItemMeta();
@@ -49,7 +53,7 @@ public class GameJoin implements Listener{
                 if (!(evo.getAction() == Action.LEFT_CLICK_BLOCK)) {
                     return;
                 }
-                if (evo.getClickedBlock().getType().equals(Material.LAPIS_BLOCK) && evo.getPlayer().getCustomName().equals("TeamBlau")) {
+                if (evo.getClickedBlock().getType().equals(Material.LAPIS_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_BLUE_NAME)) {
                     double x1 = evo.getClickedBlock().getX();
                     double y1 = evo.getClickedBlock().getY();
                     double z1 = evo.getClickedBlock().getZ();
@@ -70,7 +74,7 @@ public class GameJoin implements Listener{
                             player.sendMessage("§5[RelluAPI] §6Dieser Slot ist vergeben");
                         }
                     }
-                    player.setCustomName(main.csname);
+                    player.setCustomName(CS_NAME);
                     main.teams.remove(player);
                     main.blau.removePlayer(player);
                     main.cslobby.addPlayer(player);
@@ -79,7 +83,7 @@ public class GameJoin implements Listener{
                     //
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau verlassen");
                         }
                     }
@@ -89,7 +93,7 @@ public class GameJoin implements Listener{
                 if (!(evo.getAction() == Action.LEFT_CLICK_BLOCK)) {
                     return;
                 }
-                if (evo.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && evo.getPlayer().getCustomName().equals("TeamRot")) {
+                if (evo.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_RED_NAME)) {
                     double x1 = evo.getClickedBlock().getX();
                     double y1 = evo.getClickedBlock().getY();
                     double z1 = evo.getClickedBlock().getZ();
@@ -108,7 +112,7 @@ public class GameJoin implements Listener{
                             player.sendMessage("§5[RelluAPI] §6Dieser Slot ist vergeben");
                         }
                     }
-                    player.setCustomName(main.csname);
+                    player.setCustomName(CS_NAME);
                     main.teams.remove(player);
                     main.rot.removePlayer(player);
                     main.cslobby.addPlayer(player);
@@ -117,13 +121,13 @@ public class GameJoin implements Listener{
                     //
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot verlassen");
                         }
                     }
                 }
             } // Betreten Team Rot
-            else if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.SUGAR && evo.getPlayer().getCustomName().equals(main.csname)) {
+            else if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.SUGAR && evo.getPlayer().getCustomName().equals(CS_NAME)) {
                 if (!(evo.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                     return;
                 }
@@ -148,7 +152,7 @@ public class GameJoin implements Listener{
                     id3.setItemMeta(id4);
                     player.getInventory().setItemInHand(new ItemStack(id3));
 
-                    player.setCustomName("TeamRot");
+                    player.setCustomName(TEAM_RED_NAME);
                     //
                     //
                     //
@@ -170,9 +174,9 @@ public class GameJoin implements Listener{
 
                     if (main.teamsize == main.ts || main.a == main.b) {
                         for (Player pla : Bukkit.getOnlinePlayers()) {
-                            if (pla.getCustomName().equals("TeamRot")) {
+                            if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
-                            } else if (pla.getCustomName().equals("TeamBlau")) {
+                            } else if (pla.getCustomName().equals(TEAM_BLUE_NAME)) {
                                 pla.teleport(PosBlau);
                             }
                         }
@@ -181,7 +185,7 @@ public class GameJoin implements Listener{
                     //		Team Rot Beitrittsnachricht
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot beigetreten");
                         }
                     }
@@ -208,7 +212,7 @@ public class GameJoin implements Listener{
                     id3.setItemMeta(id4);
                     player.getInventory().setItemInHand(new ItemStack(id3));
 
-                    player.setCustomName("TeamBlau");
+                    player.setCustomName(TEAM_BLUE_NAME);
                     //
                     //
                     //
@@ -230,9 +234,9 @@ public class GameJoin implements Listener{
 
                     if (main.teamsize == main.ts && main.a == main.b) {
                         for (Player pla : Bukkit.getOnlinePlayers()) {
-                            if (pla.getCustomName().equals("TeamRot")) {
+                            if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
-                            } else if (pla.getCustomName().equals("TeamBlau")) {
+                            } else if (pla.getCustomName().equals(TEAM_BLUE_NAME)) {
                                 pla.teleport(PosBlau);
                             }
                         }
@@ -241,7 +245,7 @@ public class GameJoin implements Listener{
                     //		Team Blau Beitrittsnachricht
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau beigetreten");
                         }
                     }

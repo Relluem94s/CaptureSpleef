@@ -1,5 +1,7 @@
 package de.relluem94.capturespleef.events;
 
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+import static de.relluem94.capturespleef.Strings.SIGN_CREATE;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.SignChangeEvent;
@@ -24,7 +26,7 @@ public class SignChange implements Listener {
             e.setLine(1, "");
             e.setLine(2, "§aSpiel betreten");
             e.setLine(3, "");
-            e.getPlayer().sendMessage(main.prefix + main.schild);
+            e.getPlayer().sendMessage(PLUGIN_PREFIX + SIGN_CREATE);
         } else if ((e.getPlayer().hasPermission("rellu.capturespleef.sign.create"))
                 && ((e.getLine(0) + "").equalsIgnoreCase(""))
                 && ((e.getLine(3) + "").equalsIgnoreCase("[cs02]"))
@@ -34,7 +36,7 @@ public class SignChange implements Listener {
             e.setLine(1, "");
             e.setLine(2, "§aSpiel verlassen");
             e.setLine(3, "");
-            e.getPlayer().sendMessage(main.prefix + main.schild);
+            e.getPlayer().sendMessage(PLUGIN_PREFIX + SIGN_CREATE);
         }
     }
 

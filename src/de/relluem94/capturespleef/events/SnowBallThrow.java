@@ -1,5 +1,7 @@
 package de.relluem94.capturespleef.events;
 
+import static de.relluem94.capturespleef.Strings.SNOWBALL_DISPLAYNAME;
+import static de.relluem94.capturespleef.Strings.SNOWBALL_META_INFO;
 import java.util.Arrays;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -29,8 +31,8 @@ public class SnowBallThrow implements Listener {
     public void Schneeball(PlayerInteractEvent e) {
         ItemStack snowballs = new ItemStack(Material.SNOWBALL, 94);
         ItemMeta snowball_meta = snowballs.getItemMeta();
-        snowball_meta.setDisplayName(main.hubitem5);
-        snowball_meta.setLore(Arrays.asList(main.hubitem5_info_1, main.hubitem5_info_2, main.hubitem5_info_3, main.hubitem5_info_4));
+        snowball_meta.setDisplayName(SNOWBALL_DISPLAYNAME);
+        snowball_meta.setLore(Arrays.asList(SNOWBALL_META_INFO));
         snowballs.setItemMeta(snowball_meta);
 
         Player p = e.getPlayer();

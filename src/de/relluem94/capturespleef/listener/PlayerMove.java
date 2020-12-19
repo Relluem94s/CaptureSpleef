@@ -1,5 +1,8 @@
 package de.relluem94.capturespleef.listener;
 
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -18,6 +21,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scoreboard.Score;
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 public class PlayerMove implements Listener {
 
@@ -31,21 +36,21 @@ public class PlayerMove implements Listener {
     @EventHandler
     public void PlayerDeath(PlayerMoveEvent evi) {
 
-        Location lobby = new Location(main.server.getWorld(main.lobby), -132, 144, 272);
-        Location PosRot = new Location(main.server.getWorld(main.lobby), -141, 138, 272);
-        Location PosBlau = new Location(main.server.getWorld(main.lobby), -124, 138, 272);
+        Location lobby = new Location(main.server.getWorld(ACTIVE_WORLD), -132, 144, 272);
+        Location PosRot = new Location(main.server.getWorld(ACTIVE_WORLD), -141, 138, 272);
+        Location PosBlau = new Location(main.server.getWorld(ACTIVE_WORLD), -124, 138, 272);
         Player player = evi.getPlayer();
 
         Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
         if (player.hasPermission("rellu.lobby.spleef")) {
-            if (player.getCustomName().equals("TeamRot")) {
+            if (player.getCustomName().equals(TEAM_RED_NAME)) {
                 if (block.getType() == Material.PRISMARINE) {
 
                     Score score = main.obj.getScore(player);
                     score.setScore(score.getScore() - 1);
 
                     if (score.getScore() == 0) {
-                        player.setCustomName(main.csname);
+                        player.setCustomName(CS_NAME);
 
                         main.a = main.rot.getSize();
                         main.b = main.blau.getSize();
@@ -53,19 +58,19 @@ public class PlayerMove implements Listener {
                         // player.performCommand("casp leave");
                         if (main.a < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamBlau")) {
+                                if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     main.reset();
-                                    ops.sendMessage(main.prefix + " �4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
                                 }
                             }
                         } else if (main.b < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamRot")) {
+                                if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
                                     //
@@ -117,12 +122,12 @@ public class PlayerMove implements Listener {
                                     //
                                     // Feuerwerk
                                     //
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     main.reset();
                                     main.teams.clear();
-                                    ops.sendMessage(main.prefix + " �4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
                                 }
                             }
                         }
@@ -134,9 +139,9 @@ public class PlayerMove implements Listener {
 
                         // player.performCommand("casp leave");
                     } else {
-                        if (player.getCustomName().equals("TeamRot")) {
+                        if (player.getCustomName().equals(TEAM_RED_NAME)) {
                             player.teleport(PosRot);
-                        } else if (player.getCustomName().equals("TeamBlau")) {
+                        } else if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
                             player.teleport(PosBlau);
                         }
                     }
@@ -145,25 +150,25 @@ public class PlayerMove implements Listener {
                     //		Totesnachricht Team Rot
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(main.prefix + " �4" + "TeamRot" + " " + player.getDisplayName() + "�4 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + " �4" + TEAM_RED_NAME + " " + player.getDisplayName() + "�4 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(main.prefix + " �4" + player.getCustomName() + " " + player.getDisplayName() + "�4 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + " �4" + player.getCustomName() + " " + player.getDisplayName() + "�4 starb");
                             }
                         }
                     }
                 } else {
                 }
             }
-            if (player.getCustomName().equals("TeamBlau")) {
+            if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
                 if (block.getType() == Material.NETHER_BRICK) {
 
                     Score score = main.obj.getScore(player);
                     score.setScore(score.getScore() - 1);
 
                     if (score.getScore() == 0) {
-                        player.setCustomName(main.csname);
+                        player.setCustomName(CS_NAME);
 
                         main.a = main.rot.getSize();
                         main.b = main.blau.getSize();
@@ -171,22 +176,22 @@ public class PlayerMove implements Listener {
                         // player.performCommand("casp leave");
                         if (main.a < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamBlau")) {
+                                if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
 //	 							ops.sendMessage("Test22");
 //	 							player.sendMessage("Test22");
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.reset();
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    ops.sendMessage(main.prefix + " �4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
                                     main.cSM("�5[Test]", "�4Rot!");
                                 }
                             }
                         } else if (main.b < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals("TeamRot")) {
+                                if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
 //	 							ops.sendMessage("Test22");
@@ -240,12 +245,12 @@ public class PlayerMove implements Listener {
                                     //
                                     // Feuerwerk
                                     //
-                                    ops.setCustomName(main.csname);
+                                    ops.setCustomName(CS_NAME);
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     main.teams.clear();
                                     main.reset();
-                                    ops.sendMessage(main.prefix + " �4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
                                     main.cSM("�5[Test]", "�1Blau!");
                                 }
                             }
@@ -256,9 +261,9 @@ public class PlayerMove implements Listener {
                         main.teams.remove(player);
                         main.sboard.resetScores(player);
                     } else {
-                        if (player.getCustomName().equals("TeamRot")) {
+                        if (player.getCustomName().equals(TEAM_RED_NAME)) {
                             player.teleport(PosRot);
-                        } else if (player.getCustomName().equals("TeamBlau")) {
+                        } else if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
                             player.teleport(PosBlau);
                         }
                     }
@@ -267,11 +272,11 @@ public class PlayerMove implements Listener {
                     // Totesnachricht Team Blau
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(main.prefix + " �1" + "TeamBlau" + " " + player.getDisplayName() + "�1 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + " �1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "�1 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(main.prefix + " �1" + player.getCustomName() + " " + player.getDisplayName() + "�1 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + " �1" + player.getCustomName() + " " + player.getDisplayName() + "�1 starb");
                             }
 
                         }

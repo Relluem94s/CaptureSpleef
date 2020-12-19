@@ -25,24 +25,12 @@ import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
 
 import com.google.common.collect.Lists;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 
 public class CaptureSpleef extends JavaPlugin implements Listener {
 
-    public String prefix = "§d[RelluMG]";
-    public String lobby = "lobby";
-    public String csname = "CaptureSpleef";
-    public String noUser = "§aDu bist kein Spieler";
-    public String noPerm = "§aDu hast darauf keine Rechte";
-
-    public String schild = " §aSchild erstellt";
-    public String hubitem5 = "§fSchneeball";
-    public String hubitem5_info_1 = "Dieser Schneeball dient dir als Hilfsmittel";
-    public String hubitem5_info_2 = "";
-    public String hubitem5_info_3 = "";
-    public String hubitem5_info_4 = "";
-
-    public String trenn = "\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0";
-
+   
     public ScoreboardManager scoreboard;
     public Scoreboard sboard;
     public Scoreboard emptysboard;
@@ -113,7 +101,7 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
         blau = sboard.registerNewTeam("blau");
         cslobby = sboard.registerNewTeam("cslobby");
 
-        obj = sboard.registerNewObjective("CaptureSpleef", "Spieler");
+        obj = sboard.registerNewObjective(CS_NAME, "Spieler");
 
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         obj.setDisplayName("§aSpieler");
@@ -125,12 +113,12 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
         blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
 
-        cSM(prefix, "§awurde in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms " + "gestartet!");
+        cSM(PLUGIN_PREFIX, "§awurde in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms " + "gestartet!");
     }
 
     @Override
     public void onDisable() {
-        cSM(prefix, "§awurde gestoppt!");
+        cSM(PLUGIN_PREFIX, "§awurde gestoppt!");
     }
 
     //
@@ -145,6 +133,6 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
     //
     //  onClickClack3 EntityDamageByEntityEvent hat noch einen Zusatz. Schneebälle mit Effekten
     //
-    //	if (event.getEntity().getCustomName().equals("TeamRot") || event.getEntity().getCustomName().equals("TeamBlau")) {  }
+    //	if (event.getEntity().getCustomName().equals(team_red) || event.getEntity().getCustomName().equals(team_blue)) {  }
     //
 }
