@@ -3,11 +3,9 @@ package de.relluem94.capturespleef.listener;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
-import org.bukkit.World;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.block.Skull;
@@ -111,8 +109,8 @@ public class PlayerInteract implements Listener {
 
         ItemStack d3 = new ItemStack(Material.SUGAR, 1);
         ItemMeta d4 = d3.getItemMeta();
-        d4.setDisplayName("�8W�hle dein Team");
-        d4.setLore(Arrays.asList("�8Rechtklicke auf den �cNetherBrick �8oder den �9Prismarin"));
+        d4.setDisplayName("§8Wähle dein Team");
+        d4.setLore(Arrays.asList("§8Rechtklicke auf den §cNetherBrick §8oder den §9Prismarin"));
         d3.setItemMeta(d4);
 
         // Verlassen Team Blau
@@ -139,7 +137,7 @@ public class PlayerInteract implements Listener {
                             evo.getClickedBlock().setType(Material.PRISMARINE);
 
                         } else {
-                            player.sendMessage("�5[RelluAPI] �6Dieser Slot ist vergeben");
+                            player.sendMessage("§5[RelluAPI] §6Dieser Slot ist vergeben");
                         }
                     }
                     player.setCustomName(main.csname);
@@ -152,7 +150,7 @@ public class PlayerInteract implements Listener {
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
-                            pla.sendMessage(player.getDisplayName() + "�1 hat TeamBlau verlassen");
+                            pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau verlassen");
                         }
                     }
                 }
@@ -177,7 +175,7 @@ public class PlayerInteract implements Listener {
                             loc.getBlock().setType(Material.AIR);
                             evo.getClickedBlock().setType(Material.NETHER_BRICK);
                         } else {
-                            player.sendMessage("�5[RelluAPI] �6Dieser Slot ist vergeben");
+                            player.sendMessage("§5[RelluAPI] §6Dieser Slot ist vergeben");
                         }
                     }
                     player.setCustomName(main.csname);
@@ -190,7 +188,7 @@ public class PlayerInteract implements Listener {
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
-                            pla.sendMessage(player.getDisplayName() + "�4 hat TeamRot verlassen");
+                            pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot verlassen");
                         }
                     }
                 }
@@ -215,8 +213,8 @@ public class PlayerInteract implements Listener {
                     s.update(true);
                     ItemStack id3 = new ItemStack(Material.DIAMOND_HOE, 1);
                     ItemMeta id4 = id3.getItemMeta();
-                    id4.setDisplayName("�4TeamRot");
-                    id4.setLore(Arrays.asList("�8Mache hiermit �1Blaue Steine �8zu �4Roten"));
+                    id4.setDisplayName("§4TeamRot");
+                    id4.setLore(Arrays.asList("§8Mache hiermit §1Blaue Steine §8zu §4Roten"));
                     id3.setItemMeta(id4);
                     player.getInventory().setItemInHand(new ItemStack(id3));
 
@@ -254,7 +252,7 @@ public class PlayerInteract implements Listener {
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
-                            pla.sendMessage(player.getDisplayName() + "�4 hat TeamRot beigetreten");
+                            pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot beigetreten");
                         }
                     }
                 } // Betreten Team Blau
@@ -275,8 +273,8 @@ public class PlayerInteract implements Listener {
                     s.update(true);
                     ItemStack id3 = new ItemStack(Material.DIAMOND_SHOVEL, 1);
                     ItemMeta id4 = id3.getItemMeta();
-                    id4.setDisplayName("�1TeamBlau");
-                    id4.setLore(Arrays.asList("�8Mache hiermit �4Roten Steine �8zu �1Blaue"));
+                    id4.setDisplayName("§1TeamBlau");
+                    id4.setLore(Arrays.asList("§8Mache hiermit §4Roten Steine §8zu §1Blaue"));
                     id3.setItemMeta(id4);
                     player.getInventory().setItemInHand(new ItemStack(id3));
 
@@ -314,7 +312,7 @@ public class PlayerInteract implements Listener {
                     //
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals("TeamRot") || pla.getCustomName().equals("TeamBlau") || pla.getCustomName().equals(main.csname)) {
-                            pla.sendMessage(player.getDisplayName() + "�1 hat TeamBlau beigetreten");
+                            pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau beigetreten");
                         }
                     }
                 }
@@ -343,9 +341,9 @@ public class PlayerInteract implements Listener {
                     if (e.getPlayer().hasPermission("rellu.capturespleef.sign.use")) {
 
                         if (((schild instanceof Sign)) && (e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-                            if ((s.getLine(0).equalsIgnoreCase("�d[CaptureSpleef]")) && (s.getLine(2).equalsIgnoreCase("�aSpiel verlassen"))) {
+                            if ((s.getLine(0).equalsIgnoreCase("§d[CaptureSpleef]")) && (s.getLine(2).equalsIgnoreCase("§aSpiel verlassen"))) {
                                 p.performCommand("casp leave");
-                            } else if ((s.getLine(0).equalsIgnoreCase("�d[CaptureSpleef]")) && (s.getLine(2).equalsIgnoreCase("�aSpiel betreten"))) {
+                            } else if ((s.getLine(0).equalsIgnoreCase("§d[CaptureSpleef]")) && (s.getLine(2).equalsIgnoreCase("§aSpiel betreten"))) {
                                 p.performCommand("casp join");
                             }
                         }
