@@ -22,14 +22,15 @@ public class CmdEv {
         main.cSM(main.prefix, "§aRegistriere Event!");
         //TODO Remove mains from constructor
         pm.registerEvents(new de.relluem94.capturespleef.listener.BlockDamage(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.events.EntityDamageByEntity(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerCommandPreprocess(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.events.PlayerQuit(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.events.SignChange(main), main);
         pm.registerEvents(new de.relluem94.capturespleef.events.GameJoin(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.events.SignUse(), main);
-        pm.registerEvents(new de.relluem94.capturespleef.events.SnowBall(main), main);
+        pm.registerEvents(new de.relluem94.capturespleef.events.SignUse(), main); 
+        pm.registerEvents(new de.relluem94.capturespleef.events.SignChange(main), main);
+        pm.registerEvents(new de.relluem94.capturespleef.events.SnowBallThrow(main), main); 
+        pm.registerEvents(new de.relluem94.capturespleef.events.SnowBallDamage(main), main);
+
         main.cSM(main.prefix, "§aEvents erfolgreich regestriert!");
     }
 
