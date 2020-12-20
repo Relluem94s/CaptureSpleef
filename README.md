@@ -1,4 +1,5 @@
-# CaptureSpleef
+![CaptureSpleef](https://raw.githubusercontent.com/Relluem94/CaptureSpleef/master/capturespleef.png)
+
 Minecraft Minigame (old needs to be reworked)
 
 # Todos
