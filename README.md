@@ -1,4 +1,4 @@
-![CaptureSpleef](https://raw.githubusercontent.com/Relluem94/CaptureSpleef/master/capturespleef.png)
+![CaptureSpleef](https://img.relluem94.de/logos/capturespleef.png)
 
 Minecraft Minigame (old needs to be reworked)
 
