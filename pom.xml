@@ -3,6 +3,7 @@
     <groupId>de.relluem94</groupId>
     <artifactId>CaptureSpleef</artifactId>
     <version>1.0</version>
+    <url>https://github.com/Relluem94/CaptureSpleef</url>
     <repositories>
         <repository>
             <id>spigotmc-repo</id>
