@@ -30,7 +30,6 @@ import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 
 public class CaptureSpleef extends JavaPlugin implements Listener {
 
-   
     public ScoreboardManager scoreboard;
     public Scoreboard sboard;
     public Scoreboard emptysboard;
@@ -38,7 +37,7 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
     public Objective obj;
     public Score score;
 
-    public int a, b, teamsize,  ts = 2, lives = 4; // Die Team Größe default = 8 
+    public int a, b, teamsize, ts = 2, lives = 4; // Die Team Größe default = 8 
 
     public ArrayList<Player> cooldown = new ArrayList<Player>();
     public HashMap<Player, Location> teams = new HashMap<Player, Location>();
