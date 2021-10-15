@@ -14,10 +14,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
  * @author rellu
  */
 public class SignUse implements Listener {
+
     @EventHandler
     public void SchildBenutzen(PlayerInteractEvent e) {
         if (e.getAction() == Action.RIGHT_CLICK_BLOCK || e.getAction() == Action.LEFT_CLICK_BLOCK) {
-            if (e.getClickedBlock().getType().equals(Material.OAK_WALL_SIGN) 
+            if (e.getClickedBlock().getType().equals(Material.OAK_WALL_SIGN)
                     || e.getClickedBlock().getType().equals(Material.OAK_SIGN)
                     || e.getPlayer().hasPermission("rellu.sign.item.use")) {
                 try {
