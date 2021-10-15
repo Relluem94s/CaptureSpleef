@@ -19,17 +19,14 @@ import org.bukkit.scoreboard.Score;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
+public class GameJoin implements Listener {
 
-
-public class GameJoin implements Listener{
-    
     de.relluem94.capturespleef.CaptureSpleef main;
 
     public GameJoin(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
-    
-    
+
     @EventHandler
     public void GameJoinAndLeave(PlayerInteractEvent evo) {
         Player player = evo.getPlayer();
