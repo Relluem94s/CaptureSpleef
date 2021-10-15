@@ -1,6 +1,5 @@
 package de.relluem94.capturespleef;
 
-
 import static de.relluem94.capturespleef.Strings.*;
 import de.relluem94.capturespleef.events.GameJoin;
 import de.relluem94.capturespleef.events.PlayerQuit;
@@ -34,9 +33,9 @@ public class CmdEv {
         pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
         pm.registerEvents(new PlayerQuit(main), main);
         pm.registerEvents(new GameJoin(main), main);
-        pm.registerEvents(new SignUse(), main); 
+        pm.registerEvents(new SignUse(), main);
         pm.registerEvents(new SignChange(main), main);
-        pm.registerEvents(new SnowBallThrow(main), main); 
+        pm.registerEvents(new SnowBallThrow(main), main);
         pm.registerEvents(new SnowBallDamage(main), main);
 
         main.cSM(PLUGIN_PREFIX, REGISTER_EVENTS_FINISHED);
