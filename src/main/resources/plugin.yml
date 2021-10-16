@@ -1,0 +1,13 @@
+name: CaptureSpleef
+version: 0.2
+author: Relluem94
+website: http://www.relluem94.de
+api-version: 1.13
+
+main: de.relluem94.capturespleef.CaptureSpleef
+commands:
+     casp:
+          description: CaptureSpleef
+          usage:
+          aliases: [capturespleef]
+          permission: rellu.capturespleef
