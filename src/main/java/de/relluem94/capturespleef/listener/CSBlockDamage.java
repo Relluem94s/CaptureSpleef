@@ -1,5 +1,9 @@
 package de.relluem94.capturespleef.listener;
 
+import static de.relluem94.capturespleef.CaptureSpleef.old;
+import static de.relluem94.capturespleef.CaptureSpleef.reset;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.teams;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import java.util.Random;
@@ -26,18 +30,12 @@ import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 public class CSBlockDamage implements Listener {
 
-    de.relluem94.capturespleef.CaptureSpleef main;
-
-    public CSBlockDamage(de.relluem94.capturespleef.CaptureSpleef instance) {
-        main = instance;
-    }
-
     @SuppressWarnings("deprecation")
     @EventHandler
     public void GameItSelf(BlockDamageEvent ev) {
 
         Player player = ev.getPlayer();
-        Location lobby = new Location(main.server.getWorld(ACTIVE_WORLD), -132, 144, 272);
+        Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), -132, 144, 272);
 
         if (player.hasPermission("rellu.lobby.spleef")) {
             // Team Blau
@@ -58,10 +56,10 @@ public class CSBlockDamage implements Listener {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
                                     ops.setCustomName(CS_NAME);
-                                    main.reset();
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                                    main.sboard.resetScores(ops);
+                                    reset();
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                                    sboard.resetScores(ops);
                                     ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
                                 }
                             }
@@ -118,13 +116,13 @@ public class CSBlockDamage implements Listener {
                                     //
                                     //		Feuerwerk
                                     //
-                                    main.reset();
+                                    reset();
                                     ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    main.teams.clear();
-                                    main.sboard.resetScores(ops);
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    teams.clear();
+                                    sboard.resetScores(ops);
                                     ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
                                 }
                             }
@@ -133,7 +131,7 @@ public class CSBlockDamage implements Listener {
                         //
                         else if (ev.getBlock().getType() == Material.IRON_BLOCK) {
                         } else if (ev.getBlock().getType() == Material.NETHER_BRICK) {
-                            main.old.put(ev.getBlock().getLocation(), ev.getBlock().getType());
+                            old.put(ev.getBlock().getLocation(), ev.getBlock().getType());
                             ev.getBlock().setType(Material.PRISMARINE);
 
                         } else {
@@ -164,10 +162,10 @@ public class CSBlockDamage implements Listener {
                                     ops.teleport(lobby);
                                     ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    main.sboard.resetScores(ops);
-                                    main.reset();
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    sboard.resetScores(ops);
+                                    reset();
                                     ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
                                 }
                             }
@@ -226,10 +224,10 @@ public class CSBlockDamage implements Listener {
                                     //		Feuerwerk
                                     //
                                     ops.setCustomName(CS_NAME);
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                                    main.sboard.resetScores(ops);
-                                    main.reset();
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                                    sboard.resetScores(ops);
+                                    reset();
                                     ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
                                 }
                             }
@@ -238,7 +236,7 @@ public class CSBlockDamage implements Listener {
                         //
                         else if (ev.getBlock().getType() == Material.GOLD_BLOCK) {
                         } else if (ev.getBlock().getType() == Material.PRISMARINE) {
-                            main.old.put(ev.getBlock().getLocation(), ev.getBlock().getType());
+                            old.put(ev.getBlock().getLocation(), ev.getBlock().getType());
                             ev.getBlock().setType(Material.NETHER_BRICK);
                         } else {
                             // Keine Anderen Blöcke können zerstört werden
