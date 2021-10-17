@@ -7,6 +7,9 @@ import de.relluem94.capturespleef.events.SignChange;
 import de.relluem94.capturespleef.events.SignUse;
 import de.relluem94.capturespleef.events.SnowBallDamage;
 import de.relluem94.capturespleef.events.SnowBallThrow;
+import de.relluem94.capturespleef.listener.CSBlockDamage;
+import de.relluem94.capturespleef.listener.CSPlayerCommandPreprocess;
+import de.relluem94.capturespleef.listener.CSPlayerMove;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 import java.util.Objects;
 import org.bukkit.plugin.PluginManager;
@@ -30,9 +33,9 @@ public class CmdEv {
         consoleSendMessage(PLUGIN_PREFIX, REGISTER_EVENTS);
         
         //TODO Remove mains from constructor
-        pm.registerEvents(new de.relluem94.capturespleef.listener.BlockDamage(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerCommandPreprocess(main), main);
-        pm.registerEvents(new de.relluem94.capturespleef.listener.PlayerMove(main), main);
+        pm.registerEvents(new CSBlockDamage(main), main);
+        pm.registerEvents(new CSPlayerCommandPreprocess(main), main);
+        pm.registerEvents(new CSPlayerMove(main), main);
         pm.registerEvents(new PlayerQuit(main), main);
         pm.registerEvents(new GameJoin(main), main);
         pm.registerEvents(new SignUse(), main);
