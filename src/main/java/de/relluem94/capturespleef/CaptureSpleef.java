@@ -59,13 +59,13 @@ public class CaptureSpleef extends JavaPlugin {
         return server;
     }
 
-    private final List<ChatColor> colors = Lists.newArrayList(new ChatColor[]{ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE});
+    private static final List<ChatColor> colors = Lists.newArrayList(new ChatColor[]{ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE});
 
-    public List<ChatColor> setColors() {
+    public static List<ChatColor> setColors() {
         return colors;
     }
 
-    public void shuffle() {
+    public static void shuffle() {
         Collections.shuffle(setColors(), new Random());
     }
 
