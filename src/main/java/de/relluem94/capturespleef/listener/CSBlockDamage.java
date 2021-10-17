@@ -6,6 +6,7 @@ import static de.relluem94.capturespleef.CaptureSpleef.sboard;
 import static de.relluem94.capturespleef.CaptureSpleef.teams;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -60,7 +61,7 @@ public class CSBlockDamage implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     sboard.resetScores(ops);
-                                    ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + "§1Team Blau hat gewonnen");
                                 }
                             }
 
@@ -123,7 +124,7 @@ public class CSBlockDamage implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     teams.clear();
                                     sboard.resetScores(ops);
-                                    ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + "§1Team Blau hat gewonnen");
                                 }
                             }
                         } //
@@ -166,7 +167,7 @@ public class CSBlockDamage implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     sboard.resetScores(ops);
                                     reset();
-                                    ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + "§4Team Rot hat gewonnen");
                                 }
                             }
 
@@ -228,7 +229,7 @@ public class CSBlockDamage implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     sboard.resetScores(ops);
                                     reset();
-                                    ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + "§4Team Rot hat gewonnen");
                                 }
                             }
                         } //
