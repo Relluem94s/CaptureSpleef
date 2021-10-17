@@ -1,5 +1,7 @@
 package de.relluem94.capturespleef.events;
 
+import static de.relluem94.capturespleef.CaptureSpleef.setColors;
+import static de.relluem94.capturespleef.CaptureSpleef.shuffle;
 import static de.relluem94.capturespleef.Strings.SNOWBALL_DISPLAYNAME;
 import static de.relluem94.capturespleef.Strings.SNOWBALL_META_INFO;
 import java.util.Arrays;
@@ -20,12 +22,6 @@ import org.bukkit.util.Vector;
  * @author rellu
  */
 public class SnowBallThrow implements Listener {
-
-    de.relluem94.capturespleef.CaptureSpleef main;
-
-    public SnowBallThrow(de.relluem94.capturespleef.CaptureSpleef instance) {
-        main = instance;
-    }
 
     @EventHandler
     public void Schneeball(PlayerInteractEvent e) {
@@ -61,8 +57,8 @@ public class SnowBallThrow implements Listener {
                                 || p.hasPermission("rellu.group.Geek")
                                 || p.hasPermission("rellu.group.Admin")) {
                             if (p.getName().equals("Relluem94")) {
-                                main.shuffle();
-                                ball.setCustomName(main.setColors().get(2) + "R" + main.setColors().get(1) + "e" + main.setColors().get(3) + "l" + main.setColors().get(4) + "l" + main.setColors().get(6) + "u");
+                                shuffle();
+                                ball.setCustomName(setColors().get(2) + "R" + setColors().get(1) + "e" + setColors().get(3) + "l" + setColors().get(4) + "l" + setColors().get(6) + "u");
                                 ball.setCustomNameVisible(true);
                                 e.setCancelled(true);
                                 ball.setFireTicks(1200);
