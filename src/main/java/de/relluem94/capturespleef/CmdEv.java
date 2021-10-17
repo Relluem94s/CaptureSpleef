@@ -32,8 +32,7 @@ public class CmdEv {
         PluginManager pm = main.getServer().getPluginManager();
         consoleSendMessage(PLUGIN_PREFIX, REGISTER_EVENTS);
         
-        //TODO Remove mains from constructor
-        pm.registerEvents(new CSBlockDamage(main), main);
+        pm.registerEvents(new CSBlockDamage(), main);
         pm.registerEvents(new CSPlayerCommandPreprocess(), main);
         pm.registerEvents(new CSPlayerMove(), main);
         pm.registerEvents(new PlayerQuit(), main);
