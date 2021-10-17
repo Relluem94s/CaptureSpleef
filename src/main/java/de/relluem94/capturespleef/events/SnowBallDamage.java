@@ -13,12 +13,6 @@ import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 public class SnowBallDamage implements Listener {
 
-    de.relluem94.capturespleef.CaptureSpleef main;
-
-    public SnowBallDamage(de.relluem94.capturespleef.CaptureSpleef instance) {
-        main = instance;
-    }
-
     @EventHandler
     public void SchneeballSchaden(EntityDamageByEntityEvent e) {
         if (e.getDamager() instanceof Snowball) {
@@ -29,9 +23,7 @@ public class SnowBallDamage implements Listener {
                 Player ps = (Player) shooter;
                 if (ps.hasPermission("rellu.lobby.snowball")) {
                     if (ps.getInventory().getItemInHand().getType() == Material.SNOWBALL && p.getInventory().getItemInHand().getType() == Material.SNOWBALL) {
-
                         if (ps.getCustomName().equals(TEAM_RED_NAME)) {
-
                             if (p.getCustomName().equals(TEAM_BLUE_NAME)) {
                                 p.setFireTicks(4);
                             } else {
@@ -51,7 +43,6 @@ public class SnowBallDamage implements Listener {
                         p.teleport(psloc);
                         ps.teleport(ploc);
                     }
-
                 } else if (ps.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL)
                         || p.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
                     // Hier Team Rot
@@ -95,8 +86,6 @@ public class SnowBallDamage implements Listener {
                     e.setCancelled(true);
                 }
             }
-
         }
-
     }
 }
