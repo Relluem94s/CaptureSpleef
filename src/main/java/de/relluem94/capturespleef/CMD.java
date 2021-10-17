@@ -77,13 +77,13 @@ public class CMD implements CommandExecutor {
                             } else {
                                 cooldown.add(p);
                                 p.sendMessage("§d[CaptureSpleef] §aDu hast die CaptureSpleef Lobby betreten");
-                                p.sendMessage("§6" + SPLIT);
+                                p.sendMessage("§6" + PLUGIN_SPACER);
                                 p.sendMessage("§aRechstklicke mit dem Zucker auf den Prismarin oder den Netherbrick um in dein gewünchtes Team zukommen.");
                                 p.sendMessage("§a");
                                 p.sendMessage("§aLinksklicke mit dem erhaltenen Werkzeug auf den Lapis oder Redstone Block um das Team wieder zu verlassen.");
                                 p.sendMessage("§a");
                                 p.sendMessage("§aNutze §d/casp info §a um Informationen über das Spiel und dessen Funktionen zu erhalten.");
-                                p.sendMessage("§6" + SPLIT);
+                                p.sendMessage("§6" + PLUGIN_SPACER);
 
                                 p.teleport(lobby);
                                 p.getInventory().clear();
@@ -120,7 +120,7 @@ public class CMD implements CommandExecutor {
                 } // Info
                 else if (args[0].equalsIgnoreCase("info")) {
                     p.sendMessage("§d[CaptureSpleef] §aSpiele Erklärung und Ziel");
-                    p.sendMessage("§6" + SPLIT);
+                    p.sendMessage("§6" + PLUGIN_SPACER);
                     p.sendMessage("§aDu kannst nur auf der selben Block-Farbe laufen wie deine Team-Farbe ist");
                     p.sendMessage("§1          Team Blau \u00BB Prismarin Block");
                     p.sendMessage("§4          Team Rot \u00BB Netherbrick Block");
@@ -128,20 +128,20 @@ public class CMD implements CommandExecutor {
                     p.sendMessage("§aWandle mit einem Linksklick gegnerriche Bl§cke zu deiner eigenen Farbe um");
                     p.sendMessage("§a");
                     p.sendMessage("§dZiel \u00BB §aErobere mit einem Linksklick die Metall-Säule in der gegnerischen Basis");
-                    p.sendMessage("§6" + SPLIT);
+                    p.sendMessage("§6" + PLUGIN_SPACER);
                 } // Test
                 else if (args[0].equalsIgnoreCase("test")) {
                     if (p.hasPermission("rellu.capturespleef.test")) {
-                        p.sendMessage("§6" + SPLIT);
+                        p.sendMessage("§6" + PLUGIN_SPACER);
                         p.sendMessage("§d" + teamsize);
                         p.setAllowFlight(true);
-                        p.sendMessage("§6" + SPLIT);
+                        p.sendMessage("§6" + PLUGIN_SPACER);
                     }
                 } // Version
                 else if (args[0].equals("version")) {
-                    p.sendMessage("§6" + SPLIT);
+                    p.sendMessage("§6" + PLUGIN_SPACER);
                     p.sendMessage(PLUGIN_PREFIX + " §aVersion " + Bukkit.getServer().getPluginManager().getPlugin("CaptureSpleef").getDescription().getVersion() + "!");
-                    p.sendMessage("§6" + SPLIT);
+                    p.sendMessage("§6" + PLUGIN_SPACER);
                 }
             }
             return true;
