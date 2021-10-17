@@ -5,6 +5,12 @@
     <name>CaptureSpleef</name>
     <version>1.2</version>
     <url>https://github.com/Relluem94/CaptureSpleef</url>
+    <properties>
+        <plugin.apiVersion>1.16</plugin.apiVersion>
+        <plugin.author>Relluem94</plugin.author>
+        <plugin.website>http://www.relluem94.de</plugin.website>
+        <plugin.main>de.relluem94.capturespleef.CaptureSpleef</plugin.main>
+    </properties>
     <repositories>
         <repository>
             <id>central</id>
@@ -42,6 +48,12 @@
         </dependency>
     </dependencies>
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
             <plugin>

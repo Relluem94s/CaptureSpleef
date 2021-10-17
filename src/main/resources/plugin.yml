@@ -1,10 +1,10 @@
-name: CaptureSpleef
-version: 1.2
-author: Relluem94
-website: http://www.relluem94.de
-api-version: 1.13
+name: ${name}
+version: ${version}
+api-version: ${plugin.apiVersion}
+author: ${plugin.author}
+website: ${plugin.website}
+main: ${plugin.main}
 
-main: de.relluem94.capturespleef.CaptureSpleef
 commands:
      casp:
           description: CaptureSpleef
