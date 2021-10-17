@@ -14,7 +14,6 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
@@ -28,24 +27,23 @@ import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
-public class CaptureSpleef extends JavaPlugin implements Listener {
+public class CaptureSpleef extends JavaPlugin {
 
-    public ScoreboardManager scoreboard;
-    public Scoreboard sboard;
-    public Scoreboard emptysboard;
-    public Team rot, blau, cslobby;
-    public Objective obj;
-    public Score score;
+    public static ScoreboardManager scoreboard;
+    public static Scoreboard sboard;
+    public static Scoreboard emptysboard;
+    public static Team rot, blau, cslobby;
+    public static Objective obj;
+    public static Score score;
 
-    public int a, b, teamsize, ts = 2, lives = 4; // Die Team Größe default = 8 
+    public static int a, b, teamsize, ts = 2, lives = 4; // Die Team Größe default = 8 
 
-    public ArrayList<Player> cooldown = new ArrayList<>();
-    public HashMap<Player, Location> teams = new HashMap<>();
+    public static ArrayList<Player> cooldown = new ArrayList<>();
+    public static HashMap<Player, Location> teams = new HashMap<>();
 
-    public Map<Location, Material> old = new HashMap<>();
+    public static Map<Location, Material> old = new HashMap<>();
 
-    public void reset() {
-
+    public static void reset() {
         old.keySet().forEach(loc -> {
             Material t = old.get(loc);
             loc.getBlock().setType(t);
@@ -61,12 +59,6 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
         return server;
     }
 
-    private final Random random = new Random();
-
-    public Random getRandom() {
-        return random;
-    }
-
     private final List<ChatColor> colors = Lists.newArrayList(new ChatColor[]{ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE});
 
     public List<ChatColor> setColors() {
@@ -74,7 +66,7 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
     }
 
     public void shuffle() {
-        Collections.shuffle(setColors(), getRandom());
+        Collections.shuffle(setColors(), new Random());
     }
 
     @Override
@@ -83,9 +75,6 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
         CmdEv rells = new CmdEv(this);
         rells.registerEvents();
         rells.registerCommands();
-        Bukkit.getServer().getPluginManager().registerEvents(this, this);
-        // Plugin Zeugs
-        Bukkit.getPluginManager().registerEvents(this, this);
 
         scoreboard = Bukkit.getScoreboardManager();
         sboard = scoreboard.getNewScoreboard();
