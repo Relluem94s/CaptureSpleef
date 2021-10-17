@@ -23,6 +23,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scoreboard.Score;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
 public class PlayerMove implements Listener {
 
@@ -186,7 +187,7 @@ public class PlayerMove implements Listener {
                                     main.reset();
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
-                                    main.cSM("�5[Test]", "�4Rot!");
+                                    consoleSendMessage("�5[Test]", "�4Rot!");
                                 }
                             }
                         } else if (main.b < 1) {
@@ -251,7 +252,7 @@ public class PlayerMove implements Listener {
                                     main.teams.clear();
                                     main.reset();
                                     ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
-                                    main.cSM("�5[Test]", "�1Blau!");
+                                    consoleSendMessage("�5[Test]", "�1Blau!");
                                 }
                             }
                         }

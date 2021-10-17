@@ -13,7 +13,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Server;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +26,7 @@ import org.bukkit.scoreboard.Team;
 import com.google.common.collect.Lists;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
 public class CaptureSpleef extends JavaPlugin implements Listener {
 
@@ -39,26 +39,20 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
 
     public int a, b, teamsize, ts = 2, lives = 4; // Die Team Größe default = 8 
 
-    public ArrayList<Player> cooldown = new ArrayList<Player>();
-    public HashMap<Player, Location> teams = new HashMap<Player, Location>();
+    public ArrayList<Player> cooldown = new ArrayList<>();
+    public HashMap<Player, Location> teams = new HashMap<>();
 
     public Map<Location, Material> old = new HashMap<>();
 
     public void reset() {
 
-        for (Location loc : old.keySet()) {
+        old.keySet().forEach(loc -> {
             Material t = old.get(loc);
             loc.getBlock().setType(t);
-        }
+        });
 
         teams.clear();
 
-    }
-
-    public void cSM(String type, String message) {
-        ConsoleCommandSender console = this.getServer().getConsoleSender();
-
-        console.sendMessage(type + " " + message);
     }
 
     public Server server = getServer();
@@ -67,13 +61,13 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
         return server;
     }
 
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public Random getRandom() {
         return random;
     }
 
-    private List<ChatColor> colors = Lists.newArrayList(new ChatColor[]{ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE});
+    private final List<ChatColor> colors = Lists.newArrayList(new ChatColor[]{ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE});
 
     public List<ChatColor> setColors() {
         return colors;
@@ -111,13 +105,12 @@ public class CaptureSpleef extends JavaPlugin implements Listener {
         rot.setAllowFriendlyFire(false);
         blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
-
-        cSM(PLUGIN_PREFIX, "§awurde in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms " + "gestartet!");
+        consoleSendMessage(PLUGIN_PREFIX, "§awurde in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms " + "gestartet!");
     }
 
     @Override
     public void onDisable() {
-        cSM(PLUGIN_PREFIX, "§awurde gestoppt!");
+        consoleSendMessage(PLUGIN_PREFIX, "§awurde gestoppt!");
     }
 
     //
