@@ -1,5 +1,13 @@
 package de.relluem94.capturespleef.listener;
 
+import static de.relluem94.capturespleef.CaptureSpleef.a;
+import static de.relluem94.capturespleef.CaptureSpleef.b;
+import static de.relluem94.capturespleef.CaptureSpleef.blau;
+import static de.relluem94.capturespleef.CaptureSpleef.obj;
+import static de.relluem94.capturespleef.CaptureSpleef.reset;
+import static de.relluem94.capturespleef.CaptureSpleef.rot;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.teams;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
@@ -27,19 +35,11 @@ import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper
 
 public class CSPlayerMove implements Listener {
 
-    de.relluem94.capturespleef.CaptureSpleef main;
-
-    public CSPlayerMove(de.relluem94.capturespleef.CaptureSpleef instance) {
-        main = instance;
-    }
-
-    @SuppressWarnings("deprecation")
     @EventHandler
     public void PlayerDeath(PlayerMoveEvent evi) {
-
-        Location lobby = new Location(main.server.getWorld(ACTIVE_WORLD), -132, 144, 272);
-        Location PosRot = new Location(main.server.getWorld(ACTIVE_WORLD), -141, 138, 272);
-        Location PosBlau = new Location(main.server.getWorld(ACTIVE_WORLD), -124, 138, 272);
+        Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), -132, 144, 272);
+        Location PosRot = new Location(Bukkit.getWorld(ACTIVE_WORLD), -141, 138, 272);
+        Location PosBlau = new Location(Bukkit.getWorld(ACTIVE_WORLD), -124, 138, 272);
         Player player = evi.getPlayer();
 
         Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
@@ -47,29 +47,29 @@ public class CSPlayerMove implements Listener {
             if (player.getCustomName().equals(TEAM_RED_NAME)) {
                 if (block.getType() == Material.PRISMARINE) {
 
-                    Score score = main.obj.getScore(player);
+                    Score score = obj.getScore(player);
                     score.setScore(score.getScore() - 1);
 
                     if (score.getScore() == 0) {
                         player.setCustomName(CS_NAME);
 
-                        main.a = main.rot.getSize();
-                        main.b = main.blau.getSize();
+                        a = rot.getSize();
+                        b = blau.getSize();
 
                         // player.performCommand("casp leave");
-                        if (main.a < 1) {
+                        if (a < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
                                     ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    main.reset();
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    reset();
                                     ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                 }
                             }
-                        } else if (main.b < 1) {
+                        } else if (b < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
@@ -124,19 +124,19 @@ public class CSPlayerMove implements Listener {
                                     // Feuerwerk
                                     //
                                     ops.setCustomName(CS_NAME);
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                                    main.reset();
-                                    main.teams.clear();
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                                    reset();
+                                    teams.clear();
                                     ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                 }
                             }
                         }
 
-                        main.teams.get(player).getBlock().setType(Material.AIR);
-                        main.teams.get(player).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                        main.teams.remove(player);
-                        main.sboard.resetScores(player);
+                        teams.get(player).getBlock().setType(Material.AIR);
+                        teams.get(player).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                        teams.remove(player);
+                        sboard.resetScores(player);
 
                         // player.performCommand("casp leave");
                     } else {
@@ -165,17 +165,17 @@ public class CSPlayerMove implements Listener {
             if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
                 if (block.getType() == Material.NETHER_BRICK) {
 
-                    Score score = main.obj.getScore(player);
+                    Score score = obj.getScore(player);
                     score.setScore(score.getScore() - 1);
 
                     if (score.getScore() == 0) {
                         player.setCustomName(CS_NAME);
 
-                        main.a = main.rot.getSize();
-                        main.b = main.blau.getSize();
+                        a = rot.getSize();
+                        b = blau.getSize();
 
                         // player.performCommand("casp leave");
-                        if (main.a < 1) {
+                        if (a < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
@@ -183,14 +183,14 @@ public class CSPlayerMove implements Listener {
                                     ops.getInventory().clear();
 //	 							ops.sendMessage("Test22");
 //	 							player.sendMessage("Test22");
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.reset();
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    reset();
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                     consoleSendMessage("§5[Test]", "§4Rot!");
                                 }
                             }
-                        } else if (main.b < 1) {
+                        } else if (b < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
@@ -247,20 +247,20 @@ public class CSPlayerMove implements Listener {
                                     // Feuerwerk
                                     //
                                     ops.setCustomName(CS_NAME);
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                                    main.teams.clear();
-                                    main.reset();
+                                    teams.get(ops).getBlock().setType(Material.AIR);
+                                    teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                                    teams.clear();
+                                    reset();
                                     ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                     consoleSendMessage("§5[Test]", "§1Blau!");
                                 }
                             }
                         }
 
-                        main.teams.get(player).getBlock().setType(Material.AIR);
-                        main.teams.get(player).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                        main.teams.remove(player);
-                        main.sboard.resetScores(player);
+                        teams.get(player).getBlock().setType(Material.AIR);
+                        teams.get(player).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                        teams.remove(player);
+                        sboard.resetScores(player);
                     } else {
                         if (player.getCustomName().equals(TEAM_RED_NAME)) {
                             player.teleport(PosRot);
