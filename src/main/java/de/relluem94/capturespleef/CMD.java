@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
 public class CMD implements CommandExecutor {
 
@@ -36,7 +37,7 @@ public class CMD implements CommandExecutor {
         main.teamsize = main.a + main.b;
 
         if (!(sender instanceof Player)) {
-            main.cSM(PLUGIN_PREFIX, NO_USER);
+            consoleSendMessage(PLUGIN_PREFIX, NO_USER);
             return true;
         }
 
@@ -149,9 +150,9 @@ public class CMD implements CommandExecutor {
                     } else {
                         p.sendMessage("§6" + SPLIT);
                         p.sendMessage(PLUGIN_PREFIX + " §aPlugin wird neugeladen");
-                        main.cSM(PLUGIN_PREFIX, "§aPlugin wird neugeladen");
+                        consoleSendMessage(PLUGIN_PREFIX, "§aPlugin wird neugeladen");
                         Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "plm reload RelluMG");
-                        main.cSM(PLUGIN_PREFIX, "§aPlugin wurde neugeladen");
+                        consoleSendMessage(PLUGIN_PREFIX, "§aPlugin wurde neugeladen");
                         p.sendMessage(PLUGIN_PREFIX + " §aPlugin wurde neugeladen");
                         p.sendMessage("§6" + SPLIT);
                         // rellu.admin.reload
