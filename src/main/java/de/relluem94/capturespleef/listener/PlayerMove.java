@@ -66,7 +66,7 @@ public class PlayerMove implements Listener {
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     main.reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                 }
                             }
                         } else if (main.b < 1) {
@@ -128,7 +128,7 @@ public class PlayerMove implements Listener {
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     main.reset();
                                     main.teams.clear();
-                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                 }
                             }
                         }
@@ -153,9 +153,9 @@ public class PlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + " �4" + TEAM_RED_NAME + " " + player.getDisplayName() + "�4 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + " §4" + TEAM_RED_NAME + " " + player.getDisplayName() + "§4 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + " �4" + player.getCustomName() + " " + player.getDisplayName() + "�4 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + " §4" + player.getCustomName() + " " + player.getDisplayName() + "§4 starb");
                             }
                         }
                     }
@@ -186,8 +186,8 @@ public class PlayerMove implements Listener {
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.reset();
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
-                                    consoleSendMessage("�5[Test]", "�4Rot!");
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    consoleSendMessage("§5[Test]", "§4Rot!");
                                 }
                             }
                         } else if (main.b < 1) {
@@ -251,8 +251,8 @@ public class PlayerMove implements Listener {
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     main.teams.clear();
                                     main.reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + " �4Team Rot hat gewonnen");
-                                    consoleSendMessage("�5[Test]", "�1Blau!");
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    consoleSendMessage("§5[Test]", "§1Blau!");
                                 }
                             }
                         }
@@ -275,9 +275,9 @@ public class PlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + " �1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "�1 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + " §1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "§1 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + " �1" + player.getCustomName() + " " + player.getDisplayName() + "�1 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + " §1" + player.getCustomName() + " " + player.getDisplayName() + "§1 starb");
                             }
 
                         }
