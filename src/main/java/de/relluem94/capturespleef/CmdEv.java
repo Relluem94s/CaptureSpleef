@@ -8,6 +8,7 @@ import de.relluem94.capturespleef.events.SignUse;
 import de.relluem94.capturespleef.events.SnowBallDamage;
 import de.relluem94.capturespleef.events.SnowBallThrow;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
+import java.util.Objects;
 import org.bukkit.plugin.PluginManager;
 
 public class CmdEv {
@@ -16,12 +17,11 @@ public class CmdEv {
 
     public CmdEv(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
-
     }
 
     public void registerCommands() {
         consoleSendMessage(PLUGIN_PREFIX, REGISTER_COMMANDS);
-        main.getCommand("casp").setExecutor(new CMD(main));
+        Objects.requireNonNull(main.getCommand(COMMAND_CASP)).setExecutor(new CMD());
         consoleSendMessage(PLUGIN_PREFIX, REGISTER_COMMANDS_FINISHED);
     }
 
