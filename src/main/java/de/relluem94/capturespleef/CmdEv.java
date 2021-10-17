@@ -39,7 +39,7 @@ public class CmdEv {
         pm.registerEvents(new PlayerQuit(main), main);
         pm.registerEvents(new GameJoin(main), main);
         pm.registerEvents(new SignUse(), main);
-        pm.registerEvents(new SignChange(main), main);
+        pm.registerEvents(new SignChange(), main);
         pm.registerEvents(new SnowBallThrow(), main);
         pm.registerEvents(new SnowBallDamage(), main);
 
