@@ -34,7 +34,7 @@ public class CmdEv {
         
         //TODO Remove mains from constructor
         pm.registerEvents(new CSBlockDamage(main), main);
-        pm.registerEvents(new CSPlayerCommandPreprocess(main), main);
+        pm.registerEvents(new CSPlayerCommandPreprocess(), main);
         pm.registerEvents(new CSPlayerMove(), main);
         pm.registerEvents(new PlayerQuit(), main);
         pm.registerEvents(new GameJoin(), main);
