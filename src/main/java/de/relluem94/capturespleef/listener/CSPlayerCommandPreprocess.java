@@ -12,12 +12,6 @@ import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 public class CSPlayerCommandPreprocess implements Listener {
 
-    de.relluem94.capturespleef.CaptureSpleef main;
-
-    public CSPlayerCommandPreprocess(de.relluem94.capturespleef.CaptureSpleef instance) {
-        main = instance;
-    }
-
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent event) {
 
