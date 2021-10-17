@@ -1,5 +1,16 @@
 package de.relluem94.capturespleef.events;
 
+import static de.relluem94.capturespleef.CaptureSpleef.a;
+import static de.relluem94.capturespleef.CaptureSpleef.b;
+import static de.relluem94.capturespleef.CaptureSpleef.blau;
+import static de.relluem94.capturespleef.CaptureSpleef.cslobby;
+import static de.relluem94.capturespleef.CaptureSpleef.lives;
+import static de.relluem94.capturespleef.CaptureSpleef.obj;
+import static de.relluem94.capturespleef.CaptureSpleef.rot;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.teams;
+import static de.relluem94.capturespleef.CaptureSpleef.teamsize;
+import static de.relluem94.capturespleef.CaptureSpleef.ts;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import java.util.Arrays;
@@ -21,22 +32,16 @@ import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
 public class GameJoin implements Listener {
 
-    de.relluem94.capturespleef.CaptureSpleef main;
-
-    public GameJoin(de.relluem94.capturespleef.CaptureSpleef instance) {
-        main = instance;
-    }
-
     @EventHandler
     public void GameJoinAndLeave(PlayerInteractEvent evo) {
         Player player = evo.getPlayer();
 
-        main.a = main.rot.getSize();
-        main.b = main.blau.getSize();
-        main.teamsize = main.a + main.b;
+        a = rot.getSize();
+        b = blau.getSize();
+        teamsize = a + b;
 
-        Location PosRot = new Location(main.server.getWorld(ACTIVE_WORLD), -141, 138, 272);
-        Location PosBlau = new Location(main.server.getWorld(ACTIVE_WORLD), -124, 138, 272);
+        Location PosRot = new Location(Bukkit.getWorld(ACTIVE_WORLD), -141, 138, 272);
+        Location PosBlau = new Location(Bukkit.getWorld(ACTIVE_WORLD), -124, 138, 272);
 
         ItemStack d3 = new ItemStack(Material.SUGAR, 1);
         ItemMeta d4 = d3.getItemMeta();
@@ -72,18 +77,16 @@ public class GameJoin implements Listener {
                         }
                     }
                     player.setCustomName(CS_NAME);
-                    main.teams.remove(player);
-                    main.blau.removePlayer(player);
-                    main.cslobby.addPlayer(player);
+                    teams.remove(player);
+                    blau.removePlayer(player);
+                    cslobby.addPlayer(player);
                     player.getInventory().setItemInHand(new ItemStack(d3));
                     //
                     //
                     //
-                    for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
-                            pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau verlassen");
-                        }
-                    }
+                    Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
+                        pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau verlassen");
+                    });
                 }
             } // Verlassen Team Rot
             else if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.DIAMOND_HOE) {
@@ -110,18 +113,16 @@ public class GameJoin implements Listener {
                         }
                     }
                     player.setCustomName(CS_NAME);
-                    main.teams.remove(player);
-                    main.rot.removePlayer(player);
-                    main.cslobby.addPlayer(player);
+                    teams.remove(player);
+                    rot.removePlayer(player);
+                    cslobby.addPlayer(player);
                     player.getInventory().setItemInHand(new ItemStack(d3));
                     //
                     //
                     //
-                    for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
-                            pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot verlassen");
-                        }
-                    }
+                    Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
+                        pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot verlassen");
+                    });
                 }
             } // Betreten Team Rot
             else if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.SUGAR && evo.getPlayer().getCustomName().equals(CS_NAME)) {
@@ -153,23 +154,23 @@ public class GameJoin implements Listener {
                     //
                     //
                     //
-                    main.rot.addPlayer(player);
-                    main.teams.put(player, loc);
+                    rot.addPlayer(player);
+                    teams.put(player, loc);
 
-                    player.setScoreboard(main.sboard);
+                    player.setScoreboard(sboard);
 
                     @SuppressWarnings("deprecation")
-                    Score score = main.obj.getScore(player);
-                    score.setScore(main.lives);
+                    Score score = obj.getScore(player);
+                    score.setScore(lives);
                     //
                     //		Game Start
                     //
 
-                    main.a = main.rot.getSize();
-                    main.b = main.blau.getSize();
-                    main.teamsize = main.a + main.b;
+                    a = rot.getSize();
+                    b = blau.getSize();
+                    teamsize = a + b;
 
-                    if (main.teamsize == main.ts || main.a == main.b) {
+                    if (teamsize == ts || a == b) {
                         for (Player pla : Bukkit.getOnlinePlayers()) {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
@@ -181,11 +182,9 @@ public class GameJoin implements Listener {
                     //
                     //		Team Rot Beitrittsnachricht
                     //
-                    for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
-                            pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot beigetreten");
-                        }
-                    }
+                    Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
+                        pla.sendMessage(player.getDisplayName() + "§4 ist TeamRot beigetreten");
+                    });
                 } // Betreten Team Blau
                 else if (evo.getClickedBlock().getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     evo.getClickedBlock().setType(Material.LAPIS_BLOCK);
@@ -213,23 +212,23 @@ public class GameJoin implements Listener {
                     //
                     //
                     //
-                    main.blau.addPlayer(player);
-                    main.teams.put(player, loc);
+                    blau.addPlayer(player);
+                    teams.put(player, loc);
 
-                    player.setScoreboard(main.sboard);
+                    player.setScoreboard(sboard);
 
                     @SuppressWarnings("deprecation")
-                    Score score = main.obj.getScore(player);
-                    score.setScore(main.lives);
+                    Score score = obj.getScore(player);
+                    score.setScore(lives);
                     //
                     //		Game Start
                     //
 
-                    main.a = main.rot.getSize();
-                    main.b = main.blau.getSize();
-                    main.teamsize = main.a + main.b;
+                    a = rot.getSize();
+                    b = blau.getSize();
+                    teamsize = a + b;
 
-                    if (main.teamsize == main.ts && main.a == main.b) {
+                    if (teamsize == ts && a == b) {
                         for (Player pla : Bukkit.getOnlinePlayers()) {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
@@ -241,11 +240,9 @@ public class GameJoin implements Listener {
                     //
                     //		Team Blau Beitrittsnachricht
                     //
-                    for (Player pla : Bukkit.getOnlinePlayers()) {
-                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
-                            pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau beigetreten");
-                        }
-                    }
+                    Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
+                        pla.sendMessage(player.getDisplayName() + "§1 ist TeamBlau beigetreten");
+                    });
                 }
             }
         }
