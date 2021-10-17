@@ -10,11 +10,11 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
-public class PlayerCommandPreprocess implements Listener {
+public class CSPlayerCommandPreprocess implements Listener {
 
     de.relluem94.capturespleef.CaptureSpleef main;
 
-    public PlayerCommandPreprocess(de.relluem94.capturespleef.CaptureSpleef instance) {
+    public CSPlayerCommandPreprocess(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 

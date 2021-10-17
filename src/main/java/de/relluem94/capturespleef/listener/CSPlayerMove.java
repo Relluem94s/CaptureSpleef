@@ -2,15 +2,14 @@ package de.relluem94.capturespleef.listener;
 
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
-import org.bukkit.Effect;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.FireworkEffect.Type;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -19,58 +18,64 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockDamageEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.scoreboard.Score;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
-public class BlockDamage implements Listener {
+public class CSPlayerMove implements Listener {
 
     de.relluem94.capturespleef.CaptureSpleef main;
 
-    public BlockDamage(de.relluem94.capturespleef.CaptureSpleef instance) {
+    public CSPlayerMove(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;
     }
 
     @SuppressWarnings("deprecation")
     @EventHandler
-    public void GameItSelf(BlockDamageEvent ev) {
+    public void PlayerDeath(PlayerMoveEvent evi) {
 
-        Player player = ev.getPlayer();
         Location lobby = new Location(main.server.getWorld(ACTIVE_WORLD), -132, 144, 272);
+        Location PosRot = new Location(main.server.getWorld(ACTIVE_WORLD), -141, 138, 272);
+        Location PosBlau = new Location(main.server.getWorld(ACTIVE_WORLD), -124, 138, 272);
+        Player player = evi.getPlayer();
 
+        Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
         if (player.hasPermission("rellu.lobby.spleef")) {
-            // Team Blau
-            if (player.getItemInHand().getType() == Material.DIAMOND_SHOVEL) {
-                Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
-                //
-                //
+            if (player.getCustomName().equals(TEAM_RED_NAME)) {
                 if (block.getType() == Material.PRISMARINE) {
-                    player.getWorld().playEffect(player.getLocation(), Effect.SMOKE, 5);
-                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_STEP, 1F, 0F);
-                    //
-                    //		Team Blau Gewonnen
-                    //
-                    if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
-                        if (ev.getBlock().getType() == Material.GOLD_BLOCK) {
+
+                    Score score = main.obj.getScore(player);
+                    score.setScore(score.getScore() - 1);
+
+                    if (score.getScore() == 0) {
+                        player.setCustomName(CS_NAME);
+
+                        main.a = main.rot.getSize();
+                        main.b = main.blau.getSize();
+
+                        // player.performCommand("casp leave");
+                        if (main.a < 1) {
+                            for (Player ops : Bukkit.getOnlinePlayers()) {
+                                if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
+                                    ops.teleport(lobby);
+                                    ops.setCustomName(CS_NAME);
+                                    ops.getInventory().clear();
+                                    main.teams.get(ops).getBlock().setType(Material.AIR);
+                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    main.reset();
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                }
+                            }
+                        } else if (main.b < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
-                                    ops.setCustomName(CS_NAME);
-                                    main.reset();
-                                    main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                                    main.sboard.resetScores(ops);
-                                    ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
-                                }
-                            }
-
-                            for (Player ops : Bukkit.getOnlinePlayers()) {
-                                if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
-                                    ops.teleport(lobby);
                                     //
-                                    //		Feuerwerk
+                                    // Feuerwerk
                                     //
                                     double x1 = ops.getEyeLocation().getX();
                                     double y1 = ops.getEyeLocation().getY();
@@ -116,68 +121,84 @@ public class BlockDamage implements Listener {
                                     fwm.setPower(rp);
                                     fw.setFireworkMeta(fwm);
                                     //
-                                    //		Feuerwerk
+                                    // Feuerwerk
                                     //
-                                    main.reset();
                                     ops.setCustomName(CS_NAME);
-                                    ops.getInventory().clear();
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                                    main.reset();
                                     main.teams.clear();
-                                    main.sboard.resetScores(ops);
-                                    ops.sendMessage("§d[CaptureSpleef] §1Team Blau hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
                                 }
                             }
-                        } //
-                        //
-                        //
-                        else if (ev.getBlock().getType() == Material.IRON_BLOCK) {
-                        } else if (ev.getBlock().getType() == Material.NETHER_BRICK) {
-                            main.old.put(ev.getBlock().getLocation(), ev.getBlock().getType());
-                            ev.getBlock().setType(Material.PRISMARINE);
-
-                        } else {
-                            // Keine Anderen Blöcke können zerstört werden
-                            ev.setCancelled(true);
                         }
+
+                        main.teams.get(player).getBlock().setType(Material.AIR);
+                        main.teams.get(player).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
+                        main.teams.remove(player);
+                        main.sboard.resetScores(player);
+
+                        // player.performCommand("casp leave");
                     } else {
-                        ev.setCancelled(true);
+                        if (player.getCustomName().equals(TEAM_RED_NAME)) {
+                            player.teleport(PosRot);
+                        } else if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
+                            player.teleport(PosBlau);
+                        }
+                    }
+
+                    //
+                    //		Totesnachricht Team Rot
+                    //
+                    for (Player pla : Bukkit.getOnlinePlayers()) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
+                            if (score.getScore() == 0) {
+                                pla.sendMessage(PLUGIN_PREFIX + " §4" + TEAM_RED_NAME + " " + player.getDisplayName() + "§4 ist ausgeschieden");
+                            } else {
+                                pla.sendMessage(PLUGIN_PREFIX + " §4" + player.getCustomName() + " " + player.getDisplayName() + "§4 starb");
+                            }
+                        }
                     }
                 } else {
-                    ev.setCancelled(true);
                 }
-            } // Team Rot
-            else if (player.getItemInHand().getType() == Material.DIAMOND_HOE) {
-                Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
-                //
-                //
+            }
+            if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
                 if (block.getType() == Material.NETHER_BRICK) {
-                    player.getWorld().playEffect(player.getLocation(), Effect.SMOKE, 5);
-                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_ZOMBIE_STEP, 1F, 0F);
-                    //
-                    //		Team Rot Gewonnen
-                    //
-                    if (player.getCustomName().equals(TEAM_RED_NAME)) {
-                        if (ev.getBlock().getType() == Material.IRON_BLOCK) {
+
+                    Score score = main.obj.getScore(player);
+                    score.setScore(score.getScore() - 1);
+
+                    if (score.getScore() == 0) {
+                        player.setCustomName(CS_NAME);
+
+                        main.a = main.rot.getSize();
+                        main.b = main.blau.getSize();
+
+                        // player.performCommand("casp leave");
+                        if (main.a < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_BLUE_NAME)) {
                                     ops.teleport(lobby);
                                     ops.setCustomName(CS_NAME);
                                     ops.getInventory().clear();
+//	 							ops.sendMessage("Test22");
+//	 							player.sendMessage("Test22");
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
-                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    main.sboard.resetScores(ops);
                                     main.reset();
-                                    ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
+                                    main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    consoleSendMessage("§5[Test]", "§4Rot!");
                                 }
                             }
-
+                        } else if (main.b < 1) {
                             for (Player ops : Bukkit.getOnlinePlayers()) {
                                 if (ops.getCustomName().equals(TEAM_RED_NAME)) {
                                     ops.teleport(lobby);
                                     ops.getInventory().clear();
+//	 							ops.sendMessage("Test22");
+//	 							player.sendMessage("Test22");
                                     //
-                                    //		Feuerwerk
+                                    // Feuerwerk
                                     //
                                     double x1 = ops.getEyeLocation().getX();
                                     double y1 = ops.getEyeLocation().getY();
@@ -223,41 +244,49 @@ public class BlockDamage implements Listener {
                                     fwm.setPower(rp);
                                     fw.setFireworkMeta(fwm);
                                     //
-                                    //		Feuerwerk
+                                    // Feuerwerk
                                     //
                                     ops.setCustomName(CS_NAME);
                                     main.teams.get(ops).getBlock().setType(Material.AIR);
                                     main.teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-                                    main.sboard.resetScores(ops);
+                                    main.teams.clear();
                                     main.reset();
-                                    ops.sendMessage("§d[CaptureSpleef] §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    consoleSendMessage("§5[Test]", "§1Blau!");
                                 }
                             }
-                        } //
-                        //
-                        //
-                        else if (ev.getBlock().getType() == Material.GOLD_BLOCK) {
-                        } else if (ev.getBlock().getType() == Material.PRISMARINE) {
-                            main.old.put(ev.getBlock().getLocation(), ev.getBlock().getType());
-                            ev.getBlock().setType(Material.NETHER_BRICK);
-                        } else {
-                            // Keine Anderen Blöcke können zerstört werden
-                            ev.setCancelled(true);
                         }
+
+                        main.teams.get(player).getBlock().setType(Material.AIR);
+                        main.teams.get(player).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
+                        main.teams.remove(player);
+                        main.sboard.resetScores(player);
                     } else {
-                        ev.setCancelled(true);
+                        if (player.getCustomName().equals(TEAM_RED_NAME)) {
+                            player.teleport(PosRot);
+                        } else if (player.getCustomName().equals(TEAM_BLUE_NAME)) {
+                            player.teleport(PosBlau);
+                        }
+                    }
+
+                    //
+                    // Totesnachricht Team Blau
+                    //
+                    for (Player pla : Bukkit.getOnlinePlayers()) {
+                        if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
+                            if (score.getScore() == 0) {
+                                pla.sendMessage(PLUGIN_PREFIX + " §1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "§1 ist ausgeschieden");
+                            } else {
+                                pla.sendMessage(PLUGIN_PREFIX + " §1" + player.getCustomName() + " " + player.getDisplayName() + "§1 starb");
+                            }
+
+                        }
                     }
                 } else {
-                    ev.setCancelled(true);
                 }
             } else {
-                // Komplett
-                ev.setCancelled(true);
             }
         } else {
-            // Komplett
-            ev.setCancelled(true);
         }
     }
-
 }
