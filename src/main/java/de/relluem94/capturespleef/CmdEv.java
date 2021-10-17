@@ -41,7 +41,7 @@ public class CmdEv {
         pm.registerEvents(new SignUse(), main);
         pm.registerEvents(new SignChange(main), main);
         pm.registerEvents(new SnowBallThrow(main), main);
-        pm.registerEvents(new SnowBallDamage(main), main);
+        pm.registerEvents(new SnowBallDamage(), main);
 
         consoleSendMessage(PLUGIN_PREFIX, REGISTER_EVENTS_FINISHED);
     }
