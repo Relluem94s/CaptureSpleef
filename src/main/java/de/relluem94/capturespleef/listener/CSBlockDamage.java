@@ -38,7 +38,7 @@ public class CSBlockDamage implements Listener {
         Player player = ev.getPlayer();
         Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), -132, 144, 272);
 
-        if (player.hasPermission("rellu.lobby.spleef")) {
+        if (player.hasPermission("rellu.lobby.spleef") && player.getLocation().equals(lobby)) {
             // Team Blau
             if (player.getItemInHand().getType() == Material.DIAMOND_SHOVEL) {
                 Block block = player.getLocation().getBlock().getRelative(BlockFace.DOWN);
@@ -253,9 +253,6 @@ public class CSBlockDamage implements Listener {
                 // Komplett
                 ev.setCancelled(true);
             }
-        } else {
-            // Komplett
-            ev.setCancelled(true);
         }
     }
 
