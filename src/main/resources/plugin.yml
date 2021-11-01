@@ -4,7 +4,7 @@ api-version: ${plugin.apiVersion}
 author: ${plugin.author}
 website: ${plugin.website}
 main: ${plugin.main}
-depend: [RelluEssentials, Multiverse-Core]
+depend: [RelluEssentials]
 
 commands:
      casp:
