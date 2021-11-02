@@ -80,7 +80,7 @@ public class CaptureSpleef extends JavaPlugin {
         consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_BORDER);
         consoleSendMessage(PLUGIN_PREFIX, "");
         consoleSendMessage(PLUGIN_PREFIX, "");
-        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_START_MESSAGE);
+        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_SECONDARY_COLOR + PLUGIN_START_MESSAGE);
         consoleSendMessage(PLUGIN_PREFIX, "");
         
         CmdEv rells = new CmdEv(this);
