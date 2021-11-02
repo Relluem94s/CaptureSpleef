@@ -114,7 +114,7 @@ public class CaptureSpleef extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_STOP_MESSAGE);
+        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_SECONDARY_COLOR + PLUGIN_STOP_MESSAGE);
     }
 
     //
