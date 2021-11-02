@@ -27,7 +27,6 @@ import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_BORDER;
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_COMMAND_COLOR;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STARTTIME;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_START_MESSAGE;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STOP_MESSAGE;
@@ -78,15 +77,15 @@ public class CaptureSpleef extends JavaPlugin {
     @Override
     public void onEnable() {
         long start = Calendar.getInstance().getTimeInMillis();
-        CmdEv rells = new CmdEv(this);
-        rells.registerEvents();
-        rells.registerCommands();
-        
         consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_BORDER);
         consoleSendMessage(PLUGIN_PREFIX, "");
         consoleSendMessage(PLUGIN_PREFIX, "");
         consoleSendMessage(PLUGIN_PREFIX, PLUGIN_START_MESSAGE);
         consoleSendMessage(PLUGIN_PREFIX, "");
+        
+        CmdEv rells = new CmdEv(this);
+        rells.registerEvents();
+        rells.registerCommands();
 
         scoreboard = Bukkit.getScoreboardManager();
         sboard = scoreboard.getNewScoreboard();
