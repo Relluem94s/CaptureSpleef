@@ -25,6 +25,12 @@ import org.bukkit.scoreboard.Team;
 import com.google.common.collect.Lists;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_BORDER;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_COMMAND_COLOR;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STARTTIME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_START_MESSAGE;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STOP_MESSAGE;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
 public class CaptureSpleef extends JavaPlugin {
@@ -75,6 +81,12 @@ public class CaptureSpleef extends JavaPlugin {
         CmdEv rells = new CmdEv(this);
         rells.registerEvents();
         rells.registerCommands();
+        
+        consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_BORDER);
+        consoleSendMessage(PLUGIN_PREFIX, "");
+        consoleSendMessage(PLUGIN_PREFIX, "");
+        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_START_MESSAGE);
+        consoleSendMessage(PLUGIN_PREFIX, "");
 
         scoreboard = Bukkit.getScoreboardManager();
         sboard = scoreboard.getNewScoreboard();
@@ -94,12 +106,15 @@ public class CaptureSpleef extends JavaPlugin {
         rot.setAllowFriendlyFire(false);
         blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
-        consoleSendMessage(PLUGIN_PREFIX, "§awurde in " + (Calendar.getInstance().getTimeInMillis() - start) + "ms " + "gestartet!");
+        consoleSendMessage(PLUGIN_PREFIX, "");
+        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_SECONDARY_COLOR + String.format(PLUGIN_STARTTIME, Calendar.getInstance().getTimeInMillis() - start));
+        consoleSendMessage(PLUGIN_PREFIX, "");
+        consoleSendMessage(PLUGIN_SECONDARY_COLOR + PLUGIN_BORDER, "");
     }
 
     @Override
     public void onDisable() {
-        consoleSendMessage(PLUGIN_PREFIX, "§awurde gestoppt!");
+        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_STOP_MESSAGE);
     }
 
     //
