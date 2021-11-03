@@ -24,6 +24,7 @@ import org.bukkit.scoreboard.Team;
 
 import com.google.common.collect.Lists;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_BORDER;
@@ -78,10 +79,10 @@ public class CaptureSpleef extends JavaPlugin {
     public void onEnable() {
         long start = Calendar.getInstance().getTimeInMillis();
         consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_BORDER);
-        consoleSendMessage(PLUGIN_PREFIX, "");
-        consoleSendMessage(PLUGIN_PREFIX, "");
-        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_SECONDARY_COLOR + PLUGIN_START_MESSAGE);
-        consoleSendMessage(PLUGIN_PREFIX, "");
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_START_MESSAGE);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
         
         CmdEv rells = new CmdEv(this);
         rells.registerEvents();
@@ -105,15 +106,15 @@ public class CaptureSpleef extends JavaPlugin {
         rot.setAllowFriendlyFire(false);
         blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
-        consoleSendMessage(PLUGIN_PREFIX, "");
-        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_SECONDARY_COLOR + String.format(PLUGIN_STARTTIME, Calendar.getInstance().getTimeInMillis() - start));
-        consoleSendMessage(PLUGIN_PREFIX, "");
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + String.format(PLUGIN_STARTTIME, Calendar.getInstance().getTimeInMillis() - start));
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
         consoleSendMessage(PLUGIN_SECONDARY_COLOR + PLUGIN_BORDER, "");
     }
 
     @Override
     public void onDisable() {
-        consoleSendMessage(PLUGIN_PREFIX, PLUGIN_SECONDARY_COLOR + PLUGIN_STOP_MESSAGE);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_STOP_MESSAGE);
     }
 
     //
