@@ -5,7 +5,7 @@ import static de.relluem94.capturespleef.Strings.COMMAND_CASP_JOIN;
 import static de.relluem94.capturespleef.Strings.COMMAND_CASP_LEAVE;
 import static de.relluem94.capturespleef.Strings.JOIN_GAME;
 import static de.relluem94.capturespleef.Strings.LEFT_GAME;
-import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
 import de.relluem94.rellulib.utils.LogUtils;
@@ -37,9 +37,9 @@ public class SignUse implements Listener {
                     BlockState bs = block.getState();                   
                      if (((bs instanceof Sign)) && (e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                             Sign s = (Sign) bs;
-                            if ((s.getLine(0).equalsIgnoreCase(PLUGIN_PREFIX)) && (s.getLine(2).equalsIgnoreCase(LEFT_GAME))) {
+                            if ((s.getLine(0).equalsIgnoreCase(PLUGIN_NAME_CONSOLE)) && (s.getLine(2).equalsIgnoreCase(LEFT_GAME))) {
                                 p.performCommand(COMMAND_CASP + " " + COMMAND_CASP_LEAVE);
-                            } else if ((s.getLine(0).equalsIgnoreCase(PLUGIN_PREFIX)) && (s.getLine(2).equalsIgnoreCase(JOIN_GAME))) {
+                            } else if ((s.getLine(0).equalsIgnoreCase(PLUGIN_NAME_CONSOLE)) && (s.getLine(2).equalsIgnoreCase(JOIN_GAME))) {
                                 p.performCommand(COMMAND_CASP + " " + COMMAND_CASP_JOIN);
                             }
                         }
