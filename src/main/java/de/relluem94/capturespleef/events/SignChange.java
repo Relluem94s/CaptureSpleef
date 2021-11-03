@@ -1,5 +1,7 @@
 package de.relluem94.capturespleef.events;
 
+import static de.relluem94.capturespleef.Strings.JOIN_GAME;
+import static de.relluem94.capturespleef.Strings.LEFT_GAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import static de.relluem94.capturespleef.Strings.SIGN_CREATE;
@@ -18,9 +20,9 @@ public class SignChange implements Listener {
                 && ((e.getLine(3) + "").equalsIgnoreCase("[cs01]"))
                 && ((e.getLine(2) + "").equalsIgnoreCase(""))
                 && ((e.getLine(1) + "").equalsIgnoreCase(""))) {
-            e.setLine(0, "§d[CaptureSpleef]");
+            e.setLine(0, PLUGIN_NAME_CONSOLE + "");
             e.setLine(1, "");
-            e.setLine(2, "§aSpiel betreten");
+            e.setLine(2, JOIN_GAME);
             e.setLine(3, "");
             e.getPlayer().sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + SIGN_CREATE);
         } else if ((e.getPlayer().hasPermission("rellu.capturespleef.sign.create"))
@@ -30,7 +32,7 @@ public class SignChange implements Listener {
                 && ((e.getLine(1) + "").equalsIgnoreCase(""))) {
             e.setLine(0, PLUGIN_NAME_CONSOLE);
             e.setLine(1, "");
-            e.setLine(2, "§aSpiel verlassen");
+            e.setLine(2, LEFT_GAME);
             e.setLine(3, "");
             e.getPlayer().sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + SIGN_CREATE);
         }
