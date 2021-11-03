@@ -13,6 +13,7 @@ import static de.relluem94.capturespleef.CaptureSpleef.teamsize;
 import static de.relluem94.capturespleef.CaptureSpleef.ts;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import java.util.Arrays;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,6 +30,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scoreboard.Score;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 
 public class GameJoin implements Listener {
 
@@ -73,7 +75,7 @@ public class GameJoin implements Listener {
                             evo.getClickedBlock().setType(Material.PRISMARINE);
 
                         } else {
-                            player.sendMessage("§5[RelluAPI] §6Dieser Slot ist vergeben");
+                            player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
                         }
                     }
                     player.setCustomName(CS_NAME);
@@ -109,7 +111,7 @@ public class GameJoin implements Listener {
                             loc.getBlock().setType(Material.AIR);
                             evo.getClickedBlock().setType(Material.NETHER_BRICK);
                         } else {
-                            player.sendMessage("§5[RelluAPI] §6Dieser Slot ist vergeben");
+                            player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
                         }
                     }
                     player.setCustomName(CS_NAME);
