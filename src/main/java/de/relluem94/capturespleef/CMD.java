@@ -69,15 +69,15 @@ public class CMD implements CommandExecutor {
                 if (args[0].equalsIgnoreCase("join")) {
                     if (p.hasPermission("rellu.capturespleef.join")) {
                         if (cooldown.contains(p)) {
-                            p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Du bist bereits in der CaptureSpleef Lobby");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Du bist bereits in der CaptureSpleef Lobby");
                         } else if (sboard.getTeams().size() == ts) {
-                            p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Die Lobby ist voll bitte warte auf die n§chste Runde");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Die Lobby ist voll bitte warte auf die n§chste Runde");
                         } else {
                             if (a == b && teamsize == ts) {
-                                p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Die Lobby ist Voll");
+                                p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Die Lobby ist Voll");
                             } else {
                                 cooldown.add(p);
-                                p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Du hast die CaptureSpleef Lobby betreten");
+                                p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Du hast die CaptureSpleef Lobby betreten");
                                 p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                                 p.sendMessage(PLUGIN_SECONDARY_COLOR + "Rechstklicke mit dem Zucker auf den Prismarin oder den Netherbrick um in dein gewünchtes Team zukommen.");
                                 p.sendMessage("");
@@ -104,7 +104,7 @@ public class CMD implements CommandExecutor {
                         if (p.getCustomName().equals(CS_NAME)) {
                             cooldown.remove(p);
                             p.getInventory().clear();
-                            p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Du hast die CaptureSpleef Lobby verlassen");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Du hast die CaptureSpleef Lobby verlassen");
                             p.teleport(arena);
                             p.setCustomName(p.getDisplayName());
                             p.setScoreboard(emptysboard);
@@ -113,14 +113,14 @@ public class CMD implements CommandExecutor {
                                 p.setAllowFlight(true);
                             }
                         } else if (p.getCustomName().equals(TEAM_RED_NAME) || p.getCustomName().equals(TEAM_BLUE_NAME)) {
-                            p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Du musst das Team erst verlassen!");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Du musst das Team erst verlassen!");
                         } else {
-                            p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Es ist ein Fehler aufgetreten!");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Es ist ein Fehler aufgetreten!");
                         }
                     }
                 } // Info
                 else if (args[0].equalsIgnoreCase("info")) {
-                    p.sendMessage(PLUGIN_NAME_CONSOLE + PLUGIN_SECONDARY_COLOR + "Spiele Erklärung und Ziel");
+                    p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Spiele Erklärung und Ziel");
                     p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                     p.sendMessage(PLUGIN_SECONDARY_COLOR + "Du kannst nur auf der selben Block-Farbe laufen wie deine Team-Farbe ist");
                     p.sendMessage("§1          Team Blau \u00BB Prismarin Block");
