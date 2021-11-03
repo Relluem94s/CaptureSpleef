@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 
 public class CSPlayerCommandPreprocess implements Listener {
 
@@ -19,7 +20,7 @@ public class CSPlayerCommandPreprocess implements Listener {
             if (event.getMessage().toLowerCase().startsWith("/casp")) {
                 event.setCancelled(false);
             } else {
-                event.getPlayer().sendMessage(PLUGIN_PREFIX + NO_PERM);
+                event.getPlayer().sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + NO_PERM);
                 event.setCancelled(true);
             }
         }
