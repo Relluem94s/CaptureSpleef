@@ -9,7 +9,8 @@ public class Strings {
     public final static String CS_NAME = "CaptureSpleef";
     public final static String PLUGIN_PRIMARY_COLOR = "§d"; 
     public final static String PLUGIN_SECONDARY_COLOR = "§a";
-    public final static String PLUGIN_PREFIX = PLUGIN_SECONDARY_COLOR + "[" + PLUGIN_PRIMARY_COLOR + CS_NAME + PLUGIN_SECONDARY_COLOR + "]";
+    public final static String PLUGIN_NAME_CONSOLE = PLUGIN_SECONDARY_COLOR + "[" + PLUGIN_PRIMARY_COLOR + CS_NAME + PLUGIN_SECONDARY_COLOR + "]";
+    public final static String PLUGIN_PREFIX = PLUGIN_PRIMARY_COLOR + CS_NAME;
     
     public final static String TEAM_RED_NAME = "TeamRot";
     public final static String TEAM_BLUE_NAME = "TeamBlau";
@@ -32,6 +33,6 @@ public class Strings {
 
     public final static String[] SNOWBALL_META_INFO = {"Dieser Schneeball dient dir als Hilfsmittel", "", "", ""};
 
-    public final static String PLUGIN_SPACER = "\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0";
+    public final static String PLUGIN_CHAT_SPACER = "\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0";
 
 }
