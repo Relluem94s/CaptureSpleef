@@ -25,7 +25,6 @@ import org.bukkit.scoreboard.Team;
 import com.google.common.collect.Lists;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
-import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_BORDER;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STARTTIME;
@@ -98,7 +97,7 @@ public class CaptureSpleef extends JavaPlugin {
         obj = sboard.registerNewObjective(CS_NAME, "Spieler");
 
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-        obj.setDisplayName("§aSpieler");
+        obj.setDisplayName(PLUGIN_SECONDARY_COLOR + "Spieler");
 
         cslobby.setPrefix("§d");
         cslobby.setAllowFriendlyFire(true);
