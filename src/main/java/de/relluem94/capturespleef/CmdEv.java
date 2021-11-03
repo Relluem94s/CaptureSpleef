@@ -31,14 +31,14 @@ public class CmdEv {
     }
 
     public void registerCommands() {
-        consoleSendMessage(PLUGIN_PREFIX, LANG_REGISTER_COMMANDS);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, LANG_REGISTER_COMMANDS);
         Objects.requireNonNull(main.getCommand(COMMAND_CASP)).setExecutor(new CMD());
-        consoleSendMessage(PLUGIN_PREFIX, LANG_COMMANDS_REGISTERED);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, LANG_COMMANDS_REGISTERED);
     }
 
     public void registerEvents() {
         PluginManager pm = main.getServer().getPluginManager();
-        consoleSendMessage(PLUGIN_PREFIX, LANG_REGISTER_EVENTS);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, LANG_REGISTER_EVENTS);
         
         pm.registerEvents(new CSBlockDamage(), main);
         pm.registerEvents(new CSPlayerCommandPreprocess(), main);
@@ -50,6 +50,6 @@ public class CmdEv {
         pm.registerEvents(new SnowBallThrow(), main);
         pm.registerEvents(new SnowBallDamage(), main);
 
-        consoleSendMessage(PLUGIN_PREFIX, LANG_EVENTS_REGISTERED);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, LANG_EVENTS_REGISTERED);
     }
 }
