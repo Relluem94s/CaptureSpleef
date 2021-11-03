@@ -31,6 +31,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scoreboard.Score;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
 public class CSPlayerMove implements Listener {
@@ -66,7 +67,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
                                 }
                             }
                         } else if (b < 1) {
@@ -128,7 +129,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     reset();
                                     teams.clear();
-                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
                                 }
                             }
                         }
@@ -153,9 +154,9 @@ public class CSPlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + " §4" + TEAM_RED_NAME + " " + player.getDisplayName() + "§4 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4" + TEAM_RED_NAME + " " + player.getDisplayName() + "§4 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + " §4" + player.getCustomName() + " " + player.getDisplayName() + "§4 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4" + player.getCustomName() + " " + player.getDisplayName() + "§4 starb");
                             }
                         }
                     }
@@ -186,7 +187,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     reset();
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
                                     consoleSendMessage("§5[Test]", "§4Rot!");
                                 }
                             }
@@ -251,7 +252,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     teams.clear();
                                     reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + " §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
                                     consoleSendMessage("§5[Test]", "§1Blau!");
                                 }
                             }
@@ -275,9 +276,9 @@ public class CSPlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + " §1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "§1 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "§1 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + " §1" + player.getCustomName() + " " + player.getDisplayName() + "§1 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §1" + player.getCustomName() + " " + player.getDisplayName() + "§1 starb");
                             }
 
                         }
