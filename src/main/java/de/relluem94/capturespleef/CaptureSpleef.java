@@ -129,7 +129,11 @@ public class CaptureSpleef extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        WorldHelper.unloadWorld(ACTIVE_WORLD, true);
+        try {
+            WorldHelper.unloadWorld(ACTIVE_WORLD, true);
+        } catch (WorldNotLoadedException ex) {
+            Logger.getLogger(CaptureSpleef.class.getName()).log(Level.SEVERE, null, ex);
+        }
         consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_STOP_MESSAGE);
     }
     
