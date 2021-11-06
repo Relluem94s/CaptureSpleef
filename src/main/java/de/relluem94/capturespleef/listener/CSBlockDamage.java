@@ -1,12 +1,5 @@
 package de.relluem94.capturespleef.listener;
 
-import static de.relluem94.capturespleef.CaptureSpleef.old;
-import static de.relluem94.capturespleef.CaptureSpleef.reset;
-import static de.relluem94.capturespleef.CaptureSpleef.sboard;
-import static de.relluem94.capturespleef.CaptureSpleef.teams;
-import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
-import static de.relluem94.capturespleef.Strings.CS_NAME;
-import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -26,8 +19,17 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
+
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.CaptureSpleef.old;
+import static de.relluem94.capturespleef.CaptureSpleef.reset;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.teams;
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 
 public class CSBlockDamage implements Listener {
@@ -256,5 +258,4 @@ public class CSBlockDamage implements Listener {
             }
         }
     }
-
 }
