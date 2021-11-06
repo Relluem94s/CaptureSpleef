@@ -1,13 +1,15 @@
 package de.relluem94.capturespleef.events;
 
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.SignChangeEvent;
+
 import static de.relluem94.capturespleef.Strings.JOIN_GAME;
 import static de.relluem94.capturespleef.Strings.LEFT_GAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import static de.relluem94.capturespleef.Strings.SIGN_CREATE;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.SignChangeEvent;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 
 public class SignChange implements Listener {
@@ -37,5 +39,4 @@ public class SignChange implements Listener {
             e.getPlayer().sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + SIGN_CREATE);
         }
     }
-
 }
