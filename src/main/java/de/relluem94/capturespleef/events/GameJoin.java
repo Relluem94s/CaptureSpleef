@@ -1,5 +1,23 @@
 package de.relluem94.capturespleef.events;
 
+import java.util.Arrays;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.SkullType;
+import org.bukkit.block.Skull;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scoreboard.Score;
+
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 import static de.relluem94.capturespleef.CaptureSpleef.a;
 import static de.relluem94.capturespleef.CaptureSpleef.b;
 import static de.relluem94.capturespleef.CaptureSpleef.blau;
@@ -14,22 +32,7 @@ import static de.relluem94.capturespleef.CaptureSpleef.ts;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
-import java.util.Arrays;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.SkullType;
-import org.bukkit.block.Skull;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scoreboard.Score;
-import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
-import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 
 public class GameJoin implements Listener {
