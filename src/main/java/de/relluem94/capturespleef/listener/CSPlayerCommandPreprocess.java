@@ -1,14 +1,16 @@
 package de.relluem94.capturespleef.listener;
 
-import static de.relluem94.capturespleef.Strings.CS_NAME;
-import static de.relluem94.capturespleef.Strings.NO_PERM;
-import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.NO_PERM;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 
 public class CSPlayerCommandPreprocess implements Listener {
@@ -25,5 +27,4 @@ public class CSPlayerCommandPreprocess implements Listener {
             }
         }
     }
-
 }
