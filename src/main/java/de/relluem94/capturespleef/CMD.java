@@ -1,16 +1,5 @@
 package de.relluem94.capturespleef;
 
-import static de.relluem94.capturespleef.CaptureSpleef.a;
-import static de.relluem94.capturespleef.CaptureSpleef.b;
-import static de.relluem94.capturespleef.CaptureSpleef.blau;
-import static de.relluem94.capturespleef.CaptureSpleef.teamsize;
-import static de.relluem94.capturespleef.CaptureSpleef.cooldown;
-import static de.relluem94.capturespleef.CaptureSpleef.cslobby;
-import static de.relluem94.capturespleef.CaptureSpleef.emptysboard;
-import static de.relluem94.capturespleef.CaptureSpleef.rot;
-import static de.relluem94.capturespleef.CaptureSpleef.sboard;
-import static de.relluem94.capturespleef.CaptureSpleef.ts;
-import static de.relluem94.capturespleef.Strings.*;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
@@ -23,8 +12,21 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.CaptureSpleef.a;
+import static de.relluem94.capturespleef.CaptureSpleef.b;
+import static de.relluem94.capturespleef.CaptureSpleef.blau;
+import static de.relluem94.capturespleef.CaptureSpleef.teamsize;
+import static de.relluem94.capturespleef.CaptureSpleef.cooldown;
+import static de.relluem94.capturespleef.CaptureSpleef.cslobby;
+import static de.relluem94.capturespleef.CaptureSpleef.emptysboard;
+import static de.relluem94.capturespleef.CaptureSpleef.rot;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.ts;
+import static de.relluem94.capturespleef.Strings.*;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
@@ -151,5 +153,4 @@ public class CMD implements CommandExecutor {
             return true;
         }
     }
-
 }
