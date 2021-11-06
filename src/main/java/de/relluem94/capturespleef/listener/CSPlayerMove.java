@@ -1,16 +1,5 @@
 package de.relluem94.capturespleef.listener;
 
-import static de.relluem94.capturespleef.CaptureSpleef.a;
-import static de.relluem94.capturespleef.CaptureSpleef.b;
-import static de.relluem94.capturespleef.CaptureSpleef.blau;
-import static de.relluem94.capturespleef.CaptureSpleef.obj;
-import static de.relluem94.capturespleef.CaptureSpleef.reset;
-import static de.relluem94.capturespleef.CaptureSpleef.rot;
-import static de.relluem94.capturespleef.CaptureSpleef.sboard;
-import static de.relluem94.capturespleef.CaptureSpleef.teams;
-import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
-import static de.relluem94.capturespleef.Strings.CS_NAME;
-import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -29,8 +18,21 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scoreboard.Score;
+
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.CaptureSpleef.a;
+import static de.relluem94.capturespleef.CaptureSpleef.b;
+import static de.relluem94.capturespleef.CaptureSpleef.blau;
+import static de.relluem94.capturespleef.CaptureSpleef.obj;
+import static de.relluem94.capturespleef.CaptureSpleef.reset;
+import static de.relluem94.capturespleef.CaptureSpleef.rot;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.teams;
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 
