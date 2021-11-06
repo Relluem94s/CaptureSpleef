@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
+
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 
