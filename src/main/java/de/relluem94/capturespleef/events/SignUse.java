@@ -1,15 +1,7 @@
 package de.relluem94.capturespleef.events;
 
-import static de.relluem94.capturespleef.Strings.COMMAND_CASP;
-import static de.relluem94.capturespleef.Strings.COMMAND_CASP_JOIN;
-import static de.relluem94.capturespleef.Strings.COMMAND_CASP_LEAVE;
-import static de.relluem94.capturespleef.Strings.JOIN_GAME;
-import static de.relluem94.capturespleef.Strings.LEFT_GAME;
-import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
-import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
-import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
-import de.relluem94.rellulib.utils.LogUtils;
 import java.util.Objects;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -19,6 +11,18 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+
+import de.relluem94.rellulib.utils.LogUtils;
+
+import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
+import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
+
+import static de.relluem94.capturespleef.Strings.COMMAND_CASP;
+import static de.relluem94.capturespleef.Strings.COMMAND_CASP_JOIN;
+import static de.relluem94.capturespleef.Strings.COMMAND_CASP_LEAVE;
+import static de.relluem94.capturespleef.Strings.JOIN_GAME;
+import static de.relluem94.capturespleef.Strings.LEFT_GAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
 
 /**
  *
