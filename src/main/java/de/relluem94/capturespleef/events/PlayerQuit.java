@@ -1,19 +1,21 @@
 package de.relluem94.capturespleef.events;
 
+import java.util.Objects;
+
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
+
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 import static de.relluem94.capturespleef.CaptureSpleef.blau;
 import static de.relluem94.capturespleef.CaptureSpleef.cslobby;
 import static de.relluem94.capturespleef.CaptureSpleef.rot;
 import static de.relluem94.capturespleef.CaptureSpleef.sboard;
 import static de.relluem94.capturespleef.CaptureSpleef.teams;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerQuitEvent;
-import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
-import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
-import java.util.Objects;
 
 public class PlayerQuit implements Listener {
 
