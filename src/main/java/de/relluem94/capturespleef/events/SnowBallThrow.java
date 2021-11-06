@@ -1,10 +1,7 @@
 package de.relluem94.capturespleef.events;
 
-import static de.relluem94.capturespleef.CaptureSpleef.setColors;
-import static de.relluem94.capturespleef.CaptureSpleef.shuffle;
-import static de.relluem94.capturespleef.Strings.SNOWBALL_DISPLAYNAME;
-import static de.relluem94.capturespleef.Strings.SNOWBALL_META_INFO;
 import java.util.Arrays;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -16,6 +13,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
+
+import static de.relluem94.capturespleef.CaptureSpleef.setColors;
+import static de.relluem94.capturespleef.CaptureSpleef.shuffle;
+import static de.relluem94.capturespleef.Strings.SNOWBALL_DISPLAYNAME;
+import static de.relluem94.capturespleef.Strings.SNOWBALL_META_INFO;
 
 /**
  *
