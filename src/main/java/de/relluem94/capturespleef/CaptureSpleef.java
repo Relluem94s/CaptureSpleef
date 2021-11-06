@@ -7,6 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import com.google.common.collect.Lists;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -21,24 +25,23 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
+import org.bukkit.Difficulty;
+import org.bukkit.GameRule;
+import org.bukkit.World;
 
-import com.google.common.collect.Lists;
+import de.relluem94.minecraft.server.spigot.essentials.exceptions.WorldNotLoadedException;
+import de.relluem94.minecraft.server.spigot.essentials.helpers.WorldHelper;
+
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
 import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
+
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_BORDER;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STARTTIME;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_START_MESSAGE;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STOP_MESSAGE;
-import de.relluem94.minecraft.server.spigot.essentials.exceptions.WorldNotLoadedException;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
-import de.relluem94.minecraft.server.spigot.essentials.helpers.WorldHelper;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.bukkit.Difficulty;
-import org.bukkit.GameRule;
-import org.bukkit.World;
 
 public class CaptureSpleef extends JavaPlugin {
 
