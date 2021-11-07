@@ -14,6 +14,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
+import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
+import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
+
 import static de.relluem94.capturespleef.CaptureSpleef.setColors;
 import static de.relluem94.capturespleef.CaptureSpleef.shuffle;
 import static de.relluem94.capturespleef.Strings.SNOWBALL_DISPLAYNAME;
@@ -34,7 +37,7 @@ public class SnowBallThrow implements Listener {
         snowballs.setItemMeta(snowball_meta);
 
         Player p = e.getPlayer();
-        if (p.hasPermission("rellu.lobby.snowball")) {
+        if (Permission.isAuthorized(p, Groups.getGroup("user").getId())) {
             ItemStack itemInHand = p.getInventory().getItemInHand();
             if (itemInHand.getType() == Material.SNOWBALL) {
                 if (e.getAction() == Action.LEFT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_AIR) {
@@ -50,14 +53,7 @@ public class SnowBallThrow implements Listener {
                         Vector vec = new Vector(vec_direction.getX(), vec_direction.getY(), vec_direction.getZ());
                         Projectile ball = p.launchProjectile(Snowball.class);
                         ball.setVelocity(vec);
-                        if (p.hasPermission("rellu.group.vip")
-                                || p.hasPermission("rellu.group.builder")
-                                || p.hasPermission("rellu.group.sgbuilder")
-                                || p.hasPermission("rellu.group.pMod")
-                                || p.hasPermission("rellu.group.Mod")
-                                || p.hasPermission("rellu.group.sMod")
-                                || p.hasPermission("rellu.group.Geek")
-                                || p.hasPermission("rellu.group.Admin")) {
+                        if (Permission.isAuthorized(p, Groups.getGroup("user").getId())) {
                             if (p.getName().equals("Relluem94")) {
                                 shuffle();
                                 ball.setCustomName(setColors().get(2) + "R" + setColors().get(1) + "e" + setColors().get(3) + "l" + setColors().get(4) + "l" + setColors().get(6) + "u");
@@ -73,7 +69,6 @@ public class SnowBallThrow implements Listener {
                         } else {
                             e.setCancelled(true);
                         }
-
                     }
                 } else {
                     p.getInventory().setItem(2, new ItemStack(snowballs));
