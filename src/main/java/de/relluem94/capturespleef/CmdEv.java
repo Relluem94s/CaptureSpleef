@@ -39,7 +39,7 @@ public class CmdEv {
     public void registerEvents() {
         PluginManager pm = main.getServer().getPluginManager();
         consoleSendMessage(PLUGIN_NAME_CONSOLE, LANG_REGISTER_EVENTS);
-        
+
         pm.registerEvents(new CSBlockDamage(), main);
         pm.registerEvents(new CSPlayerCommandPreprocess(), main);
         pm.registerEvents(new CSPlayerMove(), main);
