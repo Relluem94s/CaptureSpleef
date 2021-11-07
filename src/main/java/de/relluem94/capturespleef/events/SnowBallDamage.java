@@ -23,7 +23,7 @@ public class SnowBallDamage implements Listener {
             if (shooter instanceof Player) {
                 Player ps = (Player) shooter;
                 if (ps.hasPermission("rellu.lobby.snowball")) {
-                    if (ps.getInventory().getItemInHand().getType() == Material.SNOWBALL && p.getInventory().getItemInHand().getType() == Material.SNOWBALL) {
+                    if (ps.getInventory().getItemInHand().getType().equals(Material.SNOWBALL) && p.getInventory().getItemInHand().getType().equals(Material.SNOWBALL)) {
                         if (ps.getCustomName().equals(TEAM_RED_NAME)) {
                             if (p.getCustomName().equals(TEAM_BLUE_NAME)) {
                                 p.setFireTicks(4);
@@ -44,8 +44,8 @@ public class SnowBallDamage implements Listener {
                         p.teleport(psloc);
                         ps.teleport(ploc);
                     }
-                } else if (ps.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL)
-                        || p.getInventory().getItemInHand().getType() == Material.SNOWBALL && !(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
+                } else if (ps.getInventory().getItemInHand().getType().equals(Material.SNOWBALL) && !(p.getInventory().getItemInHand().getType().equals(Material.SNOWBALL))
+                        || p.getInventory().getItemInHand().getType().equals(Material.SNOWBALL) && !(ps.getInventory().getItemInHand().getType().equals(Material.SNOWBALL))) {
                     // Hier Team Rot
                     if (ps.getCustomName().equals(TEAM_RED_NAME)) {
 
@@ -61,8 +61,8 @@ public class SnowBallDamage implements Listener {
                         } else {
                             e.setCancelled(true);
                         }
-                    } else if (!(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL)
-                            || !(p.getInventory().getItemInHand().getType() == Material.SNOWBALL) && !(ps.getInventory().getItemInHand().getType() == Material.SNOWBALL)) {
+                    } else if (!(ps.getInventory().getItemInHand().getType().equals(Material.SNOWBALL)) && !(p.getInventory().getItemInHand().getType().equals(Material.SNOWBALL))
+                            || !(p.getInventory().getItemInHand().getType().equals(Material.SNOWBALL)) && !(ps.getInventory().getItemInHand().getType().equals(Material.SNOWBALL))) {
                         // Hier Team Rot
                         if (ps.getCustomName().equals(TEAM_RED_NAME)) {
 
