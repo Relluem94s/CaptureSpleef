@@ -16,7 +16,6 @@ public class SignChange implements Listener {
 
     @EventHandler
     public void SignCreate(SignChangeEvent e) {
-
         if ((e.getPlayer().hasPermission("rellu.capturespleef.sign.create"))
                 && ((e.getLine(0) + "").equalsIgnoreCase(""))
                 && ((e.getLine(3) + "").equalsIgnoreCase("[cs01]"))
@@ -27,7 +26,8 @@ public class SignChange implements Listener {
             e.setLine(2, JOIN_GAME);
             e.setLine(3, "");
             e.getPlayer().sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + SIGN_CREATE);
-        } else if ((e.getPlayer().hasPermission("rellu.capturespleef.sign.create"))
+        } 
+        else if ((e.getPlayer().hasPermission("rellu.capturespleef.sign.create"))
                 && ((e.getLine(0) + "").equalsIgnoreCase(""))
                 && ((e.getLine(3) + "").equalsIgnoreCase("[cs02]"))
                 && ((e.getLine(2) + "").equalsIgnoreCase(""))
