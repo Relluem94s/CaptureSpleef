@@ -87,14 +87,14 @@ public class CaptureSpleef extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        WorldHelper.loadWorld(ACTIVE_WORLD);     
+        WorldHelper.loadWorld(ACTIVE_WORLD);
         long start = Calendar.getInstance().getTimeInMillis();
         consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_BORDER);
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
         consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_START_MESSAGE);
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
-        
+
         CmdEv rells = new CmdEv(this);
         rells.registerEvents();
         rells.registerCommands();
@@ -117,13 +117,13 @@ public class CaptureSpleef extends JavaPlugin {
         rot.setAllowFriendlyFire(false);
         blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
-        
+
         try {
             checkWorld();
         } catch (WorldNotLoadedException ex) {
             Logger.getLogger(CaptureSpleef.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
         consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + String.format(PLUGIN_STARTTIME, Calendar.getInstance().getTimeInMillis() - start));
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
@@ -139,10 +139,10 @@ public class CaptureSpleef extends JavaPlugin {
         }
         consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_STOP_MESSAGE);
     }
-    
+
     private static void checkWorld() throws WorldNotLoadedException {
         World world = Bukkit.getWorld(ACTIVE_WORLD);
-        if(world != null){
+        if (world != null) {
             world.setGameRule(GameRule.MOB_GRIEFING, false);
             world.setGameRule(GameRule.DO_MOB_SPAWNING, false);
             world.setGameRule(GameRule.DO_FIRE_TICK, false);
@@ -156,8 +156,7 @@ public class CaptureSpleef extends JavaPlugin {
             world.setGameRule(GameRule.DISABLE_RAIDS, false);
             world.setGameRule(GameRule.DO_WEATHER_CYCLE, false);
             world.setDifficulty(Difficulty.PEACEFUL);
-        }
-        else{
+        } else {
             throw new WorldNotLoadedException(ACTIVE_WORLD + " was not loaded, try to reload or check if world exists.");
         }
     }
