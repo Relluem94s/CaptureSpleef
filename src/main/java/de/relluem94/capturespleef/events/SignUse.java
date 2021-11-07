@@ -38,15 +38,15 @@ public class SignUse implements Listener {
             Material material = block.getType();
             if (material.equals(Material.OAK_WALL_SIGN) || material.equals(Material.OAK_SIGN) || Permission.isAuthorized(p, Groups.getGroup("user").getId())) {
                 try {
-                    BlockState bs = block.getState();                   
-                     if (((bs instanceof Sign)) && (e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-                            Sign s = (Sign) bs;
-                            if ((s.getLine(0).equalsIgnoreCase(PLUGIN_NAME_CONSOLE)) && (s.getLine(2).equalsIgnoreCase(LEFT_GAME))) {
-                                p.performCommand(COMMAND_CASP + " " + COMMAND_CASP_LEAVE);
-                            } else if ((s.getLine(0).equalsIgnoreCase(PLUGIN_NAME_CONSOLE)) && (s.getLine(2).equalsIgnoreCase(JOIN_GAME))) {
-                                p.performCommand(COMMAND_CASP + " " + COMMAND_CASP_JOIN);
-                            }
+                    BlockState bs = block.getState();
+                    if (((bs instanceof Sign)) && (e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+                        Sign s = (Sign) bs;
+                        if ((s.getLine(0).equalsIgnoreCase(PLUGIN_NAME_CONSOLE)) && (s.getLine(2).equalsIgnoreCase(LEFT_GAME))) {
+                            p.performCommand(COMMAND_CASP + " " + COMMAND_CASP_LEAVE);
+                        } else if ((s.getLine(0).equalsIgnoreCase(PLUGIN_NAME_CONSOLE)) && (s.getLine(2).equalsIgnoreCase(JOIN_GAME))) {
+                            p.performCommand(COMMAND_CASP + " " + COMMAND_CASP_JOIN);
                         }
+                    }
                 } catch (IndexOutOfBoundsException ex) {
                     LogUtils.error(ex.getMessage());
                 }
