@@ -176,13 +176,13 @@ public class GameJoin implements Listener {
                     teamsize = a + b;
 
                     if (teamsize == ts || a == b) {
-                        for (Player pla : Bukkit.getOnlinePlayers()) {
+                        Bukkit.getOnlinePlayers().forEach(pla -> {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
                             } else if (pla.getCustomName().equals(TEAM_BLUE_NAME)) {
                                 pla.teleport(PosBlau);
                             }
-                        }
+                        });
                     }
                     //
                     //		Team Rot Beitrittsnachricht
@@ -234,13 +234,13 @@ public class GameJoin implements Listener {
                     teamsize = a + b;
 
                     if (teamsize == ts && a == b) {
-                        for (Player pla : Bukkit.getOnlinePlayers()) {
+                        Bukkit.getOnlinePlayers().forEach(pla -> {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
                             } else if (pla.getCustomName().equals(TEAM_BLUE_NAME)) {
                                 pla.teleport(PosBlau);
                             }
-                        }
+                        });
                     }
                     //
                     //		Team Blau Beitrittsnachricht
