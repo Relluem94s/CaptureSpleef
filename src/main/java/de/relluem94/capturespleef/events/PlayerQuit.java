@@ -23,7 +23,7 @@ public class PlayerQuit implements Listener {
     public void GameIntrupt(PlayerQuitEvent e) {
         Player p = e.getPlayer();
         String name = Objects.requireNonNull(p.getCustomName());
-        
+
         switch (name) {
             case TEAM_RED_NAME:
                 teams.get(p).getBlock().setType(Material.AIR);
