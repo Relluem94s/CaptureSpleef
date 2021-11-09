@@ -3,7 +3,7 @@
     <groupId>de.relluem94</groupId>
     <artifactId>capturespleef</artifactId>
     <name>CaptureSpleef</name>
-    <version>1.8</version>
+    <version>1.9</version>
     <url>https://github.com/Relluem94/CaptureSpleef</url>
     <properties>
         <plugin.apiVersion>1.16</plugin.apiVersion>
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>de.relluem94</groupId>
             <artifactId>relluessentials</artifactId>
-            <version>1.31</version>
+            <version>1.32</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
