@@ -46,10 +46,10 @@ public class CSBlockDamage implements Listener {
 
         if (p.getCustomName().equals(TEAM_RED_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "Â§1Team Blau hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§1Team Blau hat gewonnen");
         } else if(p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "Â§4Team Rot hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§4Team Rot hat gewonnen");
         }
     }
 
@@ -116,7 +116,7 @@ public class CSBlockDamage implements Listener {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
             sboard.resetScores(p);
             reset();
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "Â§4Team Rot hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§4Team Rot hat gewonnen");
         } else if (p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             p.teleport(lobby);
             //
@@ -175,7 +175,7 @@ public class CSBlockDamage implements Listener {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
             teams.clear();
             sboard.resetScores(p);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "Â§1Team Blau hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§1Team Blau hat gewonnen");
         }
     }
 
@@ -214,7 +214,7 @@ public class CSBlockDamage implements Listener {
                                     ev.getBlock().setType(Material.PRISMARINE);
                                     break;
                                 default:
-                                    // Keine Anderen BlÃ¶cke kÃ¶nnen zerstÃ¶rt werden
+                                    // Keine Anderen Blöcke können zerstört werden
                                     ev.setCancelled(true);
                                     break;
                             }
@@ -251,7 +251,7 @@ public class CSBlockDamage implements Listener {
                                     ev.getBlock().setType(Material.NETHER_BRICK);
                                     break;
                                 default:
-                                    // Keine Anderen BlÃ¶cke kÃ¶nnen zerstÃ¶rt werden
+                                    // Keine Anderen Blöcke können zerstört werden
                                     ev.setCancelled(true);
                                     break;
                             }
