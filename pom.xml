@@ -3,12 +3,12 @@
     <groupId>de.relluem94</groupId>
     <artifactId>capturespleef</artifactId>
     <name>CaptureSpleef</name>
-    <version>1.9</version>
+    <version>1.10</version>
     <url>https://github.com/Relluem94/CaptureSpleef</url>
     <properties>
         <plugin.apiVersion>1.16</plugin.apiVersion>
         <plugin.author>Relluem94</plugin.author>
-        <plugin.website>http://www.relluem94.de</plugin.website>
+        <plugin.website>https://www.relluem94.de</plugin.website>
         <plugin.main>de.relluem94.capturespleef.CaptureSpleef</plugin.main>
         <project.build.sourceEncoding>windows-1252</project.build.sourceEncoding>
     </properties>
