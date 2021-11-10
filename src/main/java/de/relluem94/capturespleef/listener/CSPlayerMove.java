@@ -69,7 +69,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง4Team Rot hat gewonnen");
                                 }
                             }
                         } else if (b < 1) {
@@ -131,7 +131,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     reset();
                                     teams.clear();
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง4Team Rot hat gewonnen");
                                 }
                             }
                         }
@@ -156,9 +156,9 @@ public class CSPlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง4" + TEAM_RED_NAME + " " + player.getDisplayName() + "ยง4 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง4" + TEAM_RED_NAME + " " + player.getDisplayName() + "ง4 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง4" + player.getCustomName() + " " + player.getDisplayName() + "ยง4 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง4" + player.getCustomName() + " " + player.getDisplayName() + "ง4 starb");
                             }
                         }
                     }
@@ -189,8 +189,8 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     reset();
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง4Team Rot hat gewonnen");
-                                    consoleSendMessage("ยง5[Test]", "ยง4Rot!");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง4Team Rot hat gewonnen");
+                                    consoleSendMessage("ง5[Test]", "ง4Rot!");
                                 }
                             }
                         } else if (b < 1) {
@@ -254,8 +254,8 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     teams.clear();
                                     reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง4Team Rot hat gewonnen");
-                                    consoleSendMessage("ยง5[Test]", "ยง1Blau!");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง4Team Rot hat gewonnen");
+                                    consoleSendMessage("ง5[Test]", "ง1Blau!");
                                 }
                             }
                         }
@@ -278,9 +278,9 @@ public class CSPlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "ยง1 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "ง1 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ยง1" + player.getCustomName() + " " + player.getDisplayName() + "ยง1 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " ง1" + player.getCustomName() + " " + player.getDisplayName() + "ง1 starb");
                             }
 
                         }
