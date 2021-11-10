@@ -52,7 +52,7 @@ public class CaptureSpleef extends JavaPlugin {
     public static Objective obj;
     public static Score score;
 
-    public static int a, b, teamsize, ts = 2, lives = 4; // Die Team GrÃ¶ÃŸe default = 8 
+    public static int a, b, teamsize, ts = 2, lives = 4; // Die Team GröÃŸe default = 8 
 
     public static ArrayList<Player> cooldown = new ArrayList<>();
     public static HashMap<Player, Location> teams = new HashMap<>();
@@ -111,11 +111,11 @@ public class CaptureSpleef extends JavaPlugin {
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         obj.setDisplayName(PLUGIN_SECONDARY_COLOR + "Spieler");
 
-        cslobby.setPrefix("Â§d");
+        cslobby.setPrefix("§d");
         cslobby.setAllowFriendlyFire(true);
-        rot.setPrefix("Â§4");
+        rot.setPrefix("§4");
         rot.setAllowFriendlyFire(false);
-        blau.setPrefix("Â§1");
+        blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
 
         try {
@@ -163,15 +163,15 @@ public class CaptureSpleef extends JavaPlugin {
 
     //
     // Team Rot Team Blau
-    //	Team Rot lÃ¤uft auf Netherrack Team Blau auf Prismarin
+    //	Team Rot läuft auf Netherrack Team Blau auf Prismarin
     //	Auf feindlichem Gebiet stirbt der Spieler
     //	Ziel ist an einen bestimmten Punkt im Gegenerischen Feld zu kommen
-    //	Hier fÃ¼r gibt es Sparten (und FeldHacke)
+    //	Hier für gibt es Sparten (und FeldHacke)
     //	Um Gegenrische Gebiete zu erobern
-    //	Das Spiel ist rum wenn kein Spieler im Gegnerteam Ã¼brig ist oder der "Schatz" erbeutet wurde
+    //	Das Spiel ist rum wenn kein Spieler im Gegnerteam übrig ist oder der "Schatz" erbeutet wurde
     //  Maximale Spiel zeit sind 15 Minuten Danach wird resetet
     //
-    //  onClickClack3 EntityDamageByEntityEvent hat noch einen Zusatz. SchneebÃ¤lle mit Effekten
+    //  onClickClack3 EntityDamageByEntityEvent hat noch einen Zusatz. Schneebälle mit Effekten
     //
     //	if (event.getEntity().getCustomName().equals(team_red) || event.getEntity().getCustomName().equals(team_blue)) {  }
     //
