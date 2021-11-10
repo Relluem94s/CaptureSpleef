@@ -50,8 +50,8 @@ public class CMD implements CommandExecutor {
 
         ItemStack d3 = new ItemStack(Material.SUGAR, 1);
         ItemMeta d4 = d3.getItemMeta();
-        d4.setDisplayName("Â§8WÃ¤hle dein Team");
-        d4.setLore(Arrays.asList("Â§8Rechtklicke auf den Â§cNetherBrick Â§8oder den Â§9Prismarin"));
+        d4.setDisplayName("§8Wähle dein Team");
+        d4.setLore(Arrays.asList("§8Rechtklicke auf den §cNetherBrick §8oder den §9Prismarin"));
         d3.setItemMeta(d4);
 
         ItemStack e1 = new ItemStack(Material.SNOWBALL, 94);
@@ -65,7 +65,7 @@ public class CMD implements CommandExecutor {
         //
         if (cmd.getName().equalsIgnoreCase("casp")) {
             if (args.length == 0) {
-                p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Nutze Â§c/casp <info>, <version>, <join> oder <leave>");
+                p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Nutze §c/casp <info>, <version>, <join> oder <leave>");
             } else {
                 // Join
                 if (args[0].equalsIgnoreCase("join")) {
@@ -73,20 +73,20 @@ public class CMD implements CommandExecutor {
                         if (cooldown.contains(p)) {
                             p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Du bist bereits in der CaptureSpleef Lobby");
                         } else if (sboard.getTeams().size() == ts) {
-                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Die Lobby ist voll bitte warte auf die nÂ§chste Runde");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Die Lobby ist voll bitte warte auf die n§chste Runde");
                         } else {
                             if (a == b && teamsize == ts) {
                                 p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Die Lobby ist Voll");
                             } else {
                                 cooldown.add(p);
                                 p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Du hast die CaptureSpleef Lobby betreten");
-                                p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
-                                p.sendMessage(PLUGIN_SECONDARY_COLOR + "Rechstklicke mit dem Zucker auf den Prismarin oder den Netherbrick um in dein gewÃ¼nchtes Team zukommen.");
+                                p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
+                                p.sendMessage(PLUGIN_SECONDARY_COLOR + "Rechstklicke mit dem Zucker auf den Prismarin oder den Netherbrick um in dein gewünchtes Team zukommen.");
                                 p.sendMessage("");
                                 p.sendMessage(PLUGIN_SECONDARY_COLOR + "Linksklicke mit dem erhaltenen Werkzeug auf den Lapis oder Redstone Block um das Team wieder zu verlassen.");
                                 p.sendMessage("");
-                                p.sendMessage(PLUGIN_SECONDARY_COLOR + "Nutze Â§d/casp info Â§a um Informationen Ã¼ber das Spiel und dessen Funktionen zu erhalten.");
-                                p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
+                                p.sendMessage(PLUGIN_SECONDARY_COLOR + "Nutze §d/casp info §a um Informationen über das Spiel und dessen Funktionen zu erhalten.");
+                                p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
 
                                 p.teleport(lobby);
                                 p.getInventory().clear();
@@ -122,29 +122,29 @@ public class CMD implements CommandExecutor {
                     }
                 } // Info
                 else if (args[0].equalsIgnoreCase("info")) {
-                    p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Spiele ErklÃ¤rung und Ziel");
-                    p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
+                    p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Spiele Erklärung und Ziel");
+                    p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                     p.sendMessage(PLUGIN_SECONDARY_COLOR + "Du kannst nur auf der selben Block-Farbe laufen wie deine Team-Farbe ist");
-                    p.sendMessage("Â§1          Team Blau \u00BB Prismarin Block");
-                    p.sendMessage("Â§4          Team Rot \u00BB Netherbrick Block");
+                    p.sendMessage("§1          Team Blau \u00BB Prismarin Block");
+                    p.sendMessage("§4          Team Rot \u00BB Netherbrick Block");
                     p.sendMessage("");
-                    p.sendMessage(PLUGIN_SECONDARY_COLOR + "Wandle mit einem Linksklick gegnerriche BlÂ§cke zu deiner eigenen Farbe um");
+                    p.sendMessage(PLUGIN_SECONDARY_COLOR + "Wandle mit einem Linksklick gegnerriche Blöcke zu deiner eigenen Farbe um");
                     p.sendMessage("");
-                    p.sendMessage("Â§dZiel \u00BB Â§aErobere mit einem Linksklick die Metall-SÃ¤ule in der gegnerischen Basis");
-                    p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
+                    p.sendMessage("§dZiel \u00BB §aErobere mit einem Linksklick die Metall-Säule in der gegnerischen Basis");
+                    p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                 } // Test
                 else if (args[0].equalsIgnoreCase("test")) {
                     if (p.hasPermission("rellu.capturespleef.test")) {
-                        p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
-                        p.sendMessage("Â§d" + teamsize);
+                        p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
+                        p.sendMessage("§d" + teamsize);
                         p.setAllowFlight(true);
-                        p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
+                        p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                     }
                 } // Version
                 else if (args[0].equals("version")) {
-                    p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
+                    p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                     p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + PLUGIN_SECONDARY_COLOR + "Version " + Bukkit.getServer().getPluginManager().getPlugin("CaptureSpleef").getDescription().getVersion() + "!");
-                    p.sendMessage("Â§6" + PLUGIN_CHAT_SPACER);
+                    p.sendMessage("§6" + PLUGIN_CHAT_SPACER);
                 }
             }
             return true;
