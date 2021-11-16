@@ -42,8 +42,12 @@ import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STA
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_START_MESSAGE;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STOP_MESSAGE;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
+import de.relluem94.minecraft.server.spigot.essentials.helpers.SignHelper;
 
 public class CaptureSpleef extends JavaPlugin {
+    
+    public static SignHelper joinCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp join");
+    public static SignHelper leaveCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp leave");
 
     public static ScoreboardManager scoreboard;
     public static Scoreboard sboard;
