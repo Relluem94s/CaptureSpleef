@@ -61,13 +61,9 @@ public class GameJoin implements Listener {
                     return;
                 }
                 if (evo.getClickedBlock().getType().equals(Material.LAPIS_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_BLUE_NAME)) {
-                    double x1 = evo.getClickedBlock().getX();
-                    double y1 = evo.getClickedBlock().getY();
-                    double z1 = evo.getClickedBlock().getZ();
+                    
                     //
-                    double y2 = y1 + 1;
-                    //
-                    Location loc = new Location(player.getWorld(), x1, y2, z1);
+                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
 
                     if (loc.getBlock().getType().equals(Material.SKELETON_SKULL)) {
                         Skull s = (Skull) loc.getBlock().getState();
@@ -99,13 +95,7 @@ public class GameJoin implements Listener {
                     return;
                 }
                 if (evo.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_RED_NAME)) {
-                    double x1 = evo.getClickedBlock().getX();
-                    double y1 = evo.getClickedBlock().getY();
-                    double z1 = evo.getClickedBlock().getZ();
-                    //
-                    double y2 = y1 + 1;
-                    //
-                    Location loc = new Location(player.getWorld(), x1, y2, z1);
+                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
                     if (loc.getBlock().getType().equals(Material.SKELETON_SKULL)) {
                         Skull s = (Skull) loc.getBlock().getState();
                         String s1 = s.getOwner();
@@ -136,13 +126,8 @@ public class GameJoin implements Listener {
                 }
                 if (evo.getClickedBlock().getType().equals(Material.NETHER_BRICK) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.NETHER_BRICK) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     evo.getClickedBlock().setType(Material.REDSTONE_BLOCK);
-                    double x1 = evo.getClickedBlock().getX();
-                    double y1 = evo.getClickedBlock().getY();
-                    double z1 = evo.getClickedBlock().getZ();
-                    //
-                    double y2 = y1 + 1;
-                    //
-                    Location loc = new Location(player.getWorld(), x1, y2, z1);
+ 
+                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
                     loc.getBlock().setType(Material.SKELETON_SKULL);
                     Skull s = (Skull) loc.getBlock().getState();
                     s.setSkullType(SkullType.PLAYER);
@@ -193,13 +178,8 @@ public class GameJoin implements Listener {
                 } // Betreten Team Blau
                 else if (evo.getClickedBlock().getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     evo.getClickedBlock().setType(Material.LAPIS_BLOCK);
-                    double x1 = evo.getClickedBlock().getX();
-                    double y1 = evo.getClickedBlock().getY();
-                    double z1 = evo.getClickedBlock().getZ();
-                    //
-                    double y2 = y1 + 1;
-                    //
-                    Location loc = new Location(player.getWorld(), x1, y2, z1);
+
+                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
 
                     loc.getBlock().setType(Material.SKELETON_SKULL);
                     Skull s = (Skull) loc.getBlock().getState();
