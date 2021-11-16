@@ -41,7 +41,7 @@ public class GameJoin implements Listener {
 
     @EventHandler
     public void GameJoinAndLeave(PlayerInteractEvent e) {
-        Player player = e.getPlayer();
+        Player p = e.getPlayer();
 
         a = rot.getSize();
         b = blau.getSize();
@@ -50,11 +50,11 @@ public class GameJoin implements Listener {
         Location PosRot = new Location(Bukkit.getWorld(ACTIVE_WORLD), -141, 138, 272);
         Location PosBlau = new Location(Bukkit.getWorld(ACTIVE_WORLD), -124, 138, 272);
 
-        ItemStack d3 = new ItemStack(Material.SUGAR, 1);
-        ItemMeta d4 = d3.getItemMeta();
-        d4.setDisplayName("§8Wähle dein Team");
-        d4.setLore(Arrays.asList("§8Rechtklicke auf den §cNetherBrick §8oder den §9Prismarin"));
-        d3.setItemMeta(d4);
+        ItemStack is = new ItemStack(Material.SUGAR, 1);
+        ItemMeta im = is.getItemMeta();
+        im.setDisplayName("§8Wähle dein Team");
+        im.setLore(Arrays.asList("§8Rechtklicke auf den §cNetherBrick §8oder den §9Prismarin"));
+        is.setItemMeta(im);
 
         // Verlassen Team Blau
         if (e.getPlayer().getWorld().getName().equals("lobby")) {
@@ -68,27 +68,26 @@ public class GameJoin implements Listener {
                     Location loc = e.getClickedBlock().getLocation().add(0, 1, 0);
 
                     if (loc.getBlock().getType().equals(Material.SKELETON_SKULL)) {
-                        Skull s = (Skull) loc.getBlock().getState();
-                        String s1 = s.getOwner();
-                        String s2 = s1.toLowerCase();
-                        if (player.getName().toLowerCase().equals(s2)) {
+                        Skull skull = (Skull) loc.getBlock().getState();
+                        String owner = skull.getOwner().toLowerCase();
+                        if (p.getName().toLowerCase().equals(owner)) {
                             loc.getBlock().setType(Material.AIR);
                             e.getClickedBlock().setType(Material.PRISMARINE);
 
                         } else {
-                            player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
                         }
                     }
-                    player.setCustomName(CS_NAME);
-                    teams.remove(player);
-                    blau.removePlayer(player);
-                    cslobby.addPlayer(player);
-                    player.getInventory().setItemInHand(new ItemStack(d3));
+                    p.setCustomName(CS_NAME);
+                    teams.remove(p);
+                    blau.removePlayer(p);
+                    cslobby.addPlayer(p);
+                    p.getInventory().setItemInHand(new ItemStack(is));
                     //
                     //
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(player.getDisplayName() + "§1 hat TeamBlau verlassen");
+                        pla.sendMessage(p.getDisplayName() + "§1 hat TeamBlau verlassen");
                     });
                 }
             } // Verlassen Team Rot
@@ -97,28 +96,27 @@ public class GameJoin implements Listener {
                     return;
                 }
                 if (e.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && e.getPlayer().getCustomName().equals(TEAM_RED_NAME)) {
-                    Block b = e.getClickedBlock().getRelative(0, 1, 0);
-                    if (b.getType().equals(Material.SKELETON_SKULL)) {
-                        Skull s = (Skull) b.getState();
-                        String s1 = s.getOwner();
-                        String s2 = s1.toLowerCase();
-                        if (player.getName().toLowerCase().equals(s2)) {
-                            b.setType(Material.AIR);
+                    Block block = e.getClickedBlock().getRelative(0, 1, 0);
+                    if (block.getType().equals(Material.SKELETON_SKULL)) {
+                        Skull skull = (Skull) block.getState();
+                        String owner = skull.getOwner().toLowerCase();
+                        if (p.getName().toLowerCase().equals(owner)) {
+                            block.setType(Material.AIR);
                             e.getClickedBlock().setType(Material.NETHER_BRICK);
                         } else {
-                            player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
                         }
                     }
-                    player.setCustomName(CS_NAME);
-                    teams.remove(player);
-                    rot.removePlayer(player);
-                    cslobby.addPlayer(player);
-                    player.getInventory().setItemInHand(new ItemStack(d3));
+                    p.setCustomName(CS_NAME);
+                    teams.remove(p);
+                    rot.removePlayer(p);
+                    cslobby.addPlayer(p);
+                    p.getInventory().setItemInHand(new ItemStack(is));
                     //
                     //
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(player.getDisplayName() + "§4 hat TeamRot verlassen");
+                        pla.sendMessage(p.getDisplayName() + "§4 hat TeamRot verlassen");
                     });
                 }
             } // Betreten Team Rot
@@ -129,40 +127,39 @@ public class GameJoin implements Listener {
                 if (e.getClickedBlock().getType().equals(Material.NETHER_BRICK) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.NETHER_BRICK) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     e.getClickedBlock().setType(Material.REDSTONE_BLOCK);
  
-                    Block b = e.getClickedBlock().getRelative(0, 1, 0);
-                    b.setType(Material.SKELETON_SKULL);
-                    Skull s = (Skull) b.getState();
-                    s.setSkullType(SkullType.PLAYER);
-                    s.setOwner(player.getName());
-                    s.update(true);
-                    ItemStack id3 = new ItemStack(Material.DIAMOND_HOE, 1);
-                    ItemMeta id4 = id3.getItemMeta();
-                    id4.setDisplayName("§4TeamRot");
-                    id4.setLore(Arrays.asList("§8Mache hiermit §1Blaue Steine §8zu §4Roten"));
-                    id3.setItemMeta(id4);
-                    player.getInventory().setItemInHand(new ItemStack(id3));
+                    Block block = e.getClickedBlock().getRelative(0, 1, 0);
+                    block.setType(Material.SKELETON_SKULL);
+                    Skull skull = (Skull) block.getState();
+                    skull.setSkullType(SkullType.PLAYER);
+                    skull.setOwner(p.getName());
+                    skull.update(true);
+                    ItemStack isTeamRed = new ItemStack(Material.DIAMOND_HOE, 1);
+                    ItemMeta imTeamRed = isTeamRed.getItemMeta();
+                    imTeamRed.setDisplayName("§4TeamRot");
+                    imTeamRed.setLore(Arrays.asList("§8Mache hiermit §1Blaue Steine §8zu §4Roten"));
+                    isTeamRed.setItemMeta(imTeamRed);
+                    p.getInventory().setItemInHand(new ItemStack(isTeamRed));
 
-                    player.setCustomName(TEAM_RED_NAME);
+                    p.setCustomName(TEAM_RED_NAME);
                     //
                     //
                     //
-                    rot.addPlayer(player);
-                    teams.put(player, b.getLocation());
+                    rot.addPlayer(p);
+                    teams.put(p, block.getLocation());
 
-                    player.setScoreboard(sboard);
+                    p.setScoreboard(sboard);
 
-                    @SuppressWarnings("deprecation")
-                    Score score = obj.getScore(player);
+                    Score score = obj.getScore(p);
                     score.setScore(lives);
                     //
                     //		Game Start
                     //
 
                     a = rot.getSize();
-                    CaptureSpleef.b = blau.getSize();
-                    teamsize = a + CaptureSpleef.b;
+                    b = blau.getSize();
+                    teamsize = a + b;
 
-                    if (teamsize == ts || a == CaptureSpleef.b) {
+                    if (teamsize == ts || a == b) {
                         Bukkit.getOnlinePlayers().forEach(pla -> {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
@@ -175,47 +172,46 @@ public class GameJoin implements Listener {
                     //		Team Rot Beitrittsnachricht
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(player.getDisplayName() + "§4 ist TeamRot beigetreten");
+                        pla.sendMessage(p.getDisplayName() + "§4 ist TeamRot beigetreten");
                     });
                 } // Betreten Team Blau
                 else if (e.getClickedBlock().getType().equals(Material.PRISMARINE) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     e.getClickedBlock().setType(Material.LAPIS_BLOCK);
 
-                    Block b = e.getClickedBlock().getRelative(0, 1, 0);
+                    Block block = e.getClickedBlock().getRelative(0, 1, 0);
 
-                    b.setType(Material.SKELETON_SKULL);
-                    Skull s = (Skull) b.getState();
-                    s.setSkullType(SkullType.PLAYER);
-                    s.setOwner(player.getName());
-                    s.update(true);
-                    ItemStack id3 = new ItemStack(Material.DIAMOND_SHOVEL, 1);
-                    ItemMeta id4 = id3.getItemMeta();
-                    id4.setDisplayName("§1TeamBlau");
-                    id4.setLore(Arrays.asList("§8Mache hiermit §4Roten Steine §8zu §1Blaue"));
-                    id3.setItemMeta(id4);
-                    player.getInventory().setItemInHand(new ItemStack(id3));
+                    block.setType(Material.SKELETON_SKULL);
+                    Skull skull = (Skull) block.getState();
+                    skull.setSkullType(SkullType.PLAYER);
+                    skull.setOwner(p.getName());
+                    skull.update(true);
+                    ItemStack isTeamBlue = new ItemStack(Material.DIAMOND_SHOVEL, 1);
+                    ItemMeta imTeamBlue = isTeamBlue.getItemMeta();
+                    imTeamBlue.setDisplayName("§1TeamBlau");
+                    imTeamBlue.setLore(Arrays.asList("§8Mache hiermit §4Rote Steine §8zu §1Blauen"));
+                    isTeamBlue.setItemMeta(imTeamBlue);
+                    p.getInventory().setItemInHand(new ItemStack(isTeamBlue));
 
-                    player.setCustomName(TEAM_BLUE_NAME);
+                    p.setCustomName(TEAM_BLUE_NAME);
                     //
                     //
                     //
-                    blau.addPlayer(player);
-                    teams.put(player, b.getLocation());
+                    blau.addPlayer(p);
+                    teams.put(p, block.getLocation());
 
-                    player.setScoreboard(sboard);
+                    p.setScoreboard(sboard);
 
-                    @SuppressWarnings("deprecation")
-                    Score score = obj.getScore(player);
+                    Score score = obj.getScore(p);
                     score.setScore(lives);
                     //
                     //		Game Start
                     //
 
                     a = rot.getSize();
-                    CaptureSpleef.b = blau.getSize();
-                    teamsize = a + CaptureSpleef.b;
+                    b = blau.getSize();
+                    teamsize = a + b;
 
-                    if (teamsize == ts && a == CaptureSpleef.b) {
+                    if (teamsize == ts && a == b) {
                         Bukkit.getOnlinePlayers().forEach(pla -> {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
@@ -228,7 +224,7 @@ public class GameJoin implements Listener {
                     //		Team Blau Beitrittsnachricht
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(player.getDisplayName() + "§1 ist TeamBlau beigetreten");
+                        pla.sendMessage(p.getDisplayName() + "§1 ist TeamBlau beigetreten");
                     });
                 }
             }
