@@ -1,5 +1,6 @@
 package de.relluem94.capturespleef.events;
 
+import de.relluem94.capturespleef.CaptureSpleef;
 import java.util.Arrays;
 
 import org.bukkit.Bukkit;
@@ -34,6 +35,7 @@ import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
 
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
+import org.bukkit.block.Block;
 
 public class GameJoin implements Listener {
 
@@ -95,13 +97,13 @@ public class GameJoin implements Listener {
                     return;
                 }
                 if (evo.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_RED_NAME)) {
-                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
-                    if (loc.getBlock().getType().equals(Material.SKELETON_SKULL)) {
-                        Skull s = (Skull) loc.getBlock().getState();
+                    Block b = evo.getClickedBlock().getRelative(0, 1, 0);
+                    if (b.getType().equals(Material.SKELETON_SKULL)) {
+                        Skull s = (Skull) b.getState();
                         String s1 = s.getOwner();
                         String s2 = s1.toLowerCase();
                         if (player.getName().toLowerCase().equals(s2)) {
-                            loc.getBlock().setType(Material.AIR);
+                            b.setType(Material.AIR);
                             evo.getClickedBlock().setType(Material.NETHER_BRICK);
                         } else {
                             player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
@@ -127,9 +129,9 @@ public class GameJoin implements Listener {
                 if (evo.getClickedBlock().getType().equals(Material.NETHER_BRICK) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.NETHER_BRICK) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     evo.getClickedBlock().setType(Material.REDSTONE_BLOCK);
  
-                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
-                    loc.getBlock().setType(Material.SKELETON_SKULL);
-                    Skull s = (Skull) loc.getBlock().getState();
+                    Block b = evo.getClickedBlock().getRelative(0, 1, 0);
+                    b.setType(Material.SKELETON_SKULL);
+                    Skull s = (Skull) b.getState();
                     s.setSkullType(SkullType.PLAYER);
                     s.setOwner(player.getName());
                     s.update(true);
@@ -145,7 +147,7 @@ public class GameJoin implements Listener {
                     //
                     //
                     rot.addPlayer(player);
-                    teams.put(player, loc);
+                    teams.put(player, b.getLocation());
 
                     player.setScoreboard(sboard);
 
@@ -157,10 +159,10 @@ public class GameJoin implements Listener {
                     //
 
                     a = rot.getSize();
-                    b = blau.getSize();
-                    teamsize = a + b;
+                    CaptureSpleef.b = blau.getSize();
+                    teamsize = a + CaptureSpleef.b;
 
-                    if (teamsize == ts || a == b) {
+                    if (teamsize == ts || a == CaptureSpleef.b) {
                         Bukkit.getOnlinePlayers().forEach(pla -> {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
@@ -179,10 +181,10 @@ public class GameJoin implements Listener {
                 else if (evo.getClickedBlock().getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     evo.getClickedBlock().setType(Material.LAPIS_BLOCK);
 
-                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
+                    Block b = evo.getClickedBlock().getRelative(0, 1, 0);
 
-                    loc.getBlock().setType(Material.SKELETON_SKULL);
-                    Skull s = (Skull) loc.getBlock().getState();
+                    b.setType(Material.SKELETON_SKULL);
+                    Skull s = (Skull) b.getState();
                     s.setSkullType(SkullType.PLAYER);
                     s.setOwner(player.getName());
                     s.update(true);
@@ -198,7 +200,7 @@ public class GameJoin implements Listener {
                     //
                     //
                     blau.addPlayer(player);
-                    teams.put(player, loc);
+                    teams.put(player, b.getLocation());
 
                     player.setScoreboard(sboard);
 
@@ -210,10 +212,10 @@ public class GameJoin implements Listener {
                     //
 
                     a = rot.getSize();
-                    b = blau.getSize();
-                    teamsize = a + b;
+                    CaptureSpleef.b = blau.getSize();
+                    teamsize = a + CaptureSpleef.b;
 
-                    if (teamsize == ts && a == b) {
+                    if (teamsize == ts && a == CaptureSpleef.b) {
                         Bukkit.getOnlinePlayers().forEach(pla -> {
                             if (pla.getCustomName().equals(TEAM_RED_NAME)) {
                                 pla.teleport(PosRot);
