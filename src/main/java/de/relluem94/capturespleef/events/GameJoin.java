@@ -40,8 +40,8 @@ import org.bukkit.block.Block;
 public class GameJoin implements Listener {
 
     @EventHandler
-    public void GameJoinAndLeave(PlayerInteractEvent evo) {
-        Player player = evo.getPlayer();
+    public void GameJoinAndLeave(PlayerInteractEvent e) {
+        Player player = e.getPlayer();
 
         a = rot.getSize();
         b = blau.getSize();
@@ -57,15 +57,15 @@ public class GameJoin implements Listener {
         d3.setItemMeta(d4);
 
         // Verlassen Team Blau
-        if (evo.getPlayer().getWorld().getName().equals("lobby")) {
-            if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.DIAMOND_SHOVEL) {
-                if (!(evo.getAction() == Action.LEFT_CLICK_BLOCK)) {
+        if (e.getPlayer().getWorld().getName().equals("lobby")) {
+            if (e.getPlayer().getInventory().getItemInHand().getType() == Material.DIAMOND_SHOVEL) {
+                if (!(e.getAction() == Action.LEFT_CLICK_BLOCK)) {
                     return;
                 }
-                if (evo.getClickedBlock().getType().equals(Material.LAPIS_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_BLUE_NAME)) {
+                if (e.getClickedBlock().getType().equals(Material.LAPIS_BLOCK) && e.getPlayer().getCustomName().equals(TEAM_BLUE_NAME)) {
                     
                     //
-                    Location loc = evo.getClickedBlock().getLocation().add(0, 1, 0);
+                    Location loc = e.getClickedBlock().getLocation().add(0, 1, 0);
 
                     if (loc.getBlock().getType().equals(Material.SKELETON_SKULL)) {
                         Skull s = (Skull) loc.getBlock().getState();
@@ -73,7 +73,7 @@ public class GameJoin implements Listener {
                         String s2 = s1.toLowerCase();
                         if (player.getName().toLowerCase().equals(s2)) {
                             loc.getBlock().setType(Material.AIR);
-                            evo.getClickedBlock().setType(Material.PRISMARINE);
+                            e.getClickedBlock().setType(Material.PRISMARINE);
 
                         } else {
                             player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
@@ -92,19 +92,19 @@ public class GameJoin implements Listener {
                     });
                 }
             } // Verlassen Team Rot
-            else if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.DIAMOND_HOE) {
-                if (!(evo.getAction() == Action.LEFT_CLICK_BLOCK)) {
+            else if (e.getPlayer().getInventory().getItemInHand().getType() == Material.DIAMOND_HOE) {
+                if (!(e.getAction() == Action.LEFT_CLICK_BLOCK)) {
                     return;
                 }
-                if (evo.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && evo.getPlayer().getCustomName().equals(TEAM_RED_NAME)) {
-                    Block b = evo.getClickedBlock().getRelative(0, 1, 0);
+                if (e.getClickedBlock().getType().equals(Material.REDSTONE_BLOCK) && e.getPlayer().getCustomName().equals(TEAM_RED_NAME)) {
+                    Block b = e.getClickedBlock().getRelative(0, 1, 0);
                     if (b.getType().equals(Material.SKELETON_SKULL)) {
                         Skull s = (Skull) b.getState();
                         String s1 = s.getOwner();
                         String s2 = s1.toLowerCase();
                         if (player.getName().toLowerCase().equals(s2)) {
                             b.setType(Material.AIR);
-                            evo.getClickedBlock().setType(Material.NETHER_BRICK);
+                            e.getClickedBlock().setType(Material.NETHER_BRICK);
                         } else {
                             player.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
                         }
@@ -122,14 +122,14 @@ public class GameJoin implements Listener {
                     });
                 }
             } // Betreten Team Rot
-            else if (evo.getPlayer().getInventory().getItemInHand().getType() == Material.SUGAR && evo.getPlayer().getCustomName().equals(CS_NAME)) {
-                if (!(evo.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+            else if (e.getPlayer().getInventory().getItemInHand().getType() == Material.SUGAR && e.getPlayer().getCustomName().equals(CS_NAME)) {
+                if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                     return;
                 }
-                if (evo.getClickedBlock().getType().equals(Material.NETHER_BRICK) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.NETHER_BRICK) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
-                    evo.getClickedBlock().setType(Material.REDSTONE_BLOCK);
+                if (e.getClickedBlock().getType().equals(Material.NETHER_BRICK) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.NETHER_BRICK) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
+                    e.getClickedBlock().setType(Material.REDSTONE_BLOCK);
  
-                    Block b = evo.getClickedBlock().getRelative(0, 1, 0);
+                    Block b = e.getClickedBlock().getRelative(0, 1, 0);
                     b.setType(Material.SKELETON_SKULL);
                     Skull s = (Skull) b.getState();
                     s.setSkullType(SkullType.PLAYER);
@@ -178,10 +178,10 @@ public class GameJoin implements Listener {
                         pla.sendMessage(player.getDisplayName() + "§4 ist TeamRot beigetreten");
                     });
                 } // Betreten Team Blau
-                else if (evo.getClickedBlock().getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !evo.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
-                    evo.getClickedBlock().setType(Material.LAPIS_BLOCK);
+                else if (e.getClickedBlock().getType().equals(Material.PRISMARINE) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
+                    e.getClickedBlock().setType(Material.LAPIS_BLOCK);
 
-                    Block b = evo.getClickedBlock().getRelative(0, 1, 0);
+                    Block b = e.getClickedBlock().getRelative(0, 1, 0);
 
                     b.setType(Material.SKELETON_SKULL);
                     Skull s = (Skull) b.getState();
