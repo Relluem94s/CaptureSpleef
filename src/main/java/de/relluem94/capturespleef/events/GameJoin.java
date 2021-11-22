@@ -63,7 +63,7 @@ public class GameJoin implements Listener {
                     return;
                 }
                 if (e.getClickedBlock().getType().equals(Material.LAPIS_BLOCK) && e.getPlayer().getCustomName().equals(TEAM_BLUE_NAME)) {
-                    
+
                     //
                     Location loc = e.getClickedBlock().getLocation().add(0, 1, 0);
 
@@ -126,7 +126,7 @@ public class GameJoin implements Listener {
                 }
                 if (e.getClickedBlock().getType().equals(Material.NETHER_BRICK) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.NETHER_BRICK) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
                     e.getClickedBlock().setType(Material.REDSTONE_BLOCK);
- 
+
                     Block block = e.getClickedBlock().getRelative(0, 1, 0);
                     block.setType(Material.SKELETON_SKULL);
                     Skull skull = (Skull) block.getState();
