@@ -45,7 +45,7 @@ import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper
 import de.relluem94.minecraft.server.spigot.essentials.helpers.SignHelper;
 
 public class CaptureSpleef extends JavaPlugin {
-    
+
     public static SignHelper joinCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp join");
     public static SignHelper leaveCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp leave");
 
