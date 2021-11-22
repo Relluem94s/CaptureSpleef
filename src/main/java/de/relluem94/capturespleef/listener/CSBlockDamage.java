@@ -47,7 +47,7 @@ public class CSBlockDamage implements Listener {
         if (p.getCustomName().equals(TEAM_RED_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
             p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§1Team Blau hat gewonnen");
-        } else if(p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
+        } else if (p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
             p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§4Team Rot hat gewonnen");
         }
