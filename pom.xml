@@ -38,13 +38,13 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>de.relluem94</groupId>
             <artifactId>relluessentials</artifactId>
-            <version>1.33</version>
+            <version>1.35</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
