@@ -1,24 +1,5 @@
 package de.relluem94.capturespleef.events;
 
-import de.relluem94.capturespleef.CaptureSpleef;
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.SkullType;
-import org.bukkit.block.Skull;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.scoreboard.Score;
-
-import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
-import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 import static de.relluem94.capturespleef.CaptureSpleef.a;
 import static de.relluem94.capturespleef.CaptureSpleef.b;
 import static de.relluem94.capturespleef.CaptureSpleef.blau;
@@ -33,9 +14,26 @@ import static de.relluem94.capturespleef.CaptureSpleef.ts;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_FORMS_SPACER_MESSAGE;
 
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
+import java.util.Arrays;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.SkullType;
 import org.bukkit.block.Block;
+import org.bukkit.block.Skull;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scoreboard.Score;
 
 public class GameJoin implements Listener {
 
@@ -52,8 +50,8 @@ public class GameJoin implements Listener {
 
         ItemStack is = new ItemStack(Material.SUGAR, 1);
         ItemMeta im = is.getItemMeta();
-        im.setDisplayName("§8Wähle dein Team");
-        im.setLore(Arrays.asList("§8Rechtklicke auf den §cNetherBrick §8oder den §9Prismarin"));
+        im.setDisplayName("ï¿½8Wï¿½hle dein Team");
+        im.setLore(Arrays.asList("ï¿½8Rechtklicke auf den ï¿½cNetherBrick ï¿½8oder den ï¿½9Prismarin"));
         is.setItemMeta(im);
 
         // Verlassen Team Blau
@@ -75,7 +73,7 @@ public class GameJoin implements Listener {
                             e.getClickedBlock().setType(Material.PRISMARINE);
 
                         } else {
-                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "ï¿½6Dieser Slot ist vergeben");
                         }
                     }
                     p.setCustomName(CS_NAME);
@@ -87,7 +85,7 @@ public class GameJoin implements Listener {
                     //
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(p.getDisplayName() + "§1 hat TeamBlau verlassen");
+                        pla.sendMessage(p.getDisplayName() + "ï¿½1 hat TeamBlau verlassen");
                     });
                 }
             } // Verlassen Team Rot
@@ -104,7 +102,7 @@ public class GameJoin implements Listener {
                             block.setType(Material.AIR);
                             e.getClickedBlock().setType(Material.NETHER_BRICK);
                         } else {
-                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§6Dieser Slot ist vergeben");
+                            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "ï¿½6Dieser Slot ist vergeben");
                         }
                     }
                     p.setCustomName(CS_NAME);
@@ -116,7 +114,7 @@ public class GameJoin implements Listener {
                     //
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(p.getDisplayName() + "§4 hat TeamRot verlassen");
+                        pla.sendMessage(p.getDisplayName() + "ï¿½4 hat TeamRot verlassen");
                     });
                 }
             } // Betreten Team Rot
@@ -135,8 +133,8 @@ public class GameJoin implements Listener {
                     skull.update(true);
                     ItemStack isTeamRed = new ItemStack(Material.DIAMOND_HOE, 1);
                     ItemMeta imTeamRed = isTeamRed.getItemMeta();
-                    imTeamRed.setDisplayName("§4TeamRot");
-                    imTeamRed.setLore(Arrays.asList("§8Mache hiermit §1Blaue Steine §8zu §4Roten"));
+                    imTeamRed.setDisplayName("ï¿½4TeamRot");
+                    imTeamRed.setLore(Arrays.asList("ï¿½8Mache hiermit ï¿½1Blaue Steine ï¿½8zu ï¿½4Roten"));
                     isTeamRed.setItemMeta(imTeamRed);
                     p.getInventory().setItemInHand(new ItemStack(isTeamRed));
 
@@ -172,7 +170,7 @@ public class GameJoin implements Listener {
                     //		Team Rot Beitrittsnachricht
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(p.getDisplayName() + "§4 ist TeamRot beigetreten");
+                        pla.sendMessage(p.getDisplayName() + "ï¿½4 ist TeamRot beigetreten");
                     });
                 } // Betreten Team Blau
                 else if (e.getClickedBlock().getType().equals(Material.PRISMARINE) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.PRISMARINE) & !e.getPlayer().getEyeLocation().getBlock().getRelative(0, -2, 0).getType().equals(Material.AIR)) {
@@ -187,8 +185,8 @@ public class GameJoin implements Listener {
                     skull.update(true);
                     ItemStack isTeamBlue = new ItemStack(Material.DIAMOND_SHOVEL, 1);
                     ItemMeta imTeamBlue = isTeamBlue.getItemMeta();
-                    imTeamBlue.setDisplayName("§1TeamBlau");
-                    imTeamBlue.setLore(Arrays.asList("§8Mache hiermit §4Rote Steine §8zu §1Blauen"));
+                    imTeamBlue.setDisplayName("ï¿½1TeamBlau");
+                    imTeamBlue.setLore(Arrays.asList("ï¿½8Mache hiermit ï¿½4Rote Steine ï¿½8zu ï¿½1Blauen"));
                     isTeamBlue.setItemMeta(imTeamBlue);
                     p.getInventory().setItemInHand(new ItemStack(isTeamBlue));
 
@@ -224,7 +222,7 @@ public class GameJoin implements Listener {
                     //		Team Blau Beitrittsnachricht
                     //
                     Bukkit.getOnlinePlayers().stream().filter(pla -> (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME))).forEachOrdered(pla -> {
-                        pla.sendMessage(p.getDisplayName() + "§1 ist TeamBlau beigetreten");
+                        pla.sendMessage(p.getDisplayName() + "ï¿½1 ist TeamBlau beigetreten");
                     });
                 }
             }
