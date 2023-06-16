@@ -1,15 +1,26 @@
 package de.relluem94.capturespleef.listener;
 
+import static de.relluem94.capturespleef.CaptureSpleef.old;
+import static de.relluem94.capturespleef.CaptureSpleef.reset;
+import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.teams;
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_FORMS_SPACER_MESSAGE;
+
 import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Effect;
 import org.bukkit.FireworkEffect;
+import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.FireworkEffect.Type;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.EntityType;
@@ -20,17 +31,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.inventory.meta.FireworkMeta;
 
-import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
-import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
-import static de.relluem94.capturespleef.CaptureSpleef.old;
-import static de.relluem94.capturespleef.CaptureSpleef.reset;
-import static de.relluem94.capturespleef.CaptureSpleef.sboard;
-import static de.relluem94.capturespleef.CaptureSpleef.teams;
-import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
-import static de.relluem94.capturespleef.Strings.CS_NAME;
-import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
-
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
 
@@ -46,10 +46,10 @@ public class CSBlockDamage implements Listener {
 
         if (p.getCustomName().equals(TEAM_RED_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§1Team Blau hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "ï¿½1Team Blau hat gewonnen");
         } else if (p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§4Team Rot hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "ï¿½4Team Rot hat gewonnen");
         }
     }
 
@@ -116,7 +116,7 @@ public class CSBlockDamage implements Listener {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
             sboard.resetScores(p);
             reset();
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§4Team Rot hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "ï¿½4Team Rot hat gewonnen");
         } else if (p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             p.teleport(lobby);
             //
@@ -175,7 +175,7 @@ public class CSBlockDamage implements Listener {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
             teams.clear();
             sboard.resetScores(p);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + "§1Team Blau hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "ï¿½1Team Blau hat gewonnen");
         }
     }
 
@@ -214,7 +214,7 @@ public class CSBlockDamage implements Listener {
                                     ev.getBlock().setType(Material.PRISMARINE);
                                     break;
                                 default:
-                                    // Keine Anderen Blöcke können zerstört werden
+                                    // Keine Anderen Blï¿½cke kï¿½nnen zerstï¿½rt werden
                                     ev.setCancelled(true);
                                     break;
                             }
@@ -251,7 +251,7 @@ public class CSBlockDamage implements Listener {
                                     ev.getBlock().setType(Material.NETHER_BRICK);
                                     break;
                                 default:
-                                    // Keine Anderen Blöcke können zerstört werden
+                                    // Keine Anderen Blï¿½cke kï¿½nnen zerstï¿½rt werden
                                     ev.setCancelled(true);
                                     break;
                             }

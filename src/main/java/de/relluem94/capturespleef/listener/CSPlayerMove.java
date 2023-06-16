@@ -1,26 +1,5 @@
 package de.relluem94.capturespleef.listener;
 
-import java.util.Random;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.FireworkEffect.Type;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Firework;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.scoreboard.Score;
-
-import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
-import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 import static de.relluem94.capturespleef.CaptureSpleef.a;
 import static de.relluem94.capturespleef.CaptureSpleef.b;
 import static de.relluem94.capturespleef.CaptureSpleef.blau;
@@ -32,9 +11,29 @@ import static de.relluem94.capturespleef.CaptureSpleef.teams;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
 import static de.relluem94.capturespleef.Strings.PLUGIN_PREFIX;
-
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_SPACER;
+import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
+import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_FORMS_SPACER_MESSAGE;
 import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
+
+import java.util.Random;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
+import org.bukkit.FireworkEffect.Type;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.inventory.meta.FireworkMeta;
+import org.bukkit.scoreboard.Score;
 
 public class CSPlayerMove implements Listener {
 
@@ -69,7 +68,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
                                     reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½4Team Rot hat gewonnen");
                                 }
                             }
                         } else if (b < 1) {
@@ -131,7 +130,7 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     reset();
                                     teams.clear();
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½4Team Rot hat gewonnen");
                                 }
                             }
                         }
@@ -156,9 +155,9 @@ public class CSPlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4" + TEAM_RED_NAME + " " + player.getDisplayName() + "§4 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½4" + TEAM_RED_NAME + " " + player.getDisplayName() + "ï¿½4 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4" + player.getCustomName() + " " + player.getDisplayName() + "§4 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½4" + player.getCustomName() + " " + player.getDisplayName() + "ï¿½4 starb");
                             }
                         }
                     }
@@ -189,8 +188,8 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().setType(Material.AIR);
                                     reset();
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
-                                    consoleSendMessage("§5[Test]", "§4Rot!");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½4Team Rot hat gewonnen");
+                                    consoleSendMessage("ï¿½5[Test]", "ï¿½4Rot!");
                                 }
                             }
                         } else if (b < 1) {
@@ -254,8 +253,8 @@ public class CSPlayerMove implements Listener {
                                     teams.get(ops).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
                                     teams.clear();
                                     reset();
-                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §4Team Rot hat gewonnen");
-                                    consoleSendMessage("§5[Test]", "§1Blau!");
+                                    ops.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½4Team Rot hat gewonnen");
+                                    consoleSendMessage("ï¿½5[Test]", "ï¿½1Blau!");
                                 }
                             }
                         }
@@ -278,9 +277,9 @@ public class CSPlayerMove implements Listener {
                     for (Player pla : Bukkit.getOnlinePlayers()) {
                         if (pla.getCustomName().equals(TEAM_RED_NAME) || pla.getCustomName().equals(TEAM_BLUE_NAME) || pla.getCustomName().equals(CS_NAME)) {
                             if (score.getScore() == 0) {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "§1 ist ausgeschieden");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½1" + TEAM_BLUE_NAME + " " + player.getDisplayName() + "ï¿½1 ist ausgeschieden");
                             } else {
-                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_SPACER + " §1" + player.getCustomName() + " " + player.getDisplayName() + "§1 starb");
+                                pla.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + " ï¿½1" + player.getCustomName() + " " + player.getDisplayName() + "ï¿½1 starb");
                             }
 
                         }
