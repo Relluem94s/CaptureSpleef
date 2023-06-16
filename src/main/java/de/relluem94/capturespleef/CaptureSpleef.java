@@ -1,5 +1,15 @@
 package de.relluem94.capturespleef;
 
+import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
+import static de.relluem94.capturespleef.Strings.CS_NAME;
+import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
+import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_FORMS_BORDER;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_MANAGER_STARTTIME_MESSAGE;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_MANAGER_START_MESSAGE;
+import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_MANAGER_STOP_MESSAGE;
+import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -10,13 +20,14 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.common.collect.Lists;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Difficulty;
+import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -25,24 +36,12 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 import org.bukkit.scoreboard.Team;
-import org.bukkit.Difficulty;
-import org.bukkit.GameRule;
-import org.bukkit.World;
+
+import com.google.common.collect.Lists;
 
 import de.relluem94.minecraft.server.spigot.essentials.exceptions.WorldNotLoadedException;
-import de.relluem94.minecraft.server.spigot.essentials.helpers.WorldHelper;
-
-import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
-import static de.relluem94.capturespleef.Strings.CS_NAME;
-import static de.relluem94.capturespleef.Strings.PLUGIN_NAME_CONSOLE;
-import static de.relluem94.capturespleef.Strings.PLUGIN_SECONDARY_COLOR;
-
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_BORDER;
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STARTTIME;
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_START_MESSAGE;
-import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_STOP_MESSAGE;
-import static de.relluem94.minecraft.server.spigot.essentials.helpers.ChatHelper.consoleSendMessage;
 import de.relluem94.minecraft.server.spigot.essentials.helpers.SignHelper;
+import de.relluem94.minecraft.server.spigot.essentials.helpers.WorldHelper;
 
 public class CaptureSpleef extends JavaPlugin {
 
@@ -56,7 +55,7 @@ public class CaptureSpleef extends JavaPlugin {
     public static Objective obj;
     public static Score score;
 
-    public static int a, b, teamsize, ts = 2, lives = 4; // Die Team GröÃŸe default = 8 
+    public static int a, b, teamsize, ts = 2, lives = 4; // Die Team Grï¿½ÃŸe default = 8 
 
     public static ArrayList<Player> cooldown = new ArrayList<>();
     public static HashMap<Player, Location> teams = new HashMap<>();
@@ -93,10 +92,10 @@ public class CaptureSpleef extends JavaPlugin {
     public void onEnable() {
         WorldHelper.loadWorld(ACTIVE_WORLD);
         long start = Calendar.getInstance().getTimeInMillis();
-        consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_BORDER);
+        consoleSendMessage(PLUGIN_SECONDARY_COLOR, PLUGIN_FORMS_BORDER);
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
-        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_START_MESSAGE);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_MANAGER_START_MESSAGE);
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
 
         CmdEv rells = new CmdEv(this);
@@ -115,11 +114,11 @@ public class CaptureSpleef extends JavaPlugin {
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         obj.setDisplayName(PLUGIN_SECONDARY_COLOR + "Spieler");
 
-        cslobby.setPrefix("§d");
+        cslobby.setPrefix("ï¿½d");
         cslobby.setAllowFriendlyFire(true);
-        rot.setPrefix("§4");
+        rot.setPrefix("ï¿½4");
         rot.setAllowFriendlyFire(false);
-        blau.setPrefix("§1");
+        blau.setPrefix("ï¿½1");
         blau.setAllowFriendlyFire(false);
 
         try {
@@ -129,9 +128,9 @@ public class CaptureSpleef extends JavaPlugin {
         }
 
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
-        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + String.format(PLUGIN_STARTTIME, Calendar.getInstance().getTimeInMillis() - start));
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + String.format(PLUGIN_MANAGER_STARTTIME_MESSAGE, Calendar.getInstance().getTimeInMillis() - start));
         consoleSendMessage(PLUGIN_NAME_CONSOLE, "");
-        consoleSendMessage(PLUGIN_SECONDARY_COLOR + PLUGIN_BORDER, "");
+        consoleSendMessage(PLUGIN_SECONDARY_COLOR + PLUGIN_FORMS_BORDER, "");
     }
 
     @Override
@@ -141,7 +140,7 @@ public class CaptureSpleef extends JavaPlugin {
         } catch (WorldNotLoadedException ex) {
             Logger.getLogger(CaptureSpleef.class.getName()).log(Level.SEVERE, null, ex);
         }
-        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_STOP_MESSAGE);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_SECONDARY_COLOR + PLUGIN_MANAGER_STOP_MESSAGE);
     }
 
     private static void checkWorld() throws WorldNotLoadedException {
@@ -167,15 +166,15 @@ public class CaptureSpleef extends JavaPlugin {
 
     //
     // Team Rot Team Blau
-    //	Team Rot läuft auf Netherrack Team Blau auf Prismarin
+    //	Team Rot lÃ¤uft auf Netherrack Team Blau auf Prismarin
     //	Auf feindlichem Gebiet stirbt der Spieler
     //	Ziel ist an einen bestimmten Punkt im Gegenerischen Feld zu kommen
-    //	Hier für gibt es Sparten (und FeldHacke)
+    //	Hier fÃ¼r gibt es Sparten (und FeldHacke)
     //	Um Gegenrische Gebiete zu erobern
-    //	Das Spiel ist rum wenn kein Spieler im Gegnerteam übrig ist oder der "Schatz" erbeutet wurde
+    //	Das Spiel ist rum wenn kein Spieler im Gegnerteam Ã¼brig ist oder der "Schatz" erbeutet wurde
     //  Maximale Spiel zeit sind 15 Minuten Danach wird resetet
     //
-    //  onClickClack3 EntityDamageByEntityEvent hat noch einen Zusatz. Schneebälle mit Effekten
+    //  onClickClack3 EntityDamageByEntityEvent hat noch einen Zusatz. SchneebÃ¤lle mit Effekten
     //
     //	if (event.getEntity().getCustomName().equals(team_red) || event.getEntity().getCustomName().equals(team_blue)) {  }
     //
