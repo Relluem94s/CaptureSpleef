@@ -12,7 +12,7 @@
         <plugin.author>Relluem94</plugin.author>
         <plugin.website>https://www.relluem94.de</plugin.website>
         <plugin.main>de.relluem94.capturespleef.CaptureSpleef</plugin.main>
-        <project.build.sourceEncoding>windows-1252</project.build.sourceEncoding>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
     </properties>
     <repositories>
         <repository>

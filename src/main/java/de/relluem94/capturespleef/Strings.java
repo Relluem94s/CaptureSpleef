@@ -7,8 +7,8 @@ package de.relluem94.capturespleef;
 public class Strings {
 
     public final static String CS_NAME = "CaptureSpleef";
-    public final static String PLUGIN_PRIMARY_COLOR = "§d";
-    public final static String PLUGIN_SECONDARY_COLOR = "§a";
+    public final static String PLUGIN_PRIMARY_COLOR = "Â§d";
+    public final static String PLUGIN_SECONDARY_COLOR = "Â§a";
     public final static String PLUGIN_NAME_CONSOLE = PLUGIN_SECONDARY_COLOR + "[" + PLUGIN_PRIMARY_COLOR + CS_NAME + PLUGIN_SECONDARY_COLOR + "]";
     public final static String PLUGIN_PREFIX = PLUGIN_PRIMARY_COLOR + CS_NAME;
 
@@ -29,7 +29,7 @@ public class Strings {
 
     public final static String SIGN_CREATE = PLUGIN_SECONDARY_COLOR + "Schild erstellt";
 
-    public final static String SNOWBALL_DISPLAYNAME = "§fSchneeball";
+    public final static String SNOWBALL_DISPLAYNAME = "Â§fSchneeball";
 
     public final static String[] SNOWBALL_META_INFO = {"Dieser Schneeball dient dir als Hilfsmittel", "", "", ""};
 

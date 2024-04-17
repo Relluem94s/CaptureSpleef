@@ -2,6 +2,13 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/CmdEv.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/Strings.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/events/PlayerQuit.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/events/SignChange.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/events/SignUse.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/events/SnowBallThrow.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/de/relluem94/capturespleef/listener/CSPlayerCommandPreprocess.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>
