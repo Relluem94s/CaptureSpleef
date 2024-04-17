@@ -16,6 +16,7 @@ import org.bukkit.util.Vector;
 
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
+import org.jetbrains.annotations.NotNull;
 
 import static de.relluem94.capturespleef.CaptureSpleef.setColors;
 import static de.relluem94.capturespleef.CaptureSpleef.shuffle;
@@ -29,7 +30,7 @@ import static de.relluem94.capturespleef.Strings.SNOWBALL_META_INFO;
 public class SnowBallThrow implements Listener {
 
     @EventHandler
-    public void Schneeball(PlayerInteractEvent e) {
+    public void Schneeball(@NotNull PlayerInteractEvent e) {
         ItemStack snowballs = new ItemStack(Material.SNOWBALL, 94);
         ItemMeta snowball_meta = snowballs.getItemMeta();
         snowball_meta.setDisplayName(SNOWBALL_DISPLAYNAME);
@@ -45,9 +46,6 @@ public class SnowBallThrow implements Listener {
                     p.getInventory().setItem(2, new ItemStack(snowballs));
                     ItemMeta itemInHandMeta = itemInHand.getItemMeta();
                     String itemInHandMetaDisplayname = itemInHandMeta.getDisplayName();
-                    if (itemInHandMetaDisplayname == null) {
-                        return;
-                    }
                     if (itemInHandMetaDisplayname.contains("Schneeball")) {
                         Vector vec_direction = p.getEyeLocation().multiply(7.8).getDirection();
                         Vector vec = new Vector(vec_direction.getX(), vec_direction.getY(), vec_direction.getZ());

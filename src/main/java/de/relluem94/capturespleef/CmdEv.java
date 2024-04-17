@@ -24,7 +24,7 @@ import de.relluem94.capturespleef.listener.CSPlayerMove;
 
 public class CmdEv {
 
-    de.relluem94.capturespleef.CaptureSpleef main;
+    final de.relluem94.capturespleef.CaptureSpleef main;
 
     public CmdEv(de.relluem94.capturespleef.CaptureSpleef instance) {
         main = instance;

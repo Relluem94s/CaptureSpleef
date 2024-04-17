@@ -2,7 +2,7 @@ package de.relluem94.capturespleef.listener;
 
 import static de.relluem94.capturespleef.CaptureSpleef.old;
 import static de.relluem94.capturespleef.CaptureSpleef.reset;
-import static de.relluem94.capturespleef.CaptureSpleef.sboard;
+import static de.relluem94.capturespleef.CaptureSpleef.scoreBoard;
 import static de.relluem94.capturespleef.CaptureSpleef.teams;
 import static de.relluem94.capturespleef.Strings.ACTIVE_WORLD;
 import static de.relluem94.capturespleef.Strings.CS_NAME;
@@ -33,6 +33,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
+import org.jetbrains.annotations.NotNull;
 
 public class CSBlockDamage implements Listener {
 
@@ -42,14 +43,14 @@ public class CSBlockDamage implements Listener {
         p.setCustomName(CS_NAME);
         reset();
         teams.get(p).getBlock().setType(Material.AIR);
-        sboard.resetScores(p);
+        scoreBoard.resetScores(p);
 
         if (p.getCustomName().equals(TEAM_RED_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "�1Team Blau hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "§1Team Blau hat gewonnen");
         } else if (p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "�4Team Rot hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "§4Team Rot hat gewonnen");
         }
     }
 
@@ -73,24 +74,12 @@ public class CSBlockDamage implements Listener {
             Random r22 = new Random();
             //sets type
             int rt = r22.nextInt(4) + 1;
-            Type type;
-            switch (rt) {
-                case 1:
-                    type = Type.BALL;
-                    break;
-                case 2:
-                    type = Type.BALL_LARGE;
-                    break;
-                case 3:
-                    type = Type.BURST;
-                    break;
-                case 4:
-                    type = Type.STAR;
-                    break;
-                default:
-                    type = Type.BALL;
-                    break;
-            }
+            Type type = switch (rt) {
+                case 2 -> Type.BALL_LARGE;
+                case 3 -> Type.BURST;
+                case 4 -> Type.STAR;
+                default -> Type.BALL;
+            };
             //colors
             int r = r22.nextInt(256);
             int b = r22.nextInt(256);
@@ -114,9 +103,9 @@ public class CSBlockDamage implements Listener {
             p.setCustomName(CS_NAME);
             teams.get(p).getBlock().setType(Material.AIR);
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.NETHER_BRICK);
-            sboard.resetScores(p);
+            scoreBoard.resetScores(p);
             reset();
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "�4Team Rot hat gewonnen");
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "§4Team Rot hat gewonnen");
         } else if (p.getCustomName().equals(TEAM_BLUE_NAME) && TEAM_RED_NAME.equals(winner)) {
             p.teleport(lobby);
             //
@@ -174,15 +163,15 @@ public class CSBlockDamage implements Listener {
             teams.get(p).getBlock().setType(Material.AIR);
             teams.get(p).getBlock().getRelative(0, -1, 0).setType(Material.PRISMARINE);
             teams.clear();
-            sboard.resetScores(p);
-            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "�1Team Blau hat gewonnen");
+            scoreBoard.resetScores(p);
+            p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + "§1Team Blau hat gewonnen");
         }
     }
 
-    private static Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), -132, 144, 272);
+    private static final Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), -132, 144, 272);
 
     @EventHandler
-    public void gameItSelf(BlockDamageEvent ev) {
+    public void gameItSelf(@NotNull BlockDamageEvent ev) {
 
         Player player = ev.getPlayer();
 
@@ -214,7 +203,7 @@ public class CSBlockDamage implements Listener {
                                     ev.getBlock().setType(Material.PRISMARINE);
                                     break;
                                 default:
-                                    // Keine Anderen Bl�cke k�nnen zerst�rt werden
+                                    // Keine anderen Blöcke können zerstört werden
                                     ev.setCancelled(true);
                                     break;
                             }
@@ -251,7 +240,7 @@ public class CSBlockDamage implements Listener {
                                     ev.getBlock().setType(Material.NETHER_BRICK);
                                     break;
                                 default:
-                                    // Keine Anderen Bl�cke k�nnen zerst�rt werden
+                                    // Keine anderen Blöcke können zerstört werden
                                     ev.setCancelled(true);
                                     break;
                             }

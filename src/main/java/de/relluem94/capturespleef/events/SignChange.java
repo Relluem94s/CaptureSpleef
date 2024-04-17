@@ -15,11 +15,12 @@ import org.bukkit.event.block.SignChangeEvent;
 import de.relluem94.minecraft.server.spigot.essentials.helpers.SignHelper;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
 import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
+import org.jetbrains.annotations.NotNull;
 
 public class SignChange implements Listener {
 
     @EventHandler
-    public void SignCreate(SignChangeEvent e) {
+    public void SignCreate(@NotNull SignChangeEvent e) {
         if (Permission.isAuthorized(e.getPlayer(), Groups.getGroup("admin").getId())) {
             if (SignHelper.isSign(joinCommand, JOIN_GAME)) {
                 e.setLine(0, joinCommand.getLine0());

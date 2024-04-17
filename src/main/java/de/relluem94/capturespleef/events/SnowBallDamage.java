@@ -8,6 +8,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.projectiles.ProjectileSource;
+import org.jetbrains.annotations.NotNull;
 
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
@@ -15,13 +16,11 @@ import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 public class SnowBallDamage implements Listener {
 
     @EventHandler
-    public void SchneeballSchaden(EntityDamageByEntityEvent e) {
-        if (e.getDamager() instanceof Snowball) {
+    public void SchneeballSchaden(@NotNull EntityDamageByEntityEvent e) {
+        if (e.getDamager() instanceof Snowball snowball) {
             Player p = (Player) e.getEntity();
-            Snowball snowball = (Snowball) e.getDamager();
             ProjectileSource shooter = snowball.getShooter();
-            if (shooter instanceof Player) {
-                Player ps = (Player) shooter;
+            if (shooter instanceof Player ps) {
                 if (ps.hasPermission("rellu.lobby.snowball")) {
                     if (ps.getInventory().getItemInHand().getType().equals(Material.SNOWBALL) && p.getInventory().getItemInHand().getType().equals(Material.SNOWBALL)) {
                         if (ps.getCustomName().equals(TEAM_RED_NAME)) {

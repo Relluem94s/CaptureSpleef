@@ -26,7 +26,6 @@ import org.bukkit.Difficulty;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -45,22 +44,23 @@ import de.relluem94.minecraft.server.spigot.essentials.helpers.WorldHelper;
 
 public class CaptureSpleef extends JavaPlugin {
 
-    public static SignHelper joinCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp join");
-    public static SignHelper leaveCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp leave");
+    public static final SignHelper joinCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp join");
+    public static final SignHelper leaveCommand = new SignHelper(SignHelper.ActionType.COMMAND, "casp leave");
 
-    public static ScoreboardManager scoreboard;
-    public static Scoreboard sboard;
-    public static Scoreboard emptysboard;
-    public static Team rot, blau, cslobby;
+    public static ScoreboardManager scoreboardManager;
+    public static Scoreboard scoreBoard;
+    public static Scoreboard emptyScoreBoard;
+    public static Team rot, blau, csLobby;
     public static Objective obj;
     public static Score score;
 
-    public static int a, b, teamsize, ts = 2, lives = 4; // Die Team Gr�ße default = 8 
+    public static int a, b, teamSize;
+    public static final int ts = 2, lives = 4; // TeamSize default = 8
 
-    public static ArrayList<Player> cooldown = new ArrayList<>();
-    public static HashMap<Player, Location> teams = new HashMap<>();
+    public static final ArrayList<Player> cooldown = new ArrayList<>();
+    public static final HashMap<Player, Location> teams = new HashMap<>();
 
-    public static Map<Location, Material> old = new HashMap<>();
+    public static final Map<Location, Material> old = new HashMap<>();
 
     public static void reset() {
         old.keySet().forEach(loc -> {
@@ -72,13 +72,7 @@ public class CaptureSpleef extends JavaPlugin {
 
     }
 
-    public Server server = getServer();
-
-    public Server getserver() {
-        return server;
-    }
-
-    private static final List<ChatColor> colors = Lists.newArrayList(new ChatColor[]{ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE});
+    private static final List<ChatColor> colors = Lists.newArrayList(ChatColor.WHITE, ChatColor.YELLOW, ChatColor.LIGHT_PURPLE, ChatColor.RED, ChatColor.AQUA, ChatColor.GREEN, ChatColor.DARK_GRAY, ChatColor.BLUE, ChatColor.DARK_PURPLE, ChatColor.DARK_RED, ChatColor.DARK_AQUA, ChatColor.DARK_GREEN, ChatColor.DARK_BLUE);
 
     public static List<ChatColor> setColors() {
         return colors;
@@ -102,23 +96,23 @@ public class CaptureSpleef extends JavaPlugin {
         rells.registerEvents();
         rells.registerCommands();
 
-        scoreboard = Bukkit.getScoreboardManager();
-        sboard = scoreboard.getNewScoreboard();
-        emptysboard = scoreboard.getNewScoreboard();
-        rot = sboard.registerNewTeam("rot");
-        blau = sboard.registerNewTeam("blau");
-        cslobby = sboard.registerNewTeam("cslobby");
+        scoreboardManager = Bukkit.getScoreboardManager();
+        scoreBoard = scoreboardManager.getNewScoreboard();
+        emptyScoreBoard = scoreboardManager.getNewScoreboard();
+        rot = scoreBoard.registerNewTeam("rot");
+        blau = scoreBoard.registerNewTeam("blau");
+        csLobby = scoreBoard.registerNewTeam("cslobby");
 
-        obj = sboard.registerNewObjective(CS_NAME, "Spieler");
+        obj = scoreBoard.registerNewObjective(CS_NAME, "Spieler");
 
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         obj.setDisplayName(PLUGIN_SECONDARY_COLOR + "Spieler");
 
-        cslobby.setPrefix("�d");
-        cslobby.setAllowFriendlyFire(true);
-        rot.setPrefix("�4");
+        csLobby.setPrefix("§d");
+        csLobby.setAllowFriendlyFire(true);
+        rot.setPrefix("§4");
         rot.setAllowFriendlyFire(false);
-        blau.setPrefix("�1");
+        blau.setPrefix("§1");
         blau.setAllowFriendlyFire(false);
 
         try {
