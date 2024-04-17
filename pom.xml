@@ -6,7 +6,9 @@
     <version>1.12</version>
     <url>https://github.com/Relluem94/CaptureSpleef</url>
     <properties>
-        <plugin.apiVersion>1.16</plugin.apiVersion>
+        <lombok.version>1.18.32</lombok.version>
+        <spigot.version>1.20.1-R0.1-SNAPSHOT</spigot.version>
+        <plugin.apiVersion>1.20</plugin.apiVersion>
         <plugin.author>Relluem94</plugin.author>
         <plugin.website>https://www.relluem94.de</plugin.website>
         <plugin.main>de.relluem94.capturespleef.CaptureSpleef</plugin.main>
@@ -32,19 +34,13 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.19.4-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-            <version>1.19.4-R0.1-SNAPSHOT</version>
+            <version>${spigot.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>de.relluem94</groupId>
             <artifactId>relluessentials</artifactId>
-            <version>3.2</version>
+            <version>4.1.8</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -59,7 +55,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.12.1</version>
                 <configuration>
                     <source>17</source>
                     <target>17</target>
@@ -69,7 +65,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.4.1</version>
+                <version>3.5.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -82,10 +78,8 @@
                                 <filter>
                                     <artifact>*:*</artifact>
                                     <excludes>
-                                        <exclude>META-INF/*.SF</exclude>
-                                        <exclude>META-INF/*.MF</exclude>
-                                        <exclude>META-INF/*.DSA</exclude>
-                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>META-INF/**</exclude>
+                                        <exclude>module-info.class</exclude>
                                     </excludes>
                                 </filter>
                             </filters>
@@ -96,7 +90,7 @@
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
