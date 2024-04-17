@@ -43,8 +43,8 @@ public class CMD implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String cmdLabel, String[] args) {
-        Location arena = new Location(Bukkit.getWorld(ACTIVE_WORLD), -104, 137, 272);
-        Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), -132, 144, 272);
+        Location arena = new Location(Bukkit.getWorld(ACTIVE_WORLD), 142, 142, 142);
+        Location lobby = new Location(Bukkit.getWorld(ACTIVE_WORLD), 140, 141, 188);
 
         a = rot.getSize();
         b = blau.getSize();
@@ -76,7 +76,7 @@ public class CMD implements CommandExecutor {
             } else {
                 // Join
                 if (args[0].equalsIgnoreCase("join")) {
-                    if (p.hasPermission("rellu.capturespleef.join")) {
+
                         if (cooldown.contains(p)) {
                             p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + PLUGIN_SECONDARY_COLOR + "Du bist bereits in der CaptureSpleef Lobby");
                         } else if (scoreBoard.getTeams().size() == ts) {
@@ -105,11 +105,11 @@ public class CMD implements CommandExecutor {
                                 csLobby.addPlayer(p);
                             }
 
-                        }
+
                     }
                 } // Leave
                 else if (args[0].equalsIgnoreCase("leave")) {
-                    if (p.hasPermission("rellu.capturespleef.leave")) {
+
                         if (p.getCustomName().equals(CS_NAME)) {
                             cooldown.remove(p);
                             p.getInventory().clear();
@@ -126,7 +126,7 @@ public class CMD implements CommandExecutor {
                         } else {
                             p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + PLUGIN_SECONDARY_COLOR + "Es ist ein Fehler aufgetreten!");
                         }
-                    }
+
                 } // Info
                 else if (args[0].equalsIgnoreCase("info")) {
                     p.sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + PLUGIN_SECONDARY_COLOR + "Spiele Erklärung und Ziel");

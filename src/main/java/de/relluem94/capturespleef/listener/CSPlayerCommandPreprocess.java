@@ -7,6 +7,8 @@ import static de.relluem94.capturespleef.Strings.TEAM_BLUE_NAME;
 import static de.relluem94.capturespleef.Strings.TEAM_RED_NAME;
 import static de.relluem94.minecraft.server.spigot.essentials.Strings.PLUGIN_FORMS_SPACER_MESSAGE;
 
+import de.relluem94.minecraft.server.spigot.essentials.permissions.Groups;
+import de.relluem94.minecraft.server.spigot.essentials.permissions.Permission;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -19,7 +21,7 @@ public class CSPlayerCommandPreprocess implements Listener {
     public void onPlayerCommandPreprocess(@NotNull PlayerCommandPreprocessEvent event) {
 
         if (event.getPlayer().getCustomName().equals(CS_NAME) || event.getPlayer().getCustomName().equals(TEAM_RED_NAME) || event.getPlayer().getCustomName().equals(TEAM_BLUE_NAME)) {
-            if (event.getMessage().toLowerCase().startsWith("/casp")) {
+            if (event.getMessage().toLowerCase().startsWith("/casp") || event.getMessage().toLowerCase().startsWith("/caputespleef") || Permission.isAuthorized(event.getPlayer(), Groups.getGroup("mod").getId())) {
                 event.setCancelled(false);
             } else {
                 event.getPlayer().sendMessage(PLUGIN_PREFIX + PLUGIN_FORMS_SPACER_MESSAGE + NO_PERM);
