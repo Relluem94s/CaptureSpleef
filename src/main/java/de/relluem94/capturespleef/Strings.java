@@ -33,6 +33,6 @@ public class Strings {
 
     public final static String[] SNOWBALL_META_INFO = {"Dieser Schneeball dient dir als Hilfsmittel", "", "", ""};
 
-    public final static String PLUGIN_CHAT_SPACER = "\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0\u25B6\u25C0";
+    public final static String PLUGIN_CHAT_SPACER = "▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀▶◀";
 
 }
