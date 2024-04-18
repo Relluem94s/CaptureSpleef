@@ -32,24 +32,25 @@ public class CmdEv {
 
     public void registerCommands() {
         consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_MANAGER_REGISTER_COMMANDS);
-        Objects.requireNonNull(main.getCommand(COMMAND_CASP)).setExecutor(new CMD());
-        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_MANAGER_COMMANDS_REGISTERED);
+        int commands = 0;
+        Objects.requireNonNull(main.getCommand(COMMAND_CASP)).setExecutor(new CMD()); commands++;
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, String.format(PLUGIN_MANAGER_COMMANDS_REGISTERED, commands));
     }
 
     public void registerEvents() {
         PluginManager pm = main.getServer().getPluginManager();
         consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_MANAGER_REGISTER_EVENTS);
+        int events = 0;
+        pm.registerEvents(new CSBlockDamage(), main); events++;
+        pm.registerEvents(new CSPlayerCommandPreprocess(), main); events++;
+        pm.registerEvents(new CSPlayerMove(), main); events++;
+        pm.registerEvents(new PlayerQuit(), main); events++;
+        pm.registerEvents(new GameJoin(), main); events++;
+        pm.registerEvents(new SignUse(), main); events++;
+        pm.registerEvents(new SignChange(), main); events++;
+        pm.registerEvents(new SnowBallThrow(), main); events++;
+        pm.registerEvents(new SnowBallDamage(), main); events++;
 
-        pm.registerEvents(new CSBlockDamage(), main);
-        pm.registerEvents(new CSPlayerCommandPreprocess(), main);
-        pm.registerEvents(new CSPlayerMove(), main);
-        pm.registerEvents(new PlayerQuit(), main);
-        pm.registerEvents(new GameJoin(), main);
-        pm.registerEvents(new SignUse(), main);
-        pm.registerEvents(new SignChange(), main);
-        pm.registerEvents(new SnowBallThrow(), main);
-        pm.registerEvents(new SnowBallDamage(), main);
-
-        consoleSendMessage(PLUGIN_NAME_CONSOLE, PLUGIN_MANAGER_EVENTS_REGISTERED);
+        consoleSendMessage(PLUGIN_NAME_CONSOLE, String.format(PLUGIN_MANAGER_EVENTS_REGISTERED, events));
     }
 }
